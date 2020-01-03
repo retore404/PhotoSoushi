@@ -54,6 +54,7 @@
                 <div class="col-md-12">
                     <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
                 </div>
+    <footer>
                 <!--フッターのウィジェットスペース-->
                 <div class="col-md-12 row">
                     <!--フッターのウィジェットスペース(左)-->
@@ -68,7 +69,6 @@
             </div>
         </div>
     </section>
-    <footer>
     </footer>
 </body>
 </html>
