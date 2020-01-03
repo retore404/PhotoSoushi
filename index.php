@@ -34,4 +34,7 @@
                 <div class="col-md-12">
                     <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
                 </div>
+            </div>
+        </div>
+    </section>
 <?php get_footer(); ?>

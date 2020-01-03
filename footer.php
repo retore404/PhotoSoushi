@@ -1,4 +1,6 @@
     <footer>
+        <div id="content-wrap" class="container">
+            <div class="col-md-10 offset-md-1 row">
                 <!--フッターのウィジェットスペース-->
                 <div class="col-md-12 row">
                     <!--フッターのウィジェットスペース(左)-->
@@ -12,7 +14,6 @@
                 </div>
             </div>
         </div>
-    </section>
     </footer>
 </body>
 </html>
