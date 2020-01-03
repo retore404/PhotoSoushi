@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Bluelight Sonata</title>
+    <title><?php bloginfo('name'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
     <header>
         <div id="title_wrapper" class="container">
             <div id="title-div" class="col-md-10 offset-md-1">
-                <h1>Bluelight Sonata.</h1>
+                <h1><?php bloginfo('name'); ?></h1>
             </div>        
         </div>
     </header>
@@ -50,14 +50,20 @@
                         </div>
                     </div>
                 </div>
+                <!--メイン領域下のウィジェットスペース-->
                 <div class="col-md-12">
-                    <h3>Features.</h2>
+                    <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
                 </div>
-                <div class="col-md-12">
-                    あ
-                </div>
-                <div class="col-md-12">
-                    ウィジェットスペース
+                <!--フッターのウィジェットスペース-->
+                <div class="col-md-12 row">
+                    <!--フッターのウィジェットスペース(左)-->
+                    <div class="col-md-6">
+                        <?php if ( dynamic_sidebar('footer_widget1') ) : else : endif; ?>
+                    </div>
+                    <!--フッターのウィジェットスペース(右)-->
+                    <div class="col-md-6">
+                        <?php if ( dynamic_sidebar('footer_widget2') ) : else : endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
