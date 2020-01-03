@@ -28,54 +28,22 @@
                     </div>
                 </div>
                 <div id="main" class="col-md-12 row">
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post-each">
-                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png"></a>
-                            <span class="post-date">2020-01-01</span><br>
-                            <a href="#"><span class="post-title">記事タイトル</span></a><br>
-                            <span class="post-excerpt">　ここに記事の抜粋が入るようにしたいと思います．50文字くらいまで出るようにすれば良いと思う．</span>
-                        </div>
-                    </div>
+                    <?php if(have_posts()): while(have_posts()): the_post(); ?>
+                        <div class="col-md-4">
+                            <div class="post-each">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php if( has_post_thumbnail() ): ?>
+                                        <?php the_post_thumbnail('page_eyecatch-image'); ?>
+                                    <?php else: ?>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png">
+                                    <?php endif; ?>                                    
+                                </a><br>
+                                <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
+                                <a href="#"><span class="post-title"><?php the_title(); ?></span></a><br>
+                                <span class="post-excerpt"><?php the_excerpt(); ?></span>
+                            </div>
+                        </div>                                                
+                    <?php endwhile; endif; ?>
                     <div class="col-md-12 row">
                         <div class="col-md-4 offset-md-4" style="text-align:center;">
                             Older Posts.
