@@ -14,7 +14,7 @@
     <header>
         <div id="title_wrapper" class="container">
             <div id="title-div" class="col-md-10 offset-md-1">
-                <h1><?php bloginfo('name'); ?></h1>
+                <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
             </div>        
         </div>
     </header>
