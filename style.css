@@ -40,3 +40,20 @@ img {
 .section-title {
     padding-left: 0.5em;
 }
+
+.single-date {
+    font-size: 70%;
+    margin-bottom: 1em;
+}
+
+.single-category-tags {
+    font-size: 70%;
+}
+
+.single-category-tags-wrapper {
+    line-height: 1em;
+}
+
+.single-post-body {
+    margin-top: 1em;
+}
