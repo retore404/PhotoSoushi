@@ -16,6 +16,12 @@
                             <!--自動補正ありの本文-->
                             <?php the_content(); ?>
                         </div>
+                        <hr>
+                        <div id="comments">
+                        <?php
+                            comments_template();
+                        ?>
+                        </div>
                     <?php endif; ?> 
                 </div>           
             </div>
