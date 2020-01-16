@@ -4,7 +4,7 @@
             <div class="col-md-10 offset-md-1 row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3 class="post-section">Recent Post.</h3>
+                        <h3 class="post-section">Posts.</h3>
                     </div>
                 </div>
                 <div id="main" class="col-md-12 row">
@@ -26,7 +26,7 @@
                     <?php endwhile; endif; ?>
                     <div class="col-md-12 row">
                         <div class="col-md-4 offset-md-4" style="text-align:center;">
-                            Older Posts.
+                        <?php if( function_exists("the_pagination") ) the_pagination(); ?>
                         </div>
                     </div>
                 </div>

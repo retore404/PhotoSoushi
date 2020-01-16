@@ -57,3 +57,8 @@ img {
 .single-post-body {
     margin-top: 1em;
 }
+
+/* ページネーションの体裁用 */
+nav ul li{ 	
+    display: inline-block;
+ }
