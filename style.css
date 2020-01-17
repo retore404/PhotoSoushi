@@ -4,10 +4,16 @@ Theme Name : SuperSimple
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+    color: #191919;
 }
 
 img {
     max-width: 100%;
+}
+
+a:hover {
+    opacity: 0.5;
+    text-decoration: none;
 }
 
 #title-div {
@@ -17,6 +23,11 @@ img {
     border-bottom: solid 1px black;
     margin-top: 1em;
     margin-bottom: 3em;
+    color: #191919;
+}
+
+#title-div a {
+    color: #191919;
 }
 
 .post-date {

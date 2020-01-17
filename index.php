@@ -15,7 +15,7 @@
                                     <?php if( has_post_thumbnail() ): ?>
                                         <?php the_post_thumbnail('page_eyecatch-image'); ?>
                                     <?php else: ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png" class="hover">
                                     <?php endif; ?>                                    
                                 </a><br>
                                 <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
