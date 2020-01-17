@@ -1,3 +1,75 @@
 /*
 Theme Name : SuperSimple
 */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+    color: #191919;
+}
+
+img {
+    max-width: 100%;
+}
+
+a:hover {
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+#title-div {
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    color: #191919;
+}
+
+#title-div a {
+    color: #191919;
+}
+
+.post-date {
+    font-size: 80%;
+}
+
+.post-title {
+    padding: 10px 0 0 0;
+    color: #444;
+    font-weight: 700;
+}
+
+.post-excerpt {
+    font-size: 90%;
+}
+
+.post-each {
+    margin-bottom: 2em;
+}
+
+.section-title {
+    padding-left: 0.5em;
+}
+
+.single-date {
+    font-size: 70%;
+    margin-bottom: 1em;
+}
+
+.single-category-tags {
+    font-size: 70%;
+}
+
+.single-category-tags-wrapper {
+    line-height: 1em;
+}
+
+.single-post-body {
+    margin-top: 1em;
+}
+
+/* ページネーションの体裁用 */
+nav ul li{ 	
+    display: inline-block;
+ }
