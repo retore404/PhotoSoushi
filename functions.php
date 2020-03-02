@@ -11,9 +11,25 @@ function baw_theme_setup() {
 // サムネイル画像のimgタグからwidthとheightの指定を削除
 add_filter( 'post_thumbnail_html', 'custom_attribute' );
 function custom_attribute( $html ){
-    // width height を削除する
-    $html = preg_replace('/(width|height)="\d*"\s/', '', $html);
-    return $html;
+  // width height を削除する
+  $html = preg_replace('/(width|height)="\d*"\s/', '', $html);
+  return $html;
+}
+
+// 記事中1枚目の画像をアイキャッチ化する
+function catch_first_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  if(empty($first_img)){ //Defines a default image
+      $dir = get_template_directory_uri();
+      $first_img = "$dir/images/thumbnail.png";
+  }
+return $first_img;
 }
 
 // ウィジェット

@@ -13,9 +13,9 @@
                             <div class="post-each">
                                 <a href="<?php the_permalink(); ?>">
                                     <?php if( has_post_thumbnail() ): ?>
-                                        <?php the_post_thumbnail('page_eyecatch-image'); ?>
+                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>" />
                                     <?php else: ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/thumbnail.png" class="hover">
+                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>" />
                                     <?php endif; ?>                                    
                                 </a><br>
                                 <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
