@@ -12,11 +12,7 @@
                         <div class="col-md-4">
                             <div class="post-each">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php if( has_post_thumbnail() ): ?>
-                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>" />
-                                    <?php else: ?>
-                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>" />
-                                    <?php endif; ?>                                    
+                                    <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />                                
                                 </a><br>
                                 <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
                                 <a href="<?php the_permalink(); ?>"><span class="post-title"><?php the_title(); ?></span></a><br>
