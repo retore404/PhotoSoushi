@@ -1,13 +1,12 @@
 <?php get_header(); ?>
     <section id="content">
         <div id="content-wrap" class="container-fluid">
-            <div class="col-md-6 offset-md-3 row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h3 class="post-section">Posts.</h3>
-                    </div>
+            <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-12">
+                <div class="section-title">
+                    <h3 class="post-section">Posts.</h3>
                 </div>
-                <div id="main" class="col-md-12 row">
+                <div class="row">
                     <?php if(have_posts()): while(have_posts()): the_post(); ?>
                         <div class="col-md-4">
                             <div class="post-each">
@@ -30,6 +29,7 @@
                 <div class="col-md-12">
                     <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
                 </div>
+            </div>
             </div>
         </div>
     </section>
