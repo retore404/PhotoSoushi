@@ -14,8 +14,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <header>
-        <div id="title_wrapper" class="container">
-            <div id="title-div" class="col-md-10 offset-md-1">
+        <div id="title_wrapper" class="container-fluid">
+            <div id="title-div" class="col-md-8 offset-md-2">
                 <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
             </div>        
         </div>

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <section id="content">
-        <div id="content-wrap" class="container">
-            <div class="col-md-10 offset-md-1 row">
+        <div id="content-wrap" class="container-fluid">
+            <div class="col-md-8 offset-md-2 row">
                 <div class="col-md-12">
                     <?php if(have_posts()): the_post(); ?>
                         <div class="single-date"><?php echo get_the_date(); ?></div>
