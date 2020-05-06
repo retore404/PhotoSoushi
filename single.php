@@ -1,8 +1,7 @@
 <?php get_header(); ?>
     <section id="content">
         <div id="content-wrap" class="container-fluid">
-            <div class="col-md-6 offset-md-3 row">
-                <div class="col-md-12">
+            <div class="col-md-6 offset-md-3">
                     <?php if(have_posts()): the_post(); ?>
                         <div class="single-date"><?php echo get_the_date(); ?></div>
                         <div><h3><?php the_title(); ?></h3></div>
@@ -22,8 +21,7 @@
                             comments_template();
                         ?>
                         </div>
-                    <?php endif; ?> 
-                </div>           
+                    <?php endif; ?>         
             </div>
         </div>
     </section>

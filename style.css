@@ -11,6 +11,10 @@ img {
     max-width: 100%;
 }
 
+#comment{
+    max-width: 100%;
+}
+
 .photo-desc {
     margin-top: 0em;
     text-align: right;
