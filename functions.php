@@ -16,6 +16,19 @@ function catch_first_image() {
 return $first_img;
 }
 
+// リサイズ画像の自動生成を停止する
+function disable_image_sizes( $new_sizes ) {
+	unset($new_sizes['thumbnail']);
+	unset($new_sizes['medium']);
+	unset($new_sizes['large']);
+	unset($new_sizes['medium_large']);
+	unset($new_sizes['1536x1536']);
+	unset($new_sizes['2048x2048']);
+	return $new_sizes;
+}
+add_filter('intermediate_image_sizes_advanced', 'disable_image_sizes');
+add_filter('big_image_size_threshold', '__return_false');
+
 // ウィジェット
 register_sidebar( array(
     'name' => __( 'MainWidget1' ),
