@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <section id="content">
-        <div id="content-wrap" class="container">
-            <div class="col-md-10 offset-md-1 row">
+        <div id="content-wrap" class="container-fluid">
+            <div class="col-md-6 offset-md-3 row">
                 <div class="col-md-12">
                     <div class="section-title">
                         <h3 class="post-section">Posts.</h3>
