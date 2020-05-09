@@ -84,3 +84,10 @@ a:hover {
 nav ul li{ 	
     display: inline-block;
  }
+
+ /* シェアボタン（はてぶ用） */
+.fa-hatena:before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+}
