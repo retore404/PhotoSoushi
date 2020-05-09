@@ -38,6 +38,9 @@ $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
 return $html;
 }
 
+// タイトルタグを自動生成
+add_theme_support( 'title-tag' );
+
 
 // ウィジェット
 register_sidebar( array(
