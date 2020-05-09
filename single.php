@@ -17,7 +17,8 @@
                         </div>
                         <hr>
                         <span>Share.</span><br>
-                        <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title() . " | " . get_bloginfo('name') . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title() . " | " . get_bloginfo('name') . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>　
+                        <a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><i class="fa fa-hatena"></i></a>
                         <hr>
                         <div id="comments">
                         <?php
