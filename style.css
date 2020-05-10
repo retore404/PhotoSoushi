@@ -91,3 +91,12 @@ nav ul li{
     font-family: Verdana;
     font-weight: bold;
 }
+
+/* ページネーション中央揃え */
+nav.pagination {
+    margin:auto;
+}
+
+ul.page-numbers {
+    margin:auto;
+}
