@@ -20,7 +20,7 @@
                         </div>                                                
                     <?php endwhile; endif; ?>
                     <div class="col-sm-12 row">
-                        <div class="col-sm-4 offset-sm-4" style="text-align:center;">
+                        <div class="col-sm-4 offset-sm-4">
                         <?php if( function_exists("the_pagination") ) the_pagination(); ?>
                         </div>
                     </div>
