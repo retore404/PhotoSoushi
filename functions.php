@@ -40,7 +40,13 @@ return $html;
 
 // タイトルタグを自動生成
 add_theme_support( 'title-tag' );
-
+function custom_title_text( $results ){
+  if( is_home() ){
+    $results['tagline'] = '';
+  }
+  return $results;
+}
+add_filter( 'document_title_parts', 'custom_title_text', 11 );
 
 // ウィジェット
 register_sidebar( array(
