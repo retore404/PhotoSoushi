@@ -7,6 +7,10 @@ body {
     color: #191919;
 }
 
+p {
+    font-size: .875em;
+}
+
 img {
     max-width: 100%;
 }
