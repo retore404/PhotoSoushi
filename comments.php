@@ -8,6 +8,7 @@
 			'type'=>'comment',
 		)); ?>
 	</ul>
+<hr>
 <?php endif; ?>
 </div>
 <div id="comment-form">
@@ -26,3 +27,4 @@
   comment_form($comments_args);
 ?>
 </div>
+<hr>
