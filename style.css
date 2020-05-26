@@ -104,3 +104,10 @@ nav.pagination {
 ul.page-numbers {
     margin:auto;
 }
+
+/* タグクラウド */
+.tagcloud a {
+    font-size: 0.875em !important;
+    display: block;
+    margin-left: 1em;
+}
