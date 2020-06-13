@@ -1,6 +1,6 @@
 # Update History
 
-## ver3.1.2(Earth2)_SNAPSHOT
+## ver3.1.2(Earth2)
 
 - Update: documentation
 - Update: refactoring
