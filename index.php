@@ -2,34 +2,34 @@
     <section id="content">
         <div id="content-wrap" class="container-fluid">
             <div class="row">
-            <div class="col-xl-6 offset-xl-3 col-sm-12">
-                <div class="section-title">
-                    <h3 class="post-section">Posts.</h3>
-                </div>
-                <div class="row">
-                    <?php if(have_posts()): while(have_posts()): the_post(); ?>
-                        <div class="col-md-4">
-                            <div class="post-each">
-                                <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />                                
-                                </a>
-                                <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
-                                <a href="<?php the_permalink(); ?>"><span class="post-title"><?php the_title(); ?></span></a><br>
-                                <span class="post-excerpt"><?php the_excerpt(); ?></span>
+                <div class="col-xl-6 offset-xl-3 col-sm-12">
+                    <div class="section-title">
+                        <h3 class="post-section">Posts.</h3>
+                    </div>
+                    <div class="row">
+                        <?php if(have_posts()): while(have_posts()): the_post(); ?>
+                            <div class="col-md-4">
+                                <div class="post-each">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />                                
+                                    </a>
+                                    <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
+                                    <a href="<?php the_permalink(); ?>"><span class="post-title"><?php the_title(); ?></span></a><br>
+                                    <span class="post-excerpt"><?php the_excerpt(); ?></span>
+                                </div>
+                            </div>                                                
+                        <?php endwhile; endif; ?>
+                        <div class="col-sm-12 row">
+                            <div class="col-sm-4 offset-sm-4">
+                            <?php if( function_exists("the_pagination") ) the_pagination(); ?>
                             </div>
-                        </div>                                                
-                    <?php endwhile; endif; ?>
-                    <div class="col-sm-12 row">
-                        <div class="col-sm-4 offset-sm-4">
-                        <?php if( function_exists("the_pagination") ) the_pagination(); ?>
                         </div>
                     </div>
+                    <!--メイン領域下のウィジェットスペース-->
+                    <div class="col-xl-12">
+                        <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
+                    </div>
                 </div>
-                <!--メイン領域下のウィジェットスペース-->
-                <div class="col-xl-12">
-                    <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
-                </div>
-            </div>
             </div>
         </div>
     </section>
