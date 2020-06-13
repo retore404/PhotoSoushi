@@ -3,6 +3,7 @@
 ## ver3.1.2(Earth2)_SNAPSHOT
 
 - Update: documentation
+- Update: refactoring
 
 ## ver3.1.1(Earth1)
 
