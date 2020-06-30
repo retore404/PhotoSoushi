@@ -26,10 +26,32 @@ img {
     color: gray;
 }
 
-a:hover {
-    opacity: 0.5;
+/* aタグ関連 */
+a {
     text-decoration: none;
 }
+
+a:hover {
+    opacity: 0.5;
+}
+
+a > article {
+    color: #191919;
+}
+
+a > article:hover {
+    opacity: 0.5;
+    text-decoration: none;
+    color: #191919;
+}
+
+/* hr */
+hr {
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    height: 1px;
+}
+
 
 #title-div {
     padding-top: 0.7em;
@@ -60,7 +82,7 @@ a:hover {
 }
 
 .post-each {
-    margin-bottom: 2em;
+    padding-bottom: 2em;
 }
 
 .section-title {

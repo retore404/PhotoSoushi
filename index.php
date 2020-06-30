@@ -8,15 +8,16 @@
                     </div>
                     <div class="row">
                         <?php if(have_posts()): while(have_posts()): the_post(); ?>
-                            <div class="col-md-4">
-                                <div class="post-each">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />                                
-                                    </a>
-                                    <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
-                                    <a href="<?php the_permalink(); ?>"><span class="post-title"><?php the_title(); ?></span></a><br>
-                                    <span class="post-excerpt"><?php the_excerpt(); ?></span>
-                                </div>
+                            <div class="col-sm-4">
+                                <a href="<?php the_permalink(); ?>">
+                                    <article class="post-each">
+                                            <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />
+                                        <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
+                                        <span class="post-title"><?php the_title(); ?></span><br>
+                                        <span class="post-excerpt"><?php the_excerpt(); ?></span>
+                                    </article>
+                                </a>
+                                <hr class="d-block d-sm-none">
                             </div>                                                
                         <?php endwhile; endif; ?>
                         <div class="col-sm-12 row">

@@ -1,5 +1,14 @@
 # Update History
 
+## ver3.2.0(Earth3)
+
+- Update: index page
+    - add border line between each article on smartphone
+    - expand each article links in index page
+- Update: Upgrade Bootstrap Version(4 -> 5)
+    - incompatible width Internet Explorer
+    - jQuery-free
+
 ## ver3.1.2(Earth2)
 
 - Update: documentation
