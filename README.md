@@ -1,5 +1,9 @@
 # Update History
 
+## ver3.2.1(Earth3.1)
+
+- Fix: each post link
+
 ## ver3.2.0(Earth3)
 
 - Update: index page
