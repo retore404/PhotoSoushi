@@ -1,5 +1,11 @@
 # Update History
 
+## ver3.2.0(Earth3)_SNAPSHOT
+
+- Update: index page
+    - add border line between each article on smartphone
+    - expand each article links in index page
+
 ## ver3.1.2(Earth2)
 
 - Update: documentation
