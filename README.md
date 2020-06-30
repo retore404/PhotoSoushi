@@ -1,6 +1,6 @@
 # Update History
 
-## ver3.2.0(Earth3)_SNAPSHOT
+## ver3.2.0(Earth3)
 
 - Update: index page
     - add border line between each article on smartphone
