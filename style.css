@@ -27,9 +27,12 @@ img {
 }
 
 /* aタグ関連 */
+a {
+    text-decoration: none;
+}
+
 a:hover {
     opacity: 0.5;
-    text-decoration: none;
 }
 
 a > article {
