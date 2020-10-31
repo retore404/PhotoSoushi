@@ -3,7 +3,7 @@ Theme Name : SuperSimple-Bleed
 */
 
 body {
-    font-family: Noto Sans JP,-apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,Arial,メイリオ,Meiryo,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,メイリオ,Meiryo,sans-serif;
     color: #191919;
 }
 
@@ -144,7 +144,7 @@ ul.page-numbers {
     display: grid;
     grid-template-columns:
       1fr
-      min(35ch, 100%)
+      min(35em, 100%)
       1fr;
 }
 .wrapper > * {
