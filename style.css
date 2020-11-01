@@ -1,9 +1,9 @@
 /*
-Theme Name : SuperSimple
+Theme Name : SuperSimple-Bleed
 */
 
 body {
-    font-family: Noto Sans JP,-apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,Arial,メイリオ,Meiryo,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,メイリオ,Meiryo,sans-serif;
     color: #191919;
 }
 
@@ -56,7 +56,6 @@ hr {
 #title-div {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
-    border-top: solid 1px black;
     border-bottom: solid 1px black;
     margin-top: 1em;
     margin-bottom: 3em;
@@ -93,6 +92,11 @@ hr {
 .single-date {
     font-size: 70%;
     margin-bottom: 1em;
+    text-align:center;
+}
+
+.single-title{
+    text-align:center;
 }
 
 .single-category-tags {
@@ -103,7 +107,7 @@ hr {
     line-height: 1em;
 }
 
-.single-post-body {
+.single-post-spacer {
     margin-top: 1em;
 }
 
@@ -133,4 +137,20 @@ ul.page-numbers {
     font-size: 0.875em !important;
     display: block;
     margin-left: 1em;
+}
+
+/* Grid（フルブリード） */
+.wrapper {
+    display: grid;
+    grid-template-columns:
+      1fr
+      min(35em, 100%)
+      1fr;
+}
+.wrapper > * {
+    grid-column: 2 / 3;
+}
+.wrapper > .img-container {
+    width: 100%;
+    grid-column: 1 / 4;;
 }
