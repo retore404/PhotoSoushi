@@ -7,10 +7,10 @@
                         <h3>
                             <!--開いている一覧ページがカテゴリ別ページのとき-->
                             <?php if(is_category() ): ?>
-                                Category: <?php the_category(' '); ?>
+                                Category: <?php single_cat_title(); ?>
                             <!--開いている一覧ページがタグ別ページのとき-->
                             <?php elseif(is_tag() ): ?>
-                                Tag: <?php the_tags(' '); ?>
+                                Tag: <?php single_cat_title(); ?>
                             <!--開いている一覧ページがカテゴリ・タグ別ページでない=普通の記事一覧のとき-->
                             <?php else: ?>
                                 Posts.
