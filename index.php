@@ -4,7 +4,15 @@
             <div class="row">
                 <div class="col-xl-6 offset-xl-3 col-sm-12">
                     <div class="section-title">
+                        <!--開いている一覧ページがカテゴリ別ページのとき-->
+                        <?php if(is_category() ): ?>
+                            <h3 class="post-section">Category: <?php the_category(' '); ?></h3>
+                        <!--開いている一覧ページがカテゴリ別ページのとき-->
+                        <?php elseif(is_tag() ): ?>
+                            <h3 class="post-section">Tag: <?php the_tags(' '); ?></h3>
+                        <?php else: ?>
                         <h3 class="post-section">Posts.</h3>
+                        <?php endif; ?>
                     </div>
                     <div class="row">
                         <?php if(have_posts()): while(have_posts()): the_post(); ?>
