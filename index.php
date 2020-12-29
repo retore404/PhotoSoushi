@@ -4,7 +4,18 @@
             <div class="row">
                 <div class="col-xl-6 offset-xl-3 col-sm-12">
                     <div class="section-title">
-                        <h3 class="post-section">Posts.</h3>
+                        <h3>
+                            <!--開いている一覧ページがカテゴリ別ページのとき-->
+                            <?php if(is_category() ): ?>
+                                Category: <?php the_category(' '); ?>
+                            <!--開いている一覧ページがタグ別ページのとき-->
+                            <?php elseif(is_tag() ): ?>
+                                Tag: <?php the_tags(' '); ?>
+                            <!--開いている一覧ページがカテゴリ・タグ別ページでない=普通の記事一覧のとき-->
+                            <?php else: ?>
+                                Posts.
+                            <?php endif; ?>
+                        </h3>
                     </div>
                     <div class="row">
                         <?php if(have_posts()): while(have_posts()): the_post(); ?>
