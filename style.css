@@ -103,6 +103,9 @@ hr {
 }
 
 .post-each-thumbnail {
+    display:flex;
+    align-items: center;
+    background-color: black;
     position: absolute;
     top: 0;
     left: 0;
