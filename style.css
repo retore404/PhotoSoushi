@@ -91,6 +91,28 @@ hr {
     padding-bottom: 0.7em;
 }
 
+.post-each-thumbnail-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.post-each-thumbnail-wrapper:before{
+    content:"";
+    display: block;
+    padding-top: 67%; /* 高さを幅の67%に固定 */
+}
+
+.post-each-thumbnail {
+    display:flex;
+    align-items: center;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
 .single-date {
     font-size: 70%;
     margin-bottom: 1em;

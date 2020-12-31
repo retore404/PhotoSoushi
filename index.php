@@ -22,7 +22,11 @@
                             <div class="col-sm-4">
                                 <a href="<?php the_permalink(); ?>">
                                     <article class="post-each">
-                                            <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />
+                                        <div class="post-each-thumbnail-wrapper">
+                                            <div class="post-each-thumbnail">
+                                                <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />
+                                            </div>
+                                        </div>
                                         <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
                                         <span class="post-title"><?php the_title(); ?></span><br>
                                         <span class="post-excerpt"><?php the_excerpt(); ?></span>
