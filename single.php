@@ -32,6 +32,11 @@
                                 comments_template();
                             ?>
                             </div>
+                            <div class="post-links">
+                            <?php next_post_link('<< %link'); ?>
+                            |
+                            <?php previous_post_link('%link >>'); ?>
+                            </div>
                         </main>
                     <?php endif; ?>         
                 </div>
