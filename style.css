@@ -178,3 +178,8 @@ ul.page-numbers {
     width: 100%;
     grid-column: 1 / 4;;
 }
+
+/* 前後記事への遷移 */
+.post-links{
+    text-align: center;
+}
