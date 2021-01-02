@@ -183,3 +183,10 @@ ul.page-numbers {
 .post-links{
     text-align: center;
 }
+
+/* フッタ部ウィジェット */
+.widget-wrapper{
+    border-top: solid 1px black;
+    padding-top: 1.5em;
+    margin-top: 1.5em;
+}

@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <!--メイン領域下のウィジェットスペース-->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 widget-wrapper">
                         <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
                     </div>
                 </div>
