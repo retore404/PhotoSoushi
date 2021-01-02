@@ -1,6 +1,6 @@
         <footer>
             <div id="content-wrap" class="container-fluid">
-                <div class="col-xl-6 offset-xl-3 row">
+                <div class="col-xl-6 offset-xl-3 row widget-wrapper">
                     <!--フッターのウィジェットスペース-->
                     <!--フッターのウィジェットスペース(左)-->
                     <div class="col-sm-6 col-xs-12">
