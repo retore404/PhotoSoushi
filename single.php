@@ -17,7 +17,19 @@
                                     <div class="single-category-tags-wrapper"><span class="single-category-tags">Category: <?php if (the_category(', '))  the_category(); ?></span></div>
                                 <?php endif; ?>
                                 <?php if(has_tag() ): ?>
-                                    <div class="single-category-tags-wrapper"><span class="single-category-tags">Tag(s): <?php if (the_tags('', ', '))  the_tags(); ?></span></div>
+                                    <div class="single-category-tags-wrapper"><span class="single-category-tags">
+                                        <?php 
+                                            $tags_array = get_the_tags(); //表示中の記事のタグの配列を取得
+                                            if($tags_array) { // タグが存在するとき
+                                                $tag_str = "Tag(s): "; // 表示用の文字列
+                                                foreach ($tags_array as $tag) {
+                                                    $tag_str = $tag_str . '<a href="'. get_tag_link($tag->term_id) . '">' . str_replace('Location:', '<i class="fas fa-map-marker-alt"></i> ', str_replace('Lens:', '<i class="fas fa-camera"></i> ', $tag->name)) . '</a>, '; //付与されているタグをリンク付きで表示．「Lens:」と「Location:」はアイコンで置き換え．
+                                                }
+                                                $tag_str = rtrim($tag_str, ', '); //末尾の不要な「, 」を削除
+                                                echo $tag_str; //出力
+                                            }
+                                        ?>
+                                    </span></div>
                                 <?php endif; ?>
                             </div>
                             <hr>
