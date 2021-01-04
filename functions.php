@@ -11,7 +11,7 @@ function catch_first_image() {
 
   if(empty($first_img)){ //Defines a default image
       $dir = get_template_directory_uri();
-      $first_img = "$dir/images/thumbnail.png";
+      $first_img = "$dir/images/thumbnail.svg";
   }
 return $first_img;
 }
