@@ -41,13 +41,11 @@
                             </div>
                         </div>
                     </div>
-                    <!--メイン領域下のウィジェットスペース-->
-                    <div class="row">
-                        <div class="col-xl-12 widget-wrapper">
-                            <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
-                        </div>
-                    </div>
                 </div>
+            </div>
+            <!--メイン領域下のウィジェットスペース-->
+            <div class="col-xl-6 offset-xl-3 widget-wrapper row">
+                <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
             </div>
         </div>
     </section>
