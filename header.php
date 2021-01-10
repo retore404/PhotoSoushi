@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <header>
         <div id="title_wrapper" class="container-fluid">
-            <div id="title-div" class="col-xl-6 offset-xl-3 row">
-                <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
+            <div class="row">
+                <div id="title-div" class="col-xl-6 offset-xl-3">
+                    <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
+                </div>
             </div>        
         </div>
     </header>
