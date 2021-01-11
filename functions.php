@@ -125,3 +125,9 @@ function image_wrap($html, $id, $caption, $title, $align, $url, $size, $alt){
 	return $html;
 }
 add_filter('image_send_to_editor','image_wrap',10,8);
+
+// タグ名の置き換え（アイコン化）
+function replace_tag_name($tag_name) {
+  //タグ名の"Lens:"と"Location:"をアイコンに置き換える
+  return str_replace('Location:', '<i class="fas fa-map-marker-alt"></i> ', str_replace('Lens:', '<i class="fas fa-camera"></i> ', $tag_name));
+}

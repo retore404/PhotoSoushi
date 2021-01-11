@@ -10,7 +10,7 @@
                                 Category: <?php single_cat_title(); ?>
                             <!--開いている一覧ページがタグ別ページのとき-->
                             <?php elseif(is_tag() ): ?>
-                                Tag: <?php single_cat_title(); ?>
+                                Tag: <?php echo replace_tag_name(single_cat_title('', false)); ?>
                             <!--開いている一覧ページがカテゴリ・タグ別ページでない=普通の記事一覧のとき-->
                             <?php else: ?>
                                 Posts.
