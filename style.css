@@ -179,6 +179,15 @@ ul.page-numbers {
     grid-column: 2 / 3;
 }
 
+/* Grid(footer-widget) */
+@media(min-width:1200px){
+    .grid-container-footer{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));            
+    }
+}
+
 /* Grid（フルブリード） */
 @media(min-width:1200px){
     .wrapper {
