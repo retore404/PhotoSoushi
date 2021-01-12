@@ -164,14 +164,32 @@ ul.page-numbers {
     margin-left: 1em;
 }
 
-/* Grid（フルブリード） */
-.wrapper {
-    display: grid;
-    grid-template-columns:
-      1fr
-      min(35em, 100%)
-      1fr;
+/* Grid(root) */
+@media(min-width:1200px){
+    .grid-container-root{
+        display: grid;
+        grid-template-columns: 
+            1fr
+            min(57em, 100%)
+            1fr;
+    }
 }
+
+.grid-container-root > * {
+    grid-column: 2 / 3;
+}
+
+/* Grid（フルブリード） */
+@media(min-width:1200px){
+    .wrapper {
+        display: grid;
+        grid-template-columns:
+          1fr
+          min(35em, 100%)
+          1fr;
+    }
+}
+
 .wrapper > * {
     grid-column: 2 / 3;
 }
