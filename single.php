@@ -19,7 +19,7 @@
                 <?php if(have_posts()): the_post(); ?>
                     <main class="wrapper">
                         <div class="single-date"><?php echo get_the_date(); ?></div>
-                        <div class="single-title"><h3><?php the_title(); ?></h3></div>
+                        <h3 class="single-title"><?php the_title(); ?></h3>
                         <div class="single-post-spacer">
                         </div>
                             <!--自動補正ありの本文-->
