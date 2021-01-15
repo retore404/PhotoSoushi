@@ -226,5 +226,13 @@ ul.page-numbers {
 /* 記事情報（カテゴリ・タグ部 */
 .article-info {
     border-top: solid 1px #808080;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* Share */
+.share{
+    border-top: solid 1px #808080;
     padding-top: 0.25em;
+    padding-bottom: 0.25em;
 }

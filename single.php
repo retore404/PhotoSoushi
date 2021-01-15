@@ -45,7 +45,6 @@
                                 </span></div>
                             <?php endif; ?>
                         </div>
-                        <hr>
                         <div class="share">
                             <span>Share.</span><br>
                             <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title() . " | " . get_bloginfo('name') . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
