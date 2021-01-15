@@ -233,6 +233,7 @@ ul.page-numbers {
 /* Share */
 .share{
     border-top: solid 1px #808080;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    border-bottom: solid 1px #808080;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
