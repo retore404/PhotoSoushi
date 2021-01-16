@@ -183,6 +183,17 @@ ul.page-numbers {
     grid-column: 2 / 3;
 }
 
+/* Grid(index) */
+@media(min-width:1200px){
+    .grid-container-index{
+        display:grid;
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    }
+}
+
 /* Grid(footer-widget) */
 @media(min-width:1200px){
     .grid-container-footer{
