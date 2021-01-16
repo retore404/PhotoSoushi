@@ -11,6 +11,13 @@ p {
     font-size: .875em;
 }
 
+h3 {
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 0em;
+    margin-top: 0em;
+}
+
 /* 個別記事内のpタグの調整 */
 .wrapper > p {
     text-align: justify;
@@ -35,6 +42,11 @@ img {
 /* aタグ関連 */
 a {
     text-decoration: none;
+    color: #0d6efd;
+}
+
+a:visited{
+    color: #0d6efd;
 }
 
 a:hover {
@@ -59,19 +71,32 @@ hr {
 }
 
 
-#title-div {
+#header-div {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     padding-left: 0em !important;
     border-bottom: solid 1px black;
     margin-top: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     color: #191919;
 }
 
-#title-div a {
+#header-title {
+    font-weight: 500;
+    font-size: 2.5em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+
+#header-title a {
     color: #191919;
 }
+
+.section-title h3 {
+    margin-bottom: 0em;
+}
+
 
 .post-date {
     font-size: 80%;
@@ -116,7 +141,6 @@ hr {
 
 .single-date {
     font-size: 70%;
-    margin-bottom: 1em;
     text-align:center;
 }
 
@@ -136,9 +160,6 @@ hr {
     line-height: 1em;
 }
 
-.single-post-spacer {
-    margin-top: 1em;
-}
 
 /* ページネーションの体裁用 */
 nav ul li{ 	
@@ -154,6 +175,7 @@ nav ul li{
 
 /* ページネーション中央揃え：開始 */
 ul.page-numbers{
+    margin-top: 1em;
     text-align: center;
 }
 
@@ -170,7 +192,7 @@ ul.page-numbers li{
 }
 
 /* Grid(root) */
-@media(min-width:1200px){
+@media(min-width:576px){
     .grid-container-root{
         display: grid;
         grid-template-columns: 
@@ -185,13 +207,13 @@ ul.page-numbers li{
 }
 
 /* Grid(index) */
-@media(min-width:1200px){
+@media(min-width:576px){
     .grid-container-index{
         display:grid;
         grid-row-gap: 10px;
         grid-column-gap: 10px;
         width: 100%;
-        grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
     }
 }
 
@@ -205,14 +227,13 @@ ul.page-numbers li{
 }
 
 /* Grid（フルブリード） */
-@media(min-width:1200px){
-    .wrapper {
-        display: grid;
-        grid-template-columns:
-          1fr
-          min(35em, 100%)
-          1fr;
-    }
+.wrapper {
+    display: grid;
+    margin-top: 1.5em;
+    grid-template-columns:
+        1fr
+        min(35em, 100%)
+        1fr;
 }
 
 .wrapper > * {
@@ -255,3 +276,7 @@ ul.page-numbers li{
     border-bottom: solid 1px #808080;
 }
 
+/* ウィジェット内リスト */
+ul {
+    margin-top: 0em;
+}

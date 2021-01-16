@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
         <div class="grid-container-root">
             <header>
-                <div id="title-div">
-                    <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
+                <div id="header-div">
+                    <h1 id="header-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
                 </div>
             </header>
