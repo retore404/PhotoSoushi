@@ -11,6 +11,13 @@ p {
     font-size: .875em;
 }
 
+h3 {
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 0em;
+    margin-top: 0em;
+}
+
 /* 個別記事内のpタグの調整 */
 .wrapper > p {
     text-align: justify;
@@ -35,6 +42,11 @@ img {
 /* aタグ関連 */
 a {
     text-decoration: none;
+    color: #0d6efd;
+}
+
+a:visited{
+    color: #0d6efd;
 }
 
 a:hover {
@@ -59,19 +71,32 @@ hr {
 }
 
 
-#title-div {
+#header-div {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     padding-left: 0em !important;
     border-bottom: solid 1px black;
     margin-top: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     color: #191919;
 }
 
-#title-div a {
+#header-title {
+    font-weight: 500;
+    font-size: 2.5em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+
+#header-title a {
     color: #191919;
 }
+
+.section-title h3 {
+    margin-bottom: 0em;
+}
+
 
 .post-date {
     font-size: 80%;
@@ -116,12 +141,15 @@ hr {
 
 .single-date {
     font-size: 70%;
-    margin-bottom: 1em;
     text-align:center;
 }
 
 .single-title{
     text-align:center;
+    font-size: 1.75em;
+    font-weight: 500;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 .single-category-tags {
@@ -132,9 +160,6 @@ hr {
     line-height: 1em;
 }
 
-.single-post-spacer {
-    margin-top: 1em;
-}
 
 /* ページネーションの体裁用 */
 nav ul li{ 	
@@ -148,14 +173,16 @@ nav ul li{
     font-weight: bold;
 }
 
-/* ページネーション中央揃え */
-nav.pagination {
-    margin:auto;
+/* ページネーション中央揃え：開始 */
+ul.page-numbers{
+    margin-top: 1em;
+    text-align: center;
 }
 
-ul.page-numbers {
-    margin:auto;
+ul.page-numbers li{
+    display: inline;
 }
+/* ページネーション中央揃え：終了 */
 
 /* タグクラウド */
 .tagcloud a {
@@ -164,14 +191,51 @@ ul.page-numbers {
     margin-left: 1em;
 }
 
+/* Grid(root) */
+@media(min-width:576px){
+    .grid-container-root{
+        display: grid;
+        grid-template-columns: 
+            1fr
+            min(57em, 100%)
+            1fr;
+    }
+}
+
+.grid-container-root > * {
+    grid-column: 2 / 3;
+}
+
+/* Grid(index) */
+@media(min-width:576px){
+    .grid-container-index{
+        display:grid;
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    }
+}
+
+/* Grid(footer-widget) */
+@media(min-width:1200px){
+    .grid-container-footer{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));            
+    }
+}
+
 /* Grid（フルブリード） */
 .wrapper {
     display: grid;
+    margin-top: 1.5em;
     grid-template-columns:
-      1fr
-      min(35em, 100%)
-      1fr;
+        1fr
+        min(35em, 100%)
+        1fr;
 }
+
 .wrapper > * {
     grid-column: 2 / 3;
 }
@@ -190,4 +254,29 @@ ul.page-numbers {
     border-top: solid 1px black;
     padding-top: 1.5em;
     margin-top: 1.5em;
+}
+
+/* 記事情報（カテゴリ・タグ部 */
+.article-info {
+    border-top: solid 1px #808080;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* Share */
+.share{
+    border-top: solid 1px #808080;
+    border-bottom: solid 1px #808080;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* 一覧ページの各記事表示部分 */
+.post-container{
+    border-bottom: solid 1px #808080;
+}
+
+/* ウィジェット内リスト */
+ul {
+    margin-top: 0em;
 }
