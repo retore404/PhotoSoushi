@@ -38,7 +38,7 @@
                 <?php if( function_exists("the_pagination") ) the_pagination(); ?>
             </section>
             <!--メイン領域下のウィジェットスペース-->
-            <div class="col-xl-6 offset-xl-3 widget-wrapper row">
+            <div class="widget-wrapper">
                 <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
             </div>
 <?php get_footer(); ?>
