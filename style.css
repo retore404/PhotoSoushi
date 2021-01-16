@@ -11,6 +11,11 @@ p {
     font-size: .875em;
 }
 
+h3 {
+    font-size: 1.75em;
+    font-weight: 500;
+}
+
 /* 個別記事内のpタグの調整 */
 .wrapper > p {
     text-align: justify;
