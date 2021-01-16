@@ -13,6 +13,8 @@ p {
 
 h3 {
     font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 0em;
 }
 
 /* 個別記事内のpタグの調整 */
@@ -170,6 +172,7 @@ nav ul li{
 
 /* ページネーション中央揃え：開始 */
 ul.page-numbers{
+    margin-top: 1em;
     text-align: center;
 }
 
@@ -271,3 +274,7 @@ ul.page-numbers li{
     border-bottom: solid 1px #808080;
 }
 
+/* ウィジェット内リスト */
+ul {
+    margin-top: 0em;
+}
