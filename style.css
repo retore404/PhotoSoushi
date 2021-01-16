@@ -152,14 +152,15 @@ nav ul li{
     font-weight: bold;
 }
 
-/* ページネーション中央揃え */
-nav.pagination {
-    margin:auto;
+/* ページネーション中央揃え：開始 */
+ul.page-numbers{
+    text-align: center;
 }
 
-ul.page-numbers {
-    margin:auto;
+ul.page-numbers li{
+    display: inline;
 }
+/* ページネーション中央揃え：終了 */
 
 /* タグクラウド */
 .tagcloud a {
@@ -253,3 +254,4 @@ ul.page-numbers {
 .post-container{
     border-bottom: solid 1px #808080;
 }
+

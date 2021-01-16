@@ -35,9 +35,7 @@
             </section>
             <!--ページネーション-->
             <section id="pagination">
-                <div class="col-sm-4 offset-sm-4">
-                    <?php if( function_exists("the_pagination") ) the_pagination(); ?>
-                </div>
+                <?php if( function_exists("the_pagination") ) the_pagination(); ?>
             </section>
             <!--メイン領域下のウィジェットスペース-->
             <div class="col-xl-6 offset-xl-3 widget-wrapper row">
