@@ -84,6 +84,10 @@ hr {
     color: #191919;
 }
 
+.section-title h3 {
+    margin-bottom: 0em;
+}
+
 
 .post-date {
     font-size: 80%;
