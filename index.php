@@ -17,7 +17,7 @@
             </section>
             <section id="content" class="grid-container-index">
                     <?php if(have_posts()): while(have_posts()): the_post(); ?>
-                        <div class="col-sm-4">
+                        <section class="post-container">
                             <a href="<?php the_permalink(); ?>">
                                 <article class="post-each">
                                     <div class="post-each-thumbnail-wrapper">
@@ -30,8 +30,7 @@
                                     <span class="post-excerpt"><?php the_excerpt(); ?></span>
                                 </article>
                             </a>
-                            <hr class="d-block d-sm-none">
-                        </div>                                                
+                        </section>                                             
                     <?php endwhile; endif; ?>
             </section>
             <!--ページネーション-->

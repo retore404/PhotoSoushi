@@ -248,3 +248,8 @@ ul.page-numbers {
     padding-top: 1em;
     padding-bottom: 1em;
 }
+
+/* 一覧ページの各記事表示部分 */
+.post-container{
+    border-bottom: solid 1px #808080;
+}
