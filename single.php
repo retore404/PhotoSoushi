@@ -4,8 +4,6 @@
                     <main class="wrapper">
                         <div class="single-date"><?php echo get_the_date(); ?></div>
                         <h3 class="single-title"><?php the_title(); ?></h3>
-                        <div class="single-post-spacer">
-                        </div>
                             <!--自動補正ありの本文-->
                             <?php the_content(); ?>
                         <hr>
