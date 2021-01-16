@@ -232,6 +232,10 @@ ul.page-numbers li{
     }
 }
 
+.wrapper{
+    margin-top: 1.5em;
+}
+
 .wrapper > * {
     grid-column: 2 / 3;
 }
