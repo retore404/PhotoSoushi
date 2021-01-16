@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php wp_head(); ?>
-    </head>
-    <body>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
-        <div class="grid-container-root">
-            <header>
-                <div id="title-div">
-                    <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
-                </div>
-            </header>
-<!-- ヘッダ終了 -->
+<?php get_header(); ?>
             <section id="content-header">
                 <div class="section-title">
                     <h3>
@@ -60,20 +44,4 @@
             <div class="col-xl-6 offset-xl-3 widget-wrapper row">
                 <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
             </div>
-            <!--フッタ開始部-->
-            <footer>
-                <div class="grid-container-footer widget-wrapper">
-                    <!--フッターのウィジェットスペース-->
-                    <!--フッターのウィジェットスペース(左)-->
-                    <div>
-                        <?php if ( dynamic_sidebar('footer_widget1') ) : else : endif; ?>
-                    </div>
-                    <!--フッターのウィジェットスペース(右)-->
-                    <div>
-                        <?php if ( dynamic_sidebar('footer_widget2') ) : else : endif; ?>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </body>
-</html>
+<?php get_footer(); ?>
