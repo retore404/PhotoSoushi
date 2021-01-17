@@ -258,6 +258,10 @@ ul.page-numbers li{
     margin-top: 1.5em;
 }
 
+.widget {
+    margin-bottom: 1.5em;
+}
+
 /* 記事情報（カテゴリ・タグ部 */
 .article-info {
     border-top: solid 1px #808080;
