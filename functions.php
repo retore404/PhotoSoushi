@@ -52,7 +52,7 @@ add_filter( 'document_title_parts', 'custom_title_text', 11 );
 register_sidebar( array(
     'name' => __( 'MainWidget1' ),
     'id' => 'main_widget1',
-    'before_widget' => '<div><h3>Features.</h3>',
+    'before_widget' => '<div>',
     'after_widget' => '</div>',
     'before_title' => '<h3>',
     'after_title' => '</h3>',
@@ -61,7 +61,7 @@ register_sidebar( array(
 register_sidebar( array(
     'name' => __( 'Footer Widget1' ),
     'id' => 'footer_widget1',
-    'before_widget' => '<div>',
+    'before_widget' => '<div class="widget">',
     'after_widget' => '</div>',
     'before_title' => '<h3>',
     'after_title' => '</h3>',
@@ -70,7 +70,7 @@ register_sidebar( array(
 register_sidebar( array(
     'name' => __( 'Footer Widget2' ),
     'id' => 'footer_widget2',
-    'before_widget' => '<div>',
+    'before_widget' => '<div class="widget">',
     'after_widget' => '</div>',
     'before_title' => '<h3>',
     'after_title' => '</h3>',

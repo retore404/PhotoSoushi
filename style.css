@@ -12,8 +12,8 @@ p {
 }
 
 h3 {
-    font-weight: 500;
-    font-size: 1.5em;
+    font-weight: 400;
+    font-size: calc(1.1rem + .6vw);
     margin-bottom: 0em;
     margin-top: 0em;
 }
@@ -67,7 +67,9 @@ a > article:hover {
 hr {
     border-width: 1px 0px 0px 0px;
     border-style: solid;
+    width: 100%;
     height: 1px;
+    color: #808080;
 }
 
 
@@ -83,7 +85,7 @@ hr {
 
 #header-title {
     font-weight: 500;
-    font-size: 2.5em;
+    font-size: calc(1.3rem + 1.3vw);
     margin-top: 0em;
     margin-bottom: 0em;
 }
@@ -192,14 +194,12 @@ ul.page-numbers li{
 }
 
 /* Grid(root) */
-@media(min-width:576px){
-    .grid-container-root{
-        display: grid;
-        grid-template-columns: 
-            1fr
-            min(57em, 100%)
-            1fr;
-    }
+.grid-container-root{
+    display: grid;
+    grid-template-columns: 
+        1fr
+        min(57em, 98%)
+        1fr;
 }
 
 .grid-container-root > * {
@@ -218,11 +218,11 @@ ul.page-numbers li{
 }
 
 /* Grid(footer-widget) */
-@media(min-width:1200px){
+@media(min-width:576px){
     .grid-container-footer{
         display: grid;
         width: 100%;
-        grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));            
+        grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));            
     }
 }
 
@@ -254,6 +254,10 @@ ul.page-numbers li{
     border-top: solid 1px black;
     padding-top: 1.5em;
     margin-top: 1.5em;
+}
+
+.widget {
+    margin-bottom: 1.5em;
 }
 
 /* 記事情報（カテゴリ・タグ部 */
