@@ -218,11 +218,11 @@ ul.page-numbers li{
 }
 
 /* Grid(footer-widget) */
-@media(min-width:1200px){
+@media(min-width:576px){
     .grid-container-footer{
         display: grid;
         width: 100%;
-        grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));            
+        grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));            
     }
 }
 
