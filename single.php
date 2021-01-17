@@ -6,7 +6,6 @@
                         <h3 class="single-title"><?php the_title(); ?></h3>
                             <!--自動補正ありの本文-->
                             <?php the_content(); ?>
-                        <hr>
                         <div class="article-info">
                             <?php if(has_category() ): ?>
                                 <div class="single-category-tags-wrapper"><span class="single-category-tags">Category: <?php if (the_category(', '))  the_category(); ?></span></div>
@@ -32,7 +31,6 @@
                             <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title() . " | " . get_bloginfo('name') . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><i class="fa fa-hatena"></i></a>
                         </div>
-                        <hr>
                         <div id="comments">
                         <?php
                             comments_template();
