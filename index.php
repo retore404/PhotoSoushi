@@ -30,7 +30,7 @@
                                     <span class="post-excerpt"><?php the_excerpt(); ?></span>
                                 </article>
                             </a>
-                        </section>                                             
+                        </section>
                     <?php endwhile; endif; ?>
             </section>
             <!--ページネーション-->
