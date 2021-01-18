@@ -73,7 +73,7 @@ hr {
 }
 
 
-#header-div {
+header {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     padding-left: 0em !important;
@@ -95,7 +95,7 @@ hr {
     color: #191919;
 }
 
-.section-title h3 {
+#content-header h3 {
     margin-bottom: 0em;
 }
 
