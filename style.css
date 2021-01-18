@@ -141,12 +141,12 @@ header {
     right: 0;
 }
 
-.single-date {
+#single-date {
     font-size: 70%;
     text-align:center;
 }
 
-.single-title{
+#single-title{
     text-align:center;
     font-weight: 500;
     margin-top: 0.25em;
@@ -260,7 +260,7 @@ ul.page-numbers li{
 }
 
 /* 記事情報（カテゴリ・タグ部 */
-.article-info {
+#article-info {
     border-top: solid 1px #808080;
     padding-top: 1em;
     padding-bottom: 1em;

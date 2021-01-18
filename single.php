@@ -2,11 +2,11 @@
             <section id="content">
                 <?php if(have_posts()): the_post(); ?>
                     <main class="wrapper">
-                        <div class="single-date"><?php echo get_the_date(); ?></div>
-                        <h3 class="single-title"><?php the_title(); ?></h3>
+                        <div id="single-date"><?php echo get_the_date(); ?></div>
+                        <h3 id="single-title"><?php the_title(); ?></h3>
                             <!--自動補正ありの本文-->
                             <?php the_content(); ?>
-                        <div class="article-info">
+                        <div id="article-info">
                             <?php if(has_category() ): ?>
                                 <div class="single-category-tags-wrapper"><span class="single-category-tags">Category: <?php if (the_category(', '))  the_category(); ?></span></div>
                             <?php endif; ?>
