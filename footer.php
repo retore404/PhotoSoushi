@@ -1,5 +1,5 @@
             <footer>
-                <div class="grid-container-footer widget-wrapper">
+                <div id="grid-container-footer" class="widget-wrapper">
                     <!--フッターのウィジェットスペース-->
                     <!--フッターのウィジェットスペース(左)-->
                     <div>

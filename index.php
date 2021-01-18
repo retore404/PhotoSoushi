@@ -13,7 +13,7 @@
                     <?php endif; ?>
                 </h3>
             </section>
-            <section id="content" class="grid-container-index">
+            <section id="grid-container-index">
                 <?php if(have_posts()): while(have_posts()): the_post(); ?>
                     <section class="post-container">
                         <a href="<?php the_permalink(); ?>">
