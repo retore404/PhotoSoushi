@@ -2,11 +2,11 @@
             <section id="content">
                 <?php if(have_posts()): the_post(); ?>
                     <main class="wrapper">
-                        <div class="single-date"><?php echo get_the_date(); ?></div>
-                        <h3 class="single-title"><?php the_title(); ?></h3>
+                        <div id="single-date"><?php echo get_the_date(); ?></div>
+                        <h3 id="single-title"><?php the_title(); ?></h3>
                             <!--自動補正ありの本文-->
                             <?php the_content(); ?>
-                        <div class="article-info">
+                        <div id="article-info">
                             <?php if(has_category() ): ?>
                                 <div class="single-category-tags-wrapper"><span class="single-category-tags">Category: <?php if (the_category(', '))  the_category(); ?></span></div>
                             <?php endif; ?>
@@ -26,20 +26,20 @@
                                 </span></div>
                             <?php endif; ?>
                         </div>
-                        <div class="share">
+                        <div id="share">
                             <span>Share.</span><br>
                             <a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode(get_the_title() . " | " . get_bloginfo('name') . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><i class="fa fa-hatena"></i></a>
                         </div>
                         <div id="comments">
-                        <?php
-                            comments_template();
-                        ?>
+                            <?php
+                                comments_template();
+                            ?>
                         </div>
-                        <div class="post-links">
-                        <?php next_post_link('<< %link'); ?>
-                        |
-                        <?php previous_post_link('%link >>'); ?>
+                        <div id="post-links">
+                            <?php next_post_link('<< %link'); ?>
+                            |
+                            <?php previous_post_link('%link >>'); ?>
                         </div>
                     </main>
                 <?php endif; ?>
