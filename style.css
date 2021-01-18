@@ -73,7 +73,7 @@ hr {
 }
 
 
-#header-div {
+header {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     padding-left: 0em !important;
@@ -95,7 +95,7 @@ hr {
     color: #191919;
 }
 
-.section-title h3 {
+#content-header h3 {
     margin-bottom: 0em;
 }
 
@@ -141,12 +141,12 @@ hr {
     right: 0;
 }
 
-.single-date {
+#single-date {
     font-size: 70%;
     text-align:center;
 }
 
-.single-title{
+#single-title{
     text-align:center;
     font-weight: 500;
     margin-top: 0.25em;
@@ -193,7 +193,7 @@ ul.page-numbers li{
 }
 
 /* Grid(root) */
-.grid-container-root{
+#grid-container-root{
     display: grid;
     grid-template-columns: 
         1fr
@@ -201,13 +201,13 @@ ul.page-numbers li{
         1fr;
 }
 
-.grid-container-root > * {
+#grid-container-root > * {
     grid-column: 2 / 3;
 }
 
 /* Grid(index) */
 @media(min-width:576px){
-    .grid-container-index{
+    #grid-container-index{
         display:grid;
         grid-row-gap: 10px;
         grid-column-gap: 10px;
@@ -218,7 +218,7 @@ ul.page-numbers li{
 
 /* Grid(footer-widget) */
 @media(min-width:576px){
-    .grid-container-footer{
+    #grid-container-footer{
         display: grid;
         width: 100%;
         grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));            
@@ -244,7 +244,7 @@ ul.page-numbers li{
 }
 
 /* 前後記事への遷移 */
-.post-links{
+#post-links{
     text-align: center;
 }
 
@@ -260,14 +260,14 @@ ul.page-numbers li{
 }
 
 /* 記事情報（カテゴリ・タグ部 */
-.article-info {
+#article-info {
     border-top: solid 1px #808080;
     padding-top: 1em;
     padding-bottom: 1em;
 }
 
 /* Share */
-.share{
+#share{
     border-top: solid 1px #808080;
     border-bottom: solid 1px #808080;
     padding-top: 1em;
