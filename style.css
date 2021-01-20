@@ -226,7 +226,7 @@ ul.page-numbers li{
 }
 
 /* Grid（フルブリード） */
-.wrapper {
+.grid-container-article {
     display: grid;
     margin-top: 1.5em;
     grid-template-columns:
@@ -235,10 +235,10 @@ ul.page-numbers li{
         1fr;
 }
 
-.wrapper > * {
+.grid-container-article > * {
     grid-column: 2 / 3;
 }
-.wrapper > .img-container {
+.grid-container-article > .img-container {
     width: 100%;
     grid-column: 1 / 4;;
 }
@@ -260,7 +260,7 @@ ul.page-numbers li{
 }
 
 /* 記事情報（カテゴリ・タグ部 */
-#article-info {
+#single-article-info {
     border-top: solid 1px #808080;
     padding-top: 1em;
     padding-bottom: 1em;
