@@ -36,7 +36,5 @@
                 <?php if( function_exists("the_pagination") ) the_pagination(); ?>
             </section>
             <!--メイン領域下のウィジェットスペース-->
-            <div class="widget-wrapper">
-                <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
-            </div>
+            <?php if ( dynamic_sidebar('main_widget1') ) : else : endif; ?>
 <?php get_footer(); ?>

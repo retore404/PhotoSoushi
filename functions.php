@@ -52,7 +52,7 @@ add_filter( 'document_title_parts', 'custom_title_text', 11 );
 register_sidebar( array(
     'name' => __( 'MainWidget1' ),
     'id' => 'main_widget1',
-    'before_widget' => '<div>',
+    'before_widget' => '<div class="widget-wrapper">',
     'after_widget' => '</div>',
     'before_title' => '<h3>',
     'after_title' => '</h3>',
