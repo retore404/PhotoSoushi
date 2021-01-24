@@ -172,6 +172,7 @@ header {
 /* ページネーションの体裁用 */
 nav ul li{ 	
     display: inline-block;
+    padding: 0.3em;
  }
 
  /* シェアボタン（はてぶ用） */
