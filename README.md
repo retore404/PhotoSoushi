@@ -1,6 +1,6 @@
 # WordPressテーマ "PhotoSoushi"
 
-
+![WordPressテーマ"PhotoSoushi"](https://github.com/retore404/PhotoSoushi/blob/images/index_pc.png)
 
 ## 概要
 
