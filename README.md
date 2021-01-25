@@ -1,4 +1,6 @@
-# Project_Bleed
+# WordPressテーマ "PhotoSoushi"
+
+
 
 ## 概要
 
