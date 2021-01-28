@@ -18,15 +18,15 @@
 
 Gridレイアウトを採用することでレスポンシブ対応を実現．
 
-- PCで表示した例
+### ・PCで表示した例
 
 ![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
 
-- タブレットで表示した例
+### ・タブレットで表示した例
 
 ![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
 
-- スマホで表示した例
+### ・スマホで表示した例
 
 ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
 
