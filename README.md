@@ -6,6 +6,8 @@
 
 写真×雑記のブログでの使用を意図したWordPressテーマ．
 
+最新版の使用例は [こちら(https://photo.retore.jp/)](https://photo.retore.jp/)
+
 ## 対応ブラウザ
 
 - Gridレイアウトに対応するブラウザ
