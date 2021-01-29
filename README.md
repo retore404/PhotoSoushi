@@ -1,1 +1,98 @@
-　
+# WordPressテーマ "PhotoSoushi"
+
+![WordPressテーマ"PhotoSoushi"](https://github.com/retore404/PhotoSoushi/blob/images/single_pc.png)
+
+## 概要
+
+写真×雑記のブログでの使用を意図したWordPressテーマ．
+
+最新版の使用例は [こちら(https://photo.retore.jp/)](https://photo.retore.jp/)
+
+## 対応ブラウザ
+
+- Gridレイアウトに対応するブラウザ
+
+## 特徴
+
+### 1. 写真×文章に最適なレイアウト・機能
+
+#### 1-1. 写真・文章をどちらも見やすく配置するレイアウト
+
+![写真・文章をどちらも見やすく配置するレイアウト](https://github.com/retore404/PhotoSoushi/blob/images/single_pc_bleed.png)
+
+「写真は大きく表示したいが，写真に合わせて記事の表示部分の横幅が長くなると文章が読みにくい」という課題を解決するため，フルブリードレイアウトの考え方を取り入れたレイアウトを採用．
+
+写真はグリッド内の横幅を目一杯使う一方，文章部は1行あたりの文字数が増えすぎないレイアウト．
+
+写真と文章部で横幅を変えることで「写真は大きく」「文章は読みやすい」を両立．
+
+#### 1-2. カメラ関連のタグ名の置き換え機能
+
+記事中の写真の撮影機材（レンズ）・撮影場所をタグとして持つことを想定し，タグ名の"Lens:"および"Location:"をアイコンに置き換える機能を持つ．
+
+- "Lens:"の置き換え
+
+!["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png)
+
+- "Location:"の置き換え
+
+!["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png)
+
+#### 1-3. 3:2/16:9画像に対応する一覧画面
+
+記事一覧画面のアイキャッチ画像表示部は3:2固定としつつ，背景色を黒色として画像を中央に配置する実装．16:9画像やシネスコ画像も違和感なく一覧画面のアイキャッチとして表示することができる．
+
+- 表示例：左の画像は3:2，右の画像は16:9
+
+![アイキャッチ画像の表示](https://github.com/retore404/PhotoSoushi/blob/images/index_eyecatch.png)
+
+### 2. Gridレイアウトを用いたレスポンシブ対応
+
+Gridレイアウトを採用することでレスポンシブ対応を実現．
+
+#### ・PCで表示した例
+
+![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
+
+#### ・タブレットで表示した例
+
+![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
+
+#### ・スマホで表示した例
+
+![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
+
+### 3. カスタマイズのベースとなるシンプルなテーマ
+
+fork元である [wp_theme_super_simple](https://github.com/retore404/wp_theme_super_simple) の設計思想を継承し，極力シンプルなデザイン・読みやすいコードを追求．
+
+## class/idの指定
+
+本テーマにおいて使用するclass，idのうち，記事執筆にあたり直接意識する必要があるものは以下の通り．
+
+- class "img-container"
+  - 本テーマの特徴である画像の横幅だけを広めに取るために指定するクラス．横幅を広くする画像をラップするdivに付与する．
+  - テーマの機能として，メディア追加時にデフォルトで上記のdivタグを付加した状態でメディアを追加する．
+- class "photo-desc"
+  - 画像下に記載する撮影地，撮影情報表示用に用意されたクラス．
+  - img-container同様，メディア追加時にphoto-descクラスを指定したpタグを自動で付加している．
+
+## バージョン管理
+
+ver5.0.0以降のバージョン管理において，x.y.z形式のバージョンの各桁はそれぞれ以下の通り定義する．
+
+- x: フレームワークの変更など，テーマのアーキテクチャに関わるレベルの変更
+- y: 同一の"x"の範囲内における見た目・挙動の変更が加わるレベルの変更
+- z: 同一の"y"の範囲内において，バグフィックスを行う場合の変更
+
+## 使用方法
+
+- [リリースページ](https://github.com/retore404/PhotoSoushi/releases) より最新のリリースをダウンロードし，WordPressの指定のフォルダに解凍する
+
+もしくは
+
+- 本リポジトリのmasterブランチをcloneする
+
+## ライセンス
+
+WordPress本体のライセンスに従いGPLとする．
