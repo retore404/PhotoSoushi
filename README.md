@@ -28,6 +28,16 @@
 
 ### カメラ関連のタグ名の置き換え機能
 
+記事中の写真の撮影機材（レンズ）・撮影場所をタグとして持つことを想定し，タグ名の"Lens:"および"Location:"をアイコンに置き換え．
+
+- "Lens:"の置き換え
+
+!["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png)
+
+- "Location:"の置き換え
+
+!["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png)
+
 ### 3:2/16:9画像に対応する一覧画面
 
 ## Gridレイアウトを用いたレスポンシブ対応
