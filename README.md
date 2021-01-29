@@ -14,22 +14,6 @@
 
 # 特徴
 
-## Gridレイアウトを用いたレスポンシブ対応
-
-Gridレイアウトを採用することでレスポンシブ対応を実現．
-
-### ・PCで表示した例
-
-![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
-
-### ・タブレットで表示した例
-
-![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
-
-### ・スマホで表示した例
-
-![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
-
 ## 写真×文章に最適なレイアウト・機能
 
 ### 写真・文章をどちらも見やすく配置するレイアウト
@@ -45,6 +29,22 @@ Gridレイアウトを採用することでレスポンシブ対応を実現．
 ### カメラ関連のタグ名の置き換え機能
 
 ### 3:2/16:9画像に対応する一覧画面
+
+## Gridレイアウトを用いたレスポンシブ対応
+
+Gridレイアウトを採用することでレスポンシブ対応を実現．
+
+### ・PCで表示した例
+
+![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
+
+### ・タブレットで表示した例
+
+![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
+
+### ・スマホで表示した例
+
+![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
 
 ## カスタマイズのベースとなるシンプルなテーマ
 
