@@ -64,7 +64,7 @@ Gridレイアウトを採用することでレスポンシブ対応を実現．
 
 ## カスタマイズのベースとなるシンプルなテーマ
 
-fork元であるwp_theme_super_simple](https://github.com/retore404/wp_theme_super_simple)の設計思想を継承し，極力シンプルなデザイン・読みやすいコードを追求．
+fork元である[wp_theme_super_simple](https://github.com/retore404/wp_theme_super_simple)の設計思想を継承し，極力シンプルなデザイン・読みやすいコードを追求．
 
 # class/idの指定
 
