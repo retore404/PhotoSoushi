@@ -34,9 +34,10 @@ add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
  
 function remove_width_attribute( $html ) {
-$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-return $html;
+    $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+    return $html;
 }
+add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応
 
 // タイトルタグを自動生成
 add_theme_support( 'title-tag' );

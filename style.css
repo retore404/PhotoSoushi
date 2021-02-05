@@ -258,9 +258,20 @@ ul.page-numbers li{
 .grid-container-article > * {
     grid-column: 2 / 3;
 }
-.grid-container-article > .img-container {
+
+/* ClassicEditor用 */
+.grid-container-article > .img-container { 
     width: 100%;
     grid-column: 1 / 4;;
+}
+
+/* Gutenberg用 */
+.grid-container-article > .wp-block-image { 
+    width: 100%;
+    grid-column: 1 / 4;;
+}
+.wp-block-image {
+    margin: 0;
 }
 
 /* 前後記事への遷移 */
