@@ -303,3 +303,8 @@ ul.page-numbers li{
 ul {
     margin-top: 0em;
 }
+
+/* タグ修飾 */
+.t-star {
+    color: red;
+}
