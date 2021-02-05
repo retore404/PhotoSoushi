@@ -14,7 +14,7 @@ body {
 }
 
 p {
-    font-size: 0.95em;
+    font-size: .875em;
 }
 
 h3 {
@@ -155,7 +155,7 @@ header {
 }
 
 #single-date {
-    font-size: 85%;
+    font-size: 70%;
     text-align:center;
 }
 
@@ -302,9 +302,4 @@ ul.page-numbers li{
 /* ウィジェット内リスト */
 ul {
     margin-top: 0em;
-}
-
-/* タグ修飾 */
-.t-star {
-    color: red;
 }

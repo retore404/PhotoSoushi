@@ -128,11 +128,6 @@ add_filter('image_send_to_editor','image_wrap',10,8);
 
 // タグ名の置き換え（アイコン化）
 function replace_tag_name($tag_name) {
-    // タグ名の"Lens:"をアイコンに置き換える
-    $tag_name = str_replace('Lens:', '<i class="fas fa-camera"></i> ', $tag_name);
-    // タグ名の"Location:"をアイコンに置き換える
-    $tag_name = str_replace('Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name);
-    // タグ名の"T*"を赤字にする
-    $tag_name = str_replace('T*', '<span class="t-star">T*</span>', $tag_name);
-    return $tag_name;
+    //タグ名の"Lens:"と"Location:"をアイコンに置き換える
+    return str_replace('Location:', '<i class="fas fa-map-marker-alt"></i> ', str_replace('Lens:', '<i class="fas fa-camera"></i> ', $tag_name));
 }

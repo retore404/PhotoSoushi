@@ -37,9 +37,9 @@
                             ?>
                         </div>
                         <div id="post-links">
-                            <?php next_post_link('%link', '<< next'); ?>
+                            <?php next_post_link('<< %link'); ?>
                             |
-                            <?php previous_post_link('%link', 'prev >>'); ?>
+                            <?php previous_post_link('%link >>'); ?>
                         </div>
                     </main>
                 <?php endif; ?>
