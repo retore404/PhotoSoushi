@@ -138,4 +138,3 @@ function replace_tag_name($tag_name) {
     return $tag_name;
 }
 
-// 独自ブロックの読み込み
