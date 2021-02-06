@@ -120,12 +120,6 @@ add_filter('tiny_mce_before_init', function($init) {
     return $init;
 });
 
-//imgタグ前後にdivタグ（full-bleed用）
-function image_wrap($html, $id, $caption, $title, $align, $url, $size, $alt){
-	  $html = '<div class="img-container">'.$html.'<p class="photo-desc"></p></div>';
-	  return $html;
-}
-add_filter('image_send_to_editor','image_wrap',10,8);
 
 // タグ名の置き換え（アイコン化）
 function replace_tag_name($tag_name) {
