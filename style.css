@@ -273,11 +273,6 @@ ul.page-numbers li{
 .wp-block-image {
     margin: 0;
 }
-/* 独自ブロック（photo-desc-block)でキャプションを挿入した場合の位置指定 */
-.grid-container-article > figcaption.photo-desc {
-    width: 100%;
-    grid-column: 1 / 4;    
-}
 /* 画像ブロックのキャプションを使用した場合のスタイル */
 .wp-block-image > figcaption {
     margin: 0em;
