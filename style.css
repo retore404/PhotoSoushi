@@ -312,3 +312,12 @@ ul {
 .t-star {
     color: red;
 }
+
+/* 引用部 */
+cite {
+    font-size: 0.95em;
+}
+
+blockquote {
+    color: #606060;
+}
