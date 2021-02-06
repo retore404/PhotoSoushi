@@ -137,3 +137,23 @@ function replace_tag_name($tag_name) {
     $tag_name = str_replace('T*', '<span class="t-star">T*</span>', $tag_name);
     return $tag_name;
 }
+
+// 独自ブロックの読み込み
+function photo_caption_block_enqueue() {
+    //ブロック用のスクリプトを登録
+    wp_register_script(
+      'photo-caption-script',
+      get_theme_file_uri('/photo-soushi-blocks/photo_caption_block.js'),
+      //依存スクリプト（TextControl には wp-components が必要）
+      array( 'wp-blocks', 'wp-element', 'wp-components') 
+    );
+   
+    register_block_type( 
+      'photo-soushi-blocks/photo-caption-block',
+      array(
+        //エディター用スクリプトにブロックのスクリプトを関連付け
+        'editor_script' => 'photo-caption-script',   
+      ) 
+    );
+  }
+  add_action( 'init', 'photo_caption_block_enqueue' ); 
