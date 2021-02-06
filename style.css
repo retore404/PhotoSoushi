@@ -43,13 +43,6 @@ img {
     padding-bottom: 1em;
 }
 
-.photo-desc {
-    margin-top: 0em;
-    text-align: right;
-    font-size: 75%;
-    color: gray;
-}
-
 /* aタグ関連 */
 a {
     text-decoration: none;
@@ -259,13 +252,6 @@ ul.page-numbers li{
     grid-column: 2 / 3;
 }
 
-/* ClassicEditor用 */
-.grid-container-article > .img-container { 
-    width: 100%;
-    grid-column: 1 / 4;;
-}
-
-/* Gutenberg用 */
 .grid-container-article > .wp-block-image { 
     width: 100%;
     grid-column: 1 / 4;
@@ -275,13 +261,6 @@ ul.page-numbers li{
 }
 /* 画像ブロックのキャプションを使用した場合のスタイル */
 .wp-block-image > figcaption {
-    margin: 0em;
-    text-align: right;
-    font-size: 75%;
-    color: gray;
-}
-/* クラシックエディタでの記載対応用 */
-.img-container > figcaption {
     margin: 0em;
     text-align: right;
     font-size: 75%;
