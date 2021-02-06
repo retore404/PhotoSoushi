@@ -320,4 +320,10 @@ cite {
 
 blockquote {
     color: #606060;
+    border-left: solid 4px #212121;
+    padding: 1em;
+}
+
+blockquote > P {
+    margin-top: 0;
 }
