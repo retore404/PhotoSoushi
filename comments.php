@@ -1,5 +1,5 @@
 <?php if (have_comments()) :?>
-	<div id="comments-list">
+	<section id="comments-list">
     	<h3>Comments.</h3>
     	<ul id="comments-list">
     	<?php wp_list_comments(array(
@@ -8,10 +8,10 @@
     			'type'=>'comment',
     		)); ?>
     	</ul>
-    </div>
+    </section>
     <hr>
 <?php endif; ?>
-<div id="comment-form">
+<section id="comment-form">
     <?php
         $comments_args = array(
             'fields' => array(
@@ -25,4 +25,4 @@
     	);
       comment_form($comments_args);
     ?>
-</div>
+</section>
