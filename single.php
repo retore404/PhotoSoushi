@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-            <section id="content">
+            <main id="content">
                 <?php if(have_posts()): the_post(); ?>
-                    <main class="grid-container-article">
+                    <article class="grid-container-article">
                         <div id="single-date"><?php echo get_the_date(); ?></div>
                         <h3 id="single-title"><?php the_title(); ?></h3>
                             <!--自動補正ありの本文-->
@@ -41,7 +41,7 @@
                             |
                             <?php previous_post_link('%link', 'prev >>'); ?>
                         </div>
-                    </main>
+                    </article>
                 <?php endif; ?>
-            </section>
+            </main>
 <?php get_footer(); ?>
