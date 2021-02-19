@@ -34,9 +34,10 @@ add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
  
 function remove_width_attribute( $html ) {
-$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-return $html;
+    $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+    return $html;
 }
+add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応
 
 // タイトルタグを自動生成
 add_theme_support( 'title-tag' );
@@ -119,12 +120,6 @@ add_filter('tiny_mce_before_init', function($init) {
     return $init;
 });
 
-//imgタグ前後にdivタグ（full-bleed用）
-function image_wrap($html, $id, $caption, $title, $align, $url, $size, $alt){
-	  $html = '<div class="img-container">'.$html.'<p class="photo-desc"></p></div>';
-	  return $html;
-}
-add_filter('image_send_to_editor','image_wrap',10,8);
 
 // タグ名の置き換え（アイコン化）
 function replace_tag_name($tag_name) {
@@ -136,3 +131,4 @@ function replace_tag_name($tag_name) {
     $tag_name = str_replace('T*', '<span class="t-star">T*</span>', $tag_name);
     return $tag_name;
 }
+

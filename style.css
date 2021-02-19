@@ -4,19 +4,18 @@ Theme URI: https://github.com/retore404/PhotoSoushi
 Author: retore
 Author URI: https://github.com/retore404
 Description: 写真×雑記のブログでの使用に適するWordPressテーマ
-Version: 5.0
+Version: 6.0
 Text Domain: photosoushi
 */
 
+/******** 共通 ********/
+/* フォントの定義（全体） */
 body {
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,メイリオ,Meiryo,sans-serif;
     color: #191919;
 }
 
-p {
-    font-size: 0.95em;
-}
-
+/* 見出し */
 h3 {
     font-weight: 400;
     font-size: min(calc(1.1rem + .6vw), 1.4em);
@@ -24,57 +23,32 @@ h3 {
     margin-top: 0em;
 }
 
-/* 個別記事内のpタグの調整 */
-.wrapper > p {
-    text-align: justify;
-    letter-spacing: 0.01em;
-}
-
+/* 画像 */
 img {
     max-width: 100%;
 }
 
-#comment{
-    max-width: 100%;
-}
-
-#comment-form {
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-.photo-desc {
-    margin-top: 0em;
-    text-align: right;
-    font-size: 75%;
-    color: gray;
-}
-
-/* aタグ関連 */
+/* リンクスタイル */
 a {
     text-decoration: none;
     color: #0d6efd;
 }
-
 a:visited{
     color: #0d6efd;
 }
-
 a:hover {
     opacity: 0.5;
 }
-
 a > article {
     color: #191919;
 }
-
 a > article:hover {
     opacity: 0.5;
     text-decoration: none;
     color: #191919;
 }
 
-/* hr */
+/* 区切り線 */
 hr {
     border-width: 1px 0px 0px 0px;
     border-style: solid;
@@ -83,7 +57,76 @@ hr {
     color: #808080;
 }
 
+/* widgetラッパー */
+.widget-wrapper{
+    border-top: solid 1px black;
+    padding-top: 1.5em;
+    margin-top: 1.5em;
+}
 
+/* widget */
+.widget {
+    margin-bottom: 1.5em;
+}
+
+/* widget内リスト */
+ul {
+    margin-top: 0em;
+}
+
+/******** Gridレイアウト定義 ********/
+/* rootグリッド */
+#grid-container-root{
+    display: grid;
+    grid-template-columns: 
+        1fr
+        min(57em, 98%)
+        1fr;
+}
+
+#grid-container-root > * {
+    grid-column: 2 / 3;
+}
+
+/* indexグリッド */
+@media(min-width:576px){
+    #grid-container-index{
+        display:grid;
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    }
+}
+
+/* footer widgetグリッド */
+@media(min-width:576px){
+    #grid-container-footer{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));            
+    }
+}
+
+/* articleグリッド */
+.grid-container-article {
+    display: grid;
+    margin-top: 1.5em;
+    grid-template-columns:
+        1fr
+        min(35em, 100%)
+        1fr;
+}
+.grid-container-article > * {
+    grid-column: 2 / 3;
+}
+.grid-container-article > .wp-block-image { 
+    width: 100%;
+    grid-column: 1 / 4;
+}
+
+
+/******** 共通ヘッダ(header.php) ********/
 header {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
@@ -106,43 +149,42 @@ header {
     color: #191919;
 }
 
+/******** 一覧ページ(index.php) ********/
+/* 一覧ページ見出し */
 #content-header h3 {
     margin-bottom: 0em;
 }
 
-
-.post-date {
-    font-size: 80%;
+/* タグ修飾（T*） */
+.t-star {
+    color: red;
 }
 
-.post-title {
-    padding: 10px 0 0 0;
-    color: #444;
-    font-weight: 700;
+/* 一覧ページの各記事コンテナ */
+.post-container{
+    border-bottom: solid 1px #808080;
 }
 
-.post-excerpt {
-    text-align: justify;
-    display: block;
-    font-size: 90%;
-}
-
+/* 一覧ページ各記事（リンク用コンテナ） */
 .post-each {
     padding-top: 0.7em;
     padding-bottom: 0.7em;
 }
 
+/* 一覧ページ各記事部サムネイルwrapper */
 .post-each-thumbnail-wrapper{
     position: relative;
     width: 100%;
 }
 
+/* 一覧ページ各記事部サムネイルwrapper（比率固定用） */
 .post-each-thumbnail-wrapper:before{
     content:"";
     display: block;
     padding-top: 67%; /* 高さを幅の67%に固定 */
 }
 
+/* 一覧ページ各記事部サムネイル */
 .post-each-thumbnail {
     display:flex;
     align-items: center;
@@ -154,11 +196,66 @@ header {
     right: 0;
 }
 
+/* 一覧ページ各記事部投稿日 */
+.post-date {
+    font-size: 80%;
+}
+
+/* 一覧ページ各記事部記事タイトル */
+.post-title {
+    padding: 10px 0 0 0;
+    color: #444;
+    font-weight: 700;
+}
+
+/* 一覧ページ各記事部本文抜粋 */
+.post-excerpt {
+    text-align: justify;
+    display: block;
+    font-size: 90%;
+}
+
+/* ページネーション */
+nav ul li{ 	
+    display: inline-block;
+    padding: 0.3em;
+ }
+nav ul {
+    padding: 0;
+}
+ul.page-numbers{
+    margin-top: 1em;
+    text-align: center;
+}
+ul.page-numbers li{
+    display: inline;
+}
+
+/* タグクラウド */
+.tagcloud a {
+    font-size: 0.875em !important;
+    display: block;
+    margin-left: 1em;
+}
+
+
+/******** 個別記事ページ(single.php) ********/
+/* 本文 */
+p {
+    font-size: 0.95em;
+}
+.wrapper > p {
+    text-align: justify;
+    letter-spacing: 0.01em;
+}
+
+/* 個別記事投稿日 */
 #single-date {
     font-size: 85%;
     text-align:center;
 }
 
+/* 個別記事タイトル */
 #single-title{
     text-align:center;
     font-weight: 500;
@@ -168,115 +265,45 @@ header {
     margin-bottom: 0.25em;
 }
 
+/* 個別記事カテゴリ・タグ */
+.single-category-tags-wrapper {
+    line-height: 1em;
+}
 .single-category-tags {
     font-size: 70%;
 }
 
-.single-category-tags-wrapper {
-    line-height: 1em;
+
+/* 引用部 */
+cite {
+    font-size: 0.95em;
+}
+blockquote {
+    color: #606060;
+    border-left: solid 4px #212121;
+    padding: 1em;
+}
+blockquote > P {
+    margin-top: 0;
 }
 
-
-/* ページネーションの体裁用 */
-nav ul li{ 	
-    display: inline-block;
-    padding: 0.3em;
- }
-
- nav ul {
-     padding: 0;
- }
-
- /* シェアボタン（はてぶ用） */
+/* シェアボタン（はてぶ用） */
 .fa-hatena:before {
-    content: "B!";
-    font-family: Verdana;
-    font-weight: bold;
+   content: "B!";
+   font-family: Verdana;
+   font-weight: bold;
 }
 
-/* ページネーション中央揃え：開始 */
-ul.page-numbers{
-    margin-top: 1em;
-    text-align: center;
+/* 画像ブロック */
+.wp-block-image {
+    margin: 0;
 }
-
-ul.page-numbers li{
-    display: inline;
-}
-/* ページネーション中央揃え：終了 */
-
-/* タグクラウド */
-.tagcloud a {
-    font-size: 0.875em !important;
-    display: block;
-    margin-left: 1em;
-}
-
-/* Grid(root) */
-#grid-container-root{
-    display: grid;
-    grid-template-columns: 
-        1fr
-        min(57em, 98%)
-        1fr;
-}
-
-#grid-container-root > * {
-    grid-column: 2 / 3;
-}
-
-/* Grid(index) */
-@media(min-width:576px){
-    #grid-container-index{
-        display:grid;
-        grid-row-gap: 10px;
-        grid-column-gap: 10px;
-        width: 100%;
-        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
-    }
-}
-
-/* Grid(footer-widget) */
-@media(min-width:576px){
-    #grid-container-footer{
-        display: grid;
-        width: 100%;
-        grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));            
-    }
-}
-
-/* Grid（フルブリード） */
-.grid-container-article {
-    display: grid;
-    margin-top: 1.5em;
-    grid-template-columns:
-        1fr
-        min(35em, 100%)
-        1fr;
-}
-
-.grid-container-article > * {
-    grid-column: 2 / 3;
-}
-.grid-container-article > .img-container {
-    width: 100%;
-    grid-column: 1 / 4;;
-}
-
-/* 前後記事への遷移 */
-#post-links{
-    text-align: center;
-}
-
-/* フッタ部ウィジェット */
-.widget-wrapper{
-    border-top: solid 1px black;
-    padding-top: 1.5em;
-    margin-top: 1.5em;
-}
-
-.widget {
-    margin-bottom: 1.5em;
+/* 画像ブロックキャプション */
+.wp-block-image > figcaption {
+    margin: 0em;
+    text-align: right;
+    font-size: 75%;
+    color: gray;
 }
 
 /* 記事情報（カテゴリ・タグ部 */
@@ -294,17 +321,20 @@ ul.page-numbers li{
     padding-bottom: 1em;
 }
 
-/* 一覧ページの各記事表示部分 */
-.post-container{
-    border-bottom: solid 1px #808080;
+/* 前後記事への遷移 */
+#post-links{
+    text-align: center;
 }
 
-/* ウィジェット内リスト */
-ul {
-    margin-top: 0em;
+
+/******** コメント(comment.php) ********/
+/* コメント部 */
+#comment{
+    max-width: 100%;
 }
 
-/* タグ修飾 */
-.t-star {
-    color: red;
+/* コメントフォーム */
+#comment-form {
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
