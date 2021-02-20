@@ -1,5 +1,5 @@
-<div id="comments">
-    <?php if (have_comments()) :?>
+<?php if (have_comments()) :?>
+	<section id="comments-list">
     	<h3>Comments.</h3>
     	<ul id="comments-list">
     	<?php wp_list_comments(array(
@@ -8,10 +8,10 @@
     			'type'=>'comment',
     		)); ?>
     	</ul>
+    </section>
     <hr>
-    <?php endif; ?>
-</div>
-<div id="comment-form">
+<?php endif; ?>
+<section id="comment-form">
     <?php
 	    $aria_req = ( $req ? " aria-required='true'" : '' );
         $comments_args = array(
@@ -26,4 +26,4 @@
     	);
       comment_form($comments_args);
     ?>
-</div>
+</section>

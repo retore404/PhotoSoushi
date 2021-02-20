@@ -39,10 +39,10 @@ a:visited{
 a:hover {
     opacity: 0.5;
 }
-a > article {
+a > section.post-each {
     color: #191919;
 }
-a > article:hover {
+a > section.post-each:hover {
     opacity: 0.5;
     text-decoration: none;
     color: #191919;

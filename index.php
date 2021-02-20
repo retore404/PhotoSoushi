@@ -24,7 +24,7 @@
                 <?php if(have_posts()): while(have_posts()): the_post(); ?>
                     <section class="post-container">
                         <a href="<?php the_permalink(); ?>">
-                            <article class="post-each">
+                            <section class="post-each">
                                 <div class="post-each-thumbnail-wrapper">
                                     <div class="post-each-thumbnail">
                                         <img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />
@@ -33,7 +33,7 @@
                                 <span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
                                 <span class="post-title"><?php the_title(); ?></span><br>
                                 <span class="post-excerpt"><?php the_excerpt(); ?></span>
-                            </article>
+                            </section>
                         </a>
                     </section>
                 <?php endwhile; endif; ?>
