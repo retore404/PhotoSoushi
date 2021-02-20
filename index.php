@@ -12,7 +12,7 @@
                                 Tag: <?php echo replace_tag_name(single_cat_title('', false)); ?>
                             <!--開いている一覧ページが月別ページのとき-->
                             <?php elseif(is_date() ): ?>
-                                Posts in  <?php the_time('Y-m'); ?>
+                                Posts in  <?php echo get_post_time('M. Y'); ?>
                             <?php endif; ?>
                     <!--開いている一覧ページがカテゴリ・タグ別ページ・月別アーカイブでない=普通の記事一覧のとき-->
                     <?php else: ?>
