@@ -244,7 +244,7 @@ ul.page-numbers li{
 p {
     font-size: 0.95em;
 }
-.wrapper > p {
+.grid-container-article > p {
     text-align: justify;
     letter-spacing: 0.01em;
 }
