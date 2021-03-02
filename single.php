@@ -37,9 +37,9 @@
                             ?>
                         </section>
                         <section id="post-links">
-                            <?php next_post_link('%link', '<< next'); ?>
+                            <?php next_post_link('%link', '« next'); ?>
                             |
-                            <?php previous_post_link('%link', 'prev >>'); ?>
+                            <?php previous_post_link('%link', 'prev »'); ?>
                         </section>
                     </article>
                 <?php endif; ?>
