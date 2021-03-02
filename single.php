@@ -1,11 +1,11 @@
 <?php get_header(); ?>
-            <main id="content">
+            <section id="content">
                 <?php if(have_posts()): the_post(); ?>
                     <article class="grid-container-article">
                         <span id="single-date"><?php echo get_the_date(); ?></span>
                         <h3 id="single-title"><?php the_title(); ?></h3>
                         <!--自動補正ありの本文-->
-                        <?php the_content(); ?>
+                        <?php the_content(); ?>                    
                         <section id="single-article-info">
                             <?php if(has_category() ): ?>
                                 <div class="single-category-tags-wrapper"><span class="single-category-tags">Category: <?php if (the_category(', '))  the_category(); ?></span></div>
@@ -43,5 +43,5 @@
                         </section>
                     </article>
                 <?php endif; ?>
-            </main>
+            </section>
 <?php get_footer(); ?>
