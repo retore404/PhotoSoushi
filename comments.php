@@ -17,7 +17,7 @@
         $comments_args = array(
             'fields' => array(
                 'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label><br> ' .
-                            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '""' . $aria_req . ' /></p>',
+                            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' /></p>',
                 'email'  => '',
     	        'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label><br> ' .
     		    			'<input id="url" name="url" type="url"' . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '"/></p>',
