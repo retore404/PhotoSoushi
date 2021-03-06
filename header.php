@@ -10,5 +10,5 @@
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 		<section id="grid-container-root">
 			<header>
-				<h1 id="header-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a></h1>
+				<h1 id="header-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 			</header>
