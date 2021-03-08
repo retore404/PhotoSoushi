@@ -1,4 +1,14 @@
 <?php
+/**
+ * PhotoSoushi WordPress Theme
+ *
+ * @package WordPress
+ * @subpackage PhotoSoushi
+ * @author retore
+ * @link https://github.com/retore404/PhotoSoushi
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ */
+
 // 記事中1枚目の画像をアイキャッチ化する
 function catch_first_image() {
 	global $post, $posts;

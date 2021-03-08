@@ -1,4 +1,15 @@
-<?php get_header(); ?>
+<?php
+/**
+ * PhotoSoushi WordPress Theme
+ *
+ * @package WordPress
+ * @subpackage PhotoSoushi
+ * @author retore
+ * @link https://github.com/retore404/PhotoSoushi
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ */
+
+get_header(); ?>
 			<section id="content-header">
 				<h3>
 					<!--開いているページがカテゴリ・タグ・月別の一覧ページかの判定-->

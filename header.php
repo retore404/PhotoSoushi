@@ -1,3 +1,15 @@
+<?php
+/**
+ * PhotoSoushi WordPress Theme
+ *
+ * @package WordPress
+ * @subpackage PhotoSoushi
+ * @author retore
+ * @link https://github.com/retore404/PhotoSoushi
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
