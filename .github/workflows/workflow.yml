@@ -11,9 +11,9 @@ jobs:
         - name: install PHP_CodeSniffer
           run: composer global require "squizlabs/php_codesniffer=*"
         - name: install WordPress Coding Standards
-          run: composer global require wp-coding-standards/wpcs
-        - name: install path WordPress Coding Standards
-          run: /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/wp-coding-standards/wpcs
+          run: |
+            composer global require wp-coding-standards/wpcs
+            /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/wp-coding-standards/wpcs
         - name: check coding
           run: /home/runner/.composer/vendor/bin/phpcs --standard=WordPress ./*.php
 
