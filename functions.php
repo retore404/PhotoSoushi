@@ -115,17 +115,19 @@ function the_pagination() {
 		return;
 	}
 	echo '<nav class="pagination">';
-	echo paginate_links(
-		array(
-			'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-			'format'    => '',
-			'current'   => max( 1, get_query_var( 'paged' ) ),
-			'total'     => $wp_query->max_num_pages,
-			'prev_text' => '«',
-			'next_text' => '»',
-			'type'      => 'list',
-			'end_size'  => 3,
-			'mid_size'  => 3,
+	echo esc_url(
+		paginate_links(
+			array(
+				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
+				'format'    => '',
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $wp_query->max_num_pages,
+				'prev_text' => '«',
+				'next_text' => '»',
+				'type'      => 'list',
+				'end_size'  => 3,
+				'mid_size'  => 3,
+			)
 		)
 	);
 	echo '</nav>';
