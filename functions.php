@@ -44,7 +44,12 @@ function disable_image_sizes( $new_sizes ) {
 add_filter( 'intermediate_image_sizes_advanced', 'disable_image_sizes' );
 add_filter( 'big_image_size_threshold', '__return_false' );
 
-/** 画像のwidth/height自動指定を除去. */
+/**
+ * 画像のwidth/height自動指定を除去.
+ *
+ * @param string $html サムネイルのhtml.
+ * @return string $html サムネイルのhtml(width/heightの指定削除).
+ */
 function remove_width_attribute( $html ) {
 	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
 	return $html;
@@ -53,7 +58,12 @@ add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応.
 
-/** タイトルタグを自動生成. */
+/**
+ * タイトルタグを自動生成.
+ *
+ * @param array $results タイトルタグの内容配列.
+ * @return array $results タイトルタグの内容配列（taglineが空）.
+ */
 function custom_title_text( $results ) {
 	if ( is_home() ) {
 		$results['tagline'] = '';
@@ -121,7 +131,11 @@ function the_pagination() {
 	echo '</nav>';
 }
 
-/** コメントフォームの順序変更. */
+/** コメントフォームの順序変更.
+ *
+ * @param array $fields コメントフィールド.
+ * @return array $fields コメントフィールド（コメント部の順序逆転）.
+ */
 function move_comment_field_to_bottom( $fields ) {
 	$comment_field = $fields['comment'];
 	unset( $fields['comment'] );
@@ -149,7 +163,11 @@ add_filter(
 );
 
 
-/** タグ名の置き換え（アイコン化）. */
+/** タグ名の置き換え（アイコン化）.
+ *
+ * @param string $tag_name タグ名（アイコン置き換え前）.
+ * @return string $tag_name タグ名（アイコン置き換え後）.
+ */
 function replace_tag_name( $tag_name ) {
 	// タグ名の"Lens:"をアイコンに置き換える.
 	$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
