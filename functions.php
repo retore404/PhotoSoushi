@@ -115,7 +115,7 @@ function the_pagination() {
 		return;
 	}
 	echo '<nav class="pagination">';
-	echo esc_url(
+	echo wp_kses_post(
 		paginate_links(
 			array(
 				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
