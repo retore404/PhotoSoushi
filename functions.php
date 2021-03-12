@@ -9,7 +9,9 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
  */
 
-/** 記事中1枚目の画像をアイキャッチ化する. */
+/**
+ * 記事中1枚目の画像をアイキャッチ化する.
+ */
 function catch_first_image() {
 	global $post, $posts;
 	$first_img = '';
@@ -24,7 +26,12 @@ function catch_first_image() {
 	return $first_img;
 }
 
-/** リサイズ画像の自動生成を停止する. */
+/**
+ * リサイズ画像の自動生成を停止する.
+ *
+ * @param array $new_sizes 生成される画像サイズを定義する配列.
+ * @return array $new_sizes 生成される画像サイズを定義する配列.
+ */
 function disable_image_sizes( $new_sizes ) {
 	unset( $new_sizes['thumbnail'] );
 	unset( $new_sizes['medium'] );
