@@ -180,3 +180,25 @@ function replace_tag_name( $tag_name ) {
 	return $tag_name;
 }
 
+/**
+ * CSSの読み込み.
+ */
+function photo_soushi_enque_styles() {
+	// FontAwesomeの読み込み.
+	wp_enqueue_style(
+		'font-awesome',
+		'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
+		array(),
+		'1.0.0',
+		'all'
+	);
+	// PhotoSoushi style.cssの読み込み.
+	wp_enqueue_style(
+		'photo-soushi-css',
+		get_stylesheet_uri(),
+		array(),
+		'1.0.0',
+		'all'
+	);
+}
+add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );
