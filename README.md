@@ -1,5 +1,7 @@
 # WordPressテーマ "PhotoSoushi"
 
+[![WordPress Theme Code Check](https://github.com/retore404/PhotoSoushi/actions/workflows/workflow.yml/badge.svg)](https://github.com/retore404/PhotoSoushi/actions/workflows/workflow.yml)
+
 ![WordPressテーマ"PhotoSoushi"](https://github.com/retore404/PhotoSoushi/blob/images/single_pc.png)
 
 ## 概要

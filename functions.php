@@ -1,5 +1,17 @@
 <?php
-// 記事中1枚目の画像をアイキャッチ化する
+/**
+ * PhotoSoushi WordPress Theme
+ *
+ * @package WordPress
+ * @subpackage PhotoSoushi
+ * @author retore
+ * @link https://github.com/retore404/PhotoSoushi
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ */
+
+/**
+ * 記事中1枚目の画像をアイキャッチ化する.
+ */
 function catch_first_image() {
 	global $post, $posts;
 	$first_img = '';
@@ -7,14 +19,19 @@ function catch_first_image() {
 	ob_end_clean();
 	$output    = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 	$first_img = $matches [1] [0];
-	if ( empty( $first_img ) ) { // Defines a default image
+	if ( empty( $first_img ) ) { // Defines a default image.
 		$dir       = get_template_directory_uri();
 		$first_img = "$dir/images/thumbnail.svg";
 	}
 	return $first_img;
 }
 
-// リサイズ画像の自動生成を停止する
+/**
+ * リサイズ画像の自動生成を停止する.
+ *
+ * @param array $new_sizes 生成される画像サイズを定義する配列.
+ * @return array $new_sizes 生成される画像サイズを定義する配列.
+ */
 function disable_image_sizes( $new_sizes ) {
 	unset( $new_sizes['thumbnail'] );
 	unset( $new_sizes['medium'] );
@@ -27,27 +44,36 @@ function disable_image_sizes( $new_sizes ) {
 add_filter( 'intermediate_image_sizes_advanced', 'disable_image_sizes' );
 add_filter( 'big_image_size_threshold', '__return_false' );
 
-// 画像のwidth/height自動指定を除去
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-
+/**
+ * 画像のwidth/height自動指定を除去.
+ *
+ * @param string $html サムネイルのhtml.
+ * @return string $html サムネイルのhtml(width/heightの指定削除).
+ */
 function remove_width_attribute( $html ) {
 	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
 	return $html;
 }
-add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応.
 
-// タイトルタグを自動生成
-add_theme_support( 'title-tag' );
+/**
+ * タイトルタグを自動生成.
+ *
+ * @param array $results タイトルタグの内容配列.
+ * @return array $results タイトルタグの内容配列（taglineが空）.
+ */
 function custom_title_text( $results ) {
 	if ( is_home() ) {
 		$results['tagline'] = '';
 	}
 	return $results;
 }
+add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
 
-// ウィジェット
+// ウィジェット.
 register_sidebar(
 	array(
 		'name'          => __( 'MainWidget1' ),
@@ -81,7 +107,7 @@ register_sidebar(
 	)
 );
 
-// ページネーション
+/** ページネーション. */
 function the_pagination() {
 	global $wp_query;
 	$bignum = 999999999;
@@ -89,23 +115,29 @@ function the_pagination() {
 		return;
 	}
 	echo '<nav class="pagination">';
-	echo paginate_links(
-		array(
-			'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-			'format'    => '',
-			'current'   => max( 1, get_query_var( 'paged' ) ),
-			'total'     => $wp_query->max_num_pages,
-			'prev_text' => '«',
-			'next_text' => '»',
-			'type'      => 'list',
-			'end_size'  => 3,
-			'mid_size'  => 3,
+	echo wp_kses_post(
+		paginate_links(
+			array(
+				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
+				'format'    => '',
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $wp_query->max_num_pages,
+				'prev_text' => '«',
+				'next_text' => '»',
+				'type'      => 'list',
+				'end_size'  => 3,
+				'mid_size'  => 3,
+			)
 		)
 	);
 	echo '</nav>';
 }
 
-// コメントフォームの順序変更
+/** コメントフォームの順序変更.
+ *
+ * @param array $fields コメントフィールド.
+ * @return array $fields コメントフィールド（コメント部の順序逆転）.
+ */
 function move_comment_field_to_bottom( $fields ) {
 	$comment_field = $fields['comment'];
 	unset( $fields['comment'] );
@@ -114,7 +146,7 @@ function move_comment_field_to_bottom( $fields ) {
 }
 add_filter( 'comment_form_fields', 'move_comment_field_to_bottom' );
 
-// pタグの自動挿入を停止
+// pタグの自動挿入を停止.
 add_action(
 	'init',
 	function() {
@@ -133,14 +165,40 @@ add_filter(
 );
 
 
-// タグ名の置き換え（アイコン化）
+/** タグ名の置き換え（アイコン化）.
+ *
+ * @param string $tag_name タグ名（アイコン置き換え前）.
+ * @return string $tag_name タグ名（アイコン置き換え後）.
+ */
 function replace_tag_name( $tag_name ) {
-	// タグ名の"Lens:"をアイコンに置き換える
+	// タグ名の"Lens:"をアイコンに置き換える.
 	$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
-	// タグ名の"Location:"をアイコンに置き換える
+	// タグ名の"Location:"をアイコンに置き換える.
 	$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
-	// タグ名の"T*"を赤字にする
+	// タグ名の"T*"を赤字にする.
 	$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
 	return $tag_name;
 }
 
+/**
+ * CSSの読み込み.
+ */
+function photo_soushi_enque_styles() {
+	// FontAwesomeの読み込み.
+	wp_enqueue_style(
+		'font-awesome',
+		'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
+		array(),
+		'1.0.0',
+		'all'
+	);
+	// PhotoSoushi style.cssの読み込み.
+	wp_enqueue_style(
+		'photo-soushi-css',
+		get_stylesheet_uri(),
+		array(),
+		'1.0.0',
+		'all'
+	);
+}
+add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );

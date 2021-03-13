@@ -1,4 +1,15 @@
-<?php get_header(); ?>
+<?php
+/**
+ * PhotoSoushi WordPress Theme
+ *
+ * @package WordPress
+ * @subpackage PhotoSoushi
+ * @author retore
+ * @link https://github.com/retore404/PhotoSoushi
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ */
+
+get_header(); ?>
 			<section id="content-header">
 				<h3>
 					<!--開いているページがカテゴリ・タグ・月別の一覧ページかの判定-->
@@ -9,10 +20,10 @@
 								Category: <?php single_cat_title(); ?>
 							<!--開いている一覧ページがタグ別ページのとき-->
 							<?php elseif ( is_tag() ) : ?>
-								Tag: <?php echo replace_tag_name( single_cat_title( '', false ) ); ?>
+								Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
 							<!--開いている一覧ページが月別ページのとき-->
 							<?php elseif ( is_date() ) : ?>
-								Posts in  <?php echo get_post_time( 'M. Y' ); ?>
+								Posts in  <?php echo esc_html( get_post_time( 'M. Y' ) ); ?>
 							<?php endif; ?>
 					<!--開いている一覧ページがカテゴリ・タグ別ページ・月別アーカイブでない=普通の記事一覧のとき-->
 					<?php else : ?>
@@ -31,7 +42,7 @@
 							<section class="post-each">
 								<div class="post-each-thumbnail-wrapper">
 									<div class="post-each-thumbnail">
-										<img src="<?php echo catch_first_image(); ?>" alt="<?php the_title(); ?>"  class="hover" />
+										<img src="<?php echo esc_url( catch_first_image() ); ?>" alt="<?php the_title(); ?>"  class="hover" />
 									</div>
 								</div>
 								<span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
