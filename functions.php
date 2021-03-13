@@ -62,12 +62,13 @@ add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Guten
  * タイトルタグを自動生成.
  *
  * @param array $results タイトルタグの内容配列.
- * @return array $results タイトルタグの内容配列（taglineが空）.
+ * @return array $results タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
  */
 function custom_title_text( $results ) {
 	if ( is_home() ) {
 		$results['tagline'] = '';
 	}
+	$results['page'] = '';
 	return $results;
 }
 add_theme_support( 'title-tag' );
