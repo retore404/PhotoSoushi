@@ -39,7 +39,7 @@ get_header(); ?>
 											$tag_str = $tag_str . '<a href="' . get_tag_link( $t->term_id ) . '">' . replace_tag_name( $t->name ) . '</a>, ';
 										}
 										$tag_str = rtrim( $tag_str, ', ' ); // 末尾の不要な「, 」を削除.
-										echo $tag_str; // 出力.
+										echo wp_kses_post( $tag_str ); // 出力.
 									}
 									?>
 								</span></div>
@@ -47,7 +47,7 @@ get_header(); ?>
 						</section>
 						<section id="share">
 							<span>Share.</span><br>
-							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo urlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
 							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><i class="fa fa-hatena"></i></a>
 						</section>
 						<section id="comments">
