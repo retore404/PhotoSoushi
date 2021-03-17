@@ -203,3 +203,15 @@ function photo_soushi_enque_styles() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );
+
+/**
+ * WebPファイルの許可
+ *
+ * @param array $mimes 許可するmimesの配列.
+ * @return array $mimes 許可するmimesの配列(カスタムで許可するmimes追加済).
+ */
+function permit_mime_types( $mimes ) {
+	$mimes['webp'] = 'image/webp';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'permit_mime_types' );
