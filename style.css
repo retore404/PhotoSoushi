@@ -4,7 +4,7 @@ Theme URI: https://github.com/retore404/PhotoSoushi
 Author: retore
 Author URI: https://github.com/retore404
 Description: 写真×雑記のブログでの使用に適するWordPressテーマ
-Version: 6.0
+Version: 6.1
 Text Domain: photosoushi
 */
 
@@ -39,10 +39,10 @@ a:visited{
 a:hover {
     opacity: 0.5;
 }
-a > article {
+a > section.post-each {
     color: #191919;
 }
-a > article:hover {
+a > section.post-each:hover {
     opacity: 0.5;
     text-decoration: none;
     color: #191919;
@@ -231,12 +231,6 @@ ul.page-numbers li{
     display: inline;
 }
 
-/* タグクラウド */
-.tagcloud a {
-    font-size: 0.875em !important;
-    display: block;
-    margin-left: 1em;
-}
 
 
 /******** 個別記事ページ(single.php) ********/
@@ -244,7 +238,7 @@ ul.page-numbers li{
 p {
     font-size: 0.95em;
 }
-.wrapper > p {
+.grid-container-article > p {
     text-align: justify;
     letter-spacing: 0.01em;
 }
@@ -337,4 +331,17 @@ blockquote > P {
 #comment-form {
     padding-top: 1em;
     padding-bottom: 1em;
+}
+
+/******** 共通フッタ(footer.php) ********/
+/* フォントサイズ */
+.widget > ul > li {
+    font-size: 0.875em !important;
+}
+
+/* タグクラウド */
+.tagcloud a {
+    font-size: 0.875em !important;
+    display: block;
+    margin-left: 1em;
 }
