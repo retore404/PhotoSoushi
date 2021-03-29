@@ -12,7 +12,7 @@
 /**
  * テーマ設定をメニューに追加.
  */
-function add_mytheme_menu() {
+function add_photo_soushi_theme_menu() {
 	add_menu_page(
 		'テーマ設定',
 		'テーマ設定',
@@ -34,7 +34,7 @@ function register_photo_soushi_theme_settings() {
 }
 
 if ( is_admin() ) {
-	add_action( 'admin_menu', 'add_mytheme_menu' );
+	add_action( 'admin_menu', 'add_photo_soushi_theme_menu' );
 	add_action( 'admin_init', 'register_photo_soushi_theme_settings' );
 }
 
