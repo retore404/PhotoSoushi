@@ -216,18 +216,5 @@ function permit_mime_types( $mimes ) {
 }
 add_filter( 'upload_mimes', 'permit_mime_types' );
 
-/**
- * テーマ設定の追加
- */
-function photo_soushi_theme_option() {
-  add_options_page( 'テーマ設定', 'テーマ設定', 'edit_themes','theme_option','photo_soushi_theme_option_file' );
-}
-add_action('admin_menu', 'photo_soushi_theme_option');
-
-/**
- * テーマ設定ページの定義
- */
-function photo_soushi_theme_option_file(){
-    require_once ( get_template_directory() . '/theme-options.php' );
-}
-add_action('admin_init', 'photo_soushi_theme_option_file' );
+// テーマオプションを読み込みます。
+require_once ( get_stylesheet_directory() . '/theme-options.php' );
