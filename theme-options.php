@@ -53,6 +53,11 @@ function sanitize_photo_soushi_theme_options( $options ) {
 		$new_options['setting_ex1'] = sanitize_text_field( $options['setting_ex1'] );
 	}
 
+	// タグ置き換え設定のサニタイズ.
+	if ( isset( $options['setting_tag_replace'] ) ) {
+		$new_options['setting_tag_replace'] = sanitize_text_field( $options['setting_tag_replace'] );
+	}
+
 	return $new_options;
 }
 
@@ -74,7 +79,18 @@ function create_mytheme_settings_page() { ?>
 						<input type="text" name="photo_soushi_theme_options[setting_ex1]" value="<?php echo esc_attr( $option ); ?>">
 					</td>
 				</tr>
-			</table>  
+			</table>
+			<h2>タグ置き換え設定</h2>			
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">タグ置き換え</th>
+					<td>
+						<?php $option_tag_replace = isset( $options['setting_tag_replace'] ) ? esc_attr( $options['setting_tag_replace'] ) : 'OFF'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace]" value="ON" <?php checked( $option_tag_replace, 'ON' ); ?>> ON
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace]" value="OFF" <?php checked( $option_tag_replace, 'OFF' ); ?>> OFF
+					</td>
+				</tr>
+			</table>
 		<?php submit_button(); ?>  
 		</form>
 	</div>

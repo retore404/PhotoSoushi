@@ -172,12 +172,22 @@ add_filter(
  * @return string $tag_name タグ名（アイコン置き換え後）.
  */
 function replace_tag_name( $tag_name ) {
-	// タグ名の"Lens:"をアイコンに置き換える.
-	$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
-	// タグ名の"Location:"をアイコンに置き換える.
-	$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
-	// タグ名の"T*"を赤字にする.
-	$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
+	// 設定値の読み込み（タグ置き換え設定）.
+	$options = get_option( 'photo_soushi_theme_options' );
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する.
+	// undefinedの場合，"NO"とみなす.
+	$option = isset( $options['setting_tag_replace'] ) ? $options['setting_tag_replace'] : 'NO';
+
+	// テーマ設定において，タグ置き換えがTrueである場合，タグの置換を実施する.
+	if ( 'ON' === $option ) {
+		// タグ名の"Lens:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
+		// タグ名の"Location:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
+		// タグ名の"T*"を赤字にする.
+		$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
+
+	}
 	return $tag_name;
 }
 
@@ -216,5 +226,5 @@ function permit_mime_types( $mimes ) {
 }
 add_filter( 'upload_mimes', 'permit_mime_types' );
 
-// テーマオプションを読み込みます。
-require_once ( get_stylesheet_directory() . '/theme-options.php' );
+// テーマオプションを読み込み.
+require_once get_stylesheet_directory() . '/theme-options.php';
