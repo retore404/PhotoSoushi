@@ -174,20 +174,31 @@ add_filter(
 function replace_tag_name( $tag_name ) {
 	// 設定値の読み込み（タグ置き換え設定）.
 	$options = get_option( 'photo_soushi_theme_options' );
-	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する.
-	// undefinedの場合，"NO"とみなす.
-	$option = isset( $options['setting_tag_replace'] ) ? $options['setting_tag_replace'] : 'NO';
 
-	// テーマ設定において，タグ置き換えがTrueである場合，タグの置換を実施する.
-	if ( 'ON' === $option ) {
+	// テーマ設定において，タグ置き換え（レンズ）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
+	if ( 'ON' === $option_lens_icon_replace ) {
 		// タグ名の"Lens:"をアイコンに置き換える.
 		$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
-		// タグ名の"Location:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
+	}
+
+	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_tstar_replace = isset( $options['setting_tag_replace_tstar'] ) ? $options['setting_tag_replace_tstar'] : 'ON';
+	if ( 'ON' === $option_tstar_replace ) {
 		// タグ名の"T*"を赤字にする.
 		$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
-
 	}
+
+	// テーマ設定において，タグ置き換え（Location）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_location_icon_replace = isset( $options['setting_tag_replace_location'] ) ? $options['setting_tag_replace_location'] : 'ON';
+	if ( 'ON' === $option_location_icon_replace ) {
+		// タグ名の"Location:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
+	}
+
 	return $tag_name;
 }
 

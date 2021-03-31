@@ -45,7 +45,6 @@ if ( is_admin() ) {
  * @return array $options PhotoSoushiテーマオプションの設定値を持つ配列(サニタイズ済).
  */
 function sanitize_photo_soushi_theme_options( $options ) {
-
 	$new_options = array();
 
 	// 設定値例1のサニタイズ.
@@ -53,9 +52,19 @@ function sanitize_photo_soushi_theme_options( $options ) {
 		$new_options['setting_ex1'] = sanitize_text_field( $options['setting_ex1'] );
 	}
 
-	// タグ置き換え設定のサニタイズ.
-	if ( isset( $options['setting_tag_replace'] ) ) {
-		$new_options['setting_tag_replace'] = sanitize_text_field( $options['setting_tag_replace'] );
+	// タグ置き換え設定の（レンズ）サニタイズ.
+	if ( isset( $options['setting_tag_replace_lens'] ) ) {
+		$new_options['setting_tag_replace_lens'] = sanitize_text_field( $options['setting_tag_replace_lens'] );
+	}
+
+	// タグ置き換え設定（T*）のサニタイズ.
+	if ( isset( $options['setting_tag_replace_tstar'] ) ) {
+		$new_options['setting_tag_replace_tstar'] = sanitize_text_field( $options['setting_tag_replace_tstar'] );
+	}
+
+	// タグ置き換え設定（Location）のサニタイズ.
+	if ( isset( $options['setting_tag_replace_location'] ) ) {
+		$new_options['setting_tag_replace_location'] = sanitize_text_field( $options['setting_tag_replace_location'] );
 	}
 
 	return $new_options;
@@ -83,11 +92,27 @@ function create_mytheme_settings_page() { ?>
 			<h2>タグ置き換え設定</h2>			
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row">タグ置き換え</th>
+					<th scope="row">"Lens:" のアイコン置き換え</th>
 					<td>
-						<?php $option_tag_replace = isset( $options['setting_tag_replace'] ) ? esc_attr( $options['setting_tag_replace'] ) : 'OFF'; ?>
-						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace]" value="ON" <?php checked( $option_tag_replace, 'ON' ); ?>> ON
-						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace]" value="OFF" <?php checked( $option_tag_replace, 'OFF' ); ?>> OFF
+						<?php $option_tag_replace_lens = isset( $options['setting_tag_replace_lens'] ) ? esc_attr( $options['setting_tag_replace_lens'] ) : 'ON'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_lens]" value="ON" <?php checked( $option_tag_replace_lens, 'ON' ); ?>> ON
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_lens]" value="OFF" <?php checked( $option_tag_replace_lens, 'OFF' ); ?>> OFF
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">"T*" の赤字化</th>
+					<td>
+						<?php $option_tag_replace_tstar = isset( $options['setting_tag_replace_tstar'] ) ? esc_attr( $options['setting_tag_replace_tstar'] ) : 'ON'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_tstar]" value="ON" <?php checked( $option_tag_replace_tstar, 'ON' ); ?>> ON
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_tstar]" value="OFF" <?php checked( $option_tag_replace_tstar, 'OFF' ); ?>> OFF
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">"Location:" のアイコン化</th>
+					<td>
+						<?php $option_tag_replace_location = isset( $options['setting_tag_replace_location'] ) ? esc_attr( $options['setting_tag_replace_location'] ) : 'ON'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_location]" value="ON" <?php checked( $option_tag_replace_location, 'ON' ); ?>> ON
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_location]" value="OFF" <?php checked( $option_tag_replace_location, 'OFF' ); ?>> OFF
 					</td>
 				</tr>
 			</table>
