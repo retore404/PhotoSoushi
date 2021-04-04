@@ -47,11 +47,6 @@ if ( is_admin() ) {
 function sanitize_photo_soushi_theme_options( $options ) {
 	$new_options = array();
 
-	// 設定値例1のサニタイズ.
-	if ( isset( $options['setting_ex1'] ) ) {
-		$new_options['setting_ex1'] = sanitize_text_field( $options['setting_ex1'] );
-	}
-
 	// タグ置き換え設定の（レンズ）サニタイズ.
 	if ( isset( $options['setting_tag_replace_lens'] ) ) {
 		$new_options['setting_tag_replace_lens'] = sanitize_text_field( $options['setting_tag_replace_lens'] );
@@ -80,15 +75,6 @@ function create_mytheme_settings_page() { ?>
 			<?php settings_fields( 'photo_soushi_theme_options_group' ); ?>
 			<?php do_settings_sections( 'photo_soushi_theme_options_group' ); ?>
 			<?php $options = get_option( 'photo_soushi_theme_options' ); ?>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row">設定値例1</th>
-					<td>
-						<?php $option = isset( $options['setting_ex1'] ) ? esc_attr( $options['setting_ex1'] ) : ''; ?>
-						<input type="text" name="photo_soushi_theme_options[setting_ex1]" value="<?php echo esc_attr( $option ); ?>">
-					</td>
-				</tr>
-			</table>
 			<h2>タグ置き換え設定</h2>			
 			<table class="form-table">
 				<tr valign="top">
