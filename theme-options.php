@@ -15,10 +15,10 @@
 function add_photo_soushi_theme_menu() {
 	add_menu_page(
 		'テーマ設定',
-		'テーマ設定',
+		'PhotoSoushiテーマ設定',
 		'manage_options',
-		'mytheme-settings',
-		'create_mytheme_settings_page'
+		'photo-soushi-theme-settings',
+		'create_photo_soushi_theme_settings_page'
 	);
 }
 
@@ -73,7 +73,7 @@ function sanitize_photo_soushi_theme_options( $options ) {
 /**
  * テーマ設定ページ描画.
  */
-function create_mytheme_settings_page() { ?>
+function create_photo_soushi_theme_settings_page() { ?>
 	<div class="wrap">  
 		<h1>テーマ設定</h1>  
 		<form method="post" action="options.php">  
