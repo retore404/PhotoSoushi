@@ -202,6 +202,24 @@ function replace_tag_name( $tag_name ) {
 	return $tag_name;
 }
 
+
+
+/**
+ * 月別アーカイブページヘッダ部の年・月表示フォーマットオプションの取得関数.
+ *
+ * @return string $ym_format 年・月表示フォーマット
+ */
+function get_photo_soushi_ym_format() {
+	// テーマ設定の読み込み.
+	$options = get_option( 'photo_soushi_theme_options' );
+
+	// テーマ設定における年・月表示フォーマットを取得.
+	// 設定値がundefined(初回設定前)の場合，"M. Y"とみなす.
+	$ym_format = isset( $options['setting_ym_format'] ) ? $options['setting_ym_format'] : 'M. Y';
+
+	return $ym_format;
+}
+
 /**
  * CSSの読み込み.
  */

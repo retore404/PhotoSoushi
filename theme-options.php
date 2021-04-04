@@ -62,6 +62,11 @@ function sanitize_photo_soushi_theme_options( $options ) {
 		$new_options['setting_tag_replace_location'] = sanitize_text_field( $options['setting_tag_replace_location'] );
 	}
 
+	// 年・月表示フォーマット設定のサニタイズ.
+	if ( isset( $options['setting_ym_format'] ) ) {
+		$new_options['setting_ym_format'] = sanitize_text_field( $options['setting_ym_format'] );
+	}
+
 	return $new_options;
 }
 
@@ -99,6 +104,17 @@ function create_mytheme_settings_page() { ?>
 						<?php $option_tag_replace_location = isset( $options['setting_tag_replace_location'] ) ? esc_attr( $options['setting_tag_replace_location'] ) : 'ON'; ?>
 						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_location]" value="ON" <?php checked( $option_tag_replace_location, 'ON' ); ?>> ON
 						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_location]" value="OFF" <?php checked( $option_tag_replace_location, 'OFF' ); ?>> OFF
+					</td>
+				</tr>
+			</table>
+			<h2>月別アーカイブページヘッダ部の年・月表示フォーマット設定</h2>
+			<table class="form-table">
+				<tr>
+					<th scope="row">年・月表示フォーマット</th>
+					<td>
+						<?php $option_ym_format = isset( $options['setting_ym_format'] ) ? esc_attr( $options['setting_ym_format'] ) : 'M. Y'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_ym_format]" value="M. Y" <?php checked( $option_ym_format, 'M. Y' ); ?>> "M. Y" (e.g. Apr. 2021)　
+						<input type="radio" name="photo_soushi_theme_options[setting_ym_format]" value="Y-m" <?php checked( $option_ym_format, 'Y-m' ); ?>> "Y-m" (e.g. 2021-04)
 					</td>
 				</tr>
 			</table>
