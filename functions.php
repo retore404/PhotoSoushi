@@ -240,6 +240,33 @@ function photo_soushi_enque_styles() {
 		'1.0.0',
 		'all'
 	);
+	// 設定画面におけるダークモード設定の読み込み.
+	// テーマ設定の読み込み.
+	$options = get_option( 'photo_soushi_theme_options' );
+	// 初回設定前は'Light'（デフォルト）とみなす.
+	$theme_color_option = isset( $options['setting_dark_theme'] ) ? $options['setting_dark_theme'] : 'Light';
+
+	// テーマ設定においてダークモードを指定しているとき，PhotoSoushi style-dark-theme.cssを読み込む.
+	if ( 'Dark' === $theme_color_option ) {
+		wp_enqueue_style(
+			'photo-soushi-dark-theme-css',
+			get_stylesheet_directory_uri() . '/style-dark-theme.css',
+			array(),
+			'1.0.0',
+			'all'
+		);
+	}
+
+	// テーマ設定においてクライアント設定依存を指定しているとき，PhotoSoushi style-dark-theme-prefers.cssを読み込む.
+	if ( 'Prefers' === $theme_color_option ) {
+		wp_enqueue_style(
+			'photo-soushi-dark-theme-css',
+			get_stylesheet_directory_uri() . '/style-dark-theme-prefers.css',
+			array(),
+			'1.0.0',
+			'all'
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );
 

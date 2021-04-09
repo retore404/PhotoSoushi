@@ -47,6 +47,11 @@ if ( is_admin() ) {
 function sanitize_photo_soushi_theme_options( $options ) {
 	$new_options = array();
 
+	// ダークテーマ設定のサニタイズ.
+	if ( isset( $options['setting_dark_theme'] ) ) {
+		$new_options['setting_dark_theme'] = sanitize_text_field( $options['setting_dark_theme'] );
+	}
+
 	// タグ置き換え設定の（レンズ）サニタイズ.
 	if ( isset( $options['setting_tag_replace_lens'] ) ) {
 		$new_options['setting_tag_replace_lens'] = sanitize_text_field( $options['setting_tag_replace_lens'] );
@@ -80,7 +85,20 @@ function create_photo_soushi_theme_settings_page() { ?>
 			<?php settings_fields( 'photo_soushi_theme_options_group' ); ?>
 			<?php do_settings_sections( 'photo_soushi_theme_options_group' ); ?>
 			<?php $options = get_option( 'photo_soushi_theme_options' ); ?>
-			<h2>タグ置き換え設定</h2>			
+			<h3>背景色設定</h3>
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">ダークモード設定</th>
+					<td>
+						<?php $option_dark_theme = isset( $options['setting_dark_theme'] ) ? esc_attr( $options['setting_dark_theme'] ) : 'Light'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Light" <?php checked( $option_dark_theme, 'Light' ); ?>> ライトモード（デフォルト）　
+						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Dark" <?php checked( $option_dark_theme, 'Dark' ); ?>> ダークモード　
+						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Prefers" <?php checked( $option_dark_theme, 'Prefers' ); ?>> クライアントの設定に従う　
+					</td>
+				</tr>
+			</table>
+
+			<h3>タグ置き換え設定</h3>			
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">"Lens:" のアイコン置き換え</th>
@@ -107,7 +125,7 @@ function create_photo_soushi_theme_settings_page() { ?>
 					</td>
 				</tr>
 			</table>
-			<h2>月別アーカイブページヘッダ部の年・月表示フォーマット設定</h2>
+			<h3>月別アーカイブページヘッダ部の年・月表示フォーマット設定</h3>
 			<table class="form-table">
 				<tr>
 					<th scope="row">年・月表示フォーマット</th>
