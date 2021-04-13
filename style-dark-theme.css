@@ -19,6 +19,11 @@ html {
     filter: invert(1) hue-rotate(180deg);
 }
 
+/* T*の赤字は再反転して元に戻す. */
+.t-star {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 /* 一覧ページサムネイル部分は再反転して元に戻す. */
 html .post-each-thumbnail{
     filter: invert(1) hue-rotate(180deg)!important;
