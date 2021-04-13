@@ -16,7 +16,7 @@ html {
 
 /* フォントの定義（全体） */
 body {
-    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,メイリオ,Meiryo,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
     color: #191919;
 }
 
@@ -139,8 +139,6 @@ ul {
 
 /******** 共通ヘッダ(header.php) ********/
 header {
-    padding-top: 0.7em;
-    padding-bottom: 0.7em;
     padding-left: 0em !important;
     border-bottom: solid 1px black;
     margin-top: 1em;
@@ -247,7 +245,8 @@ ul.page-numbers li{
 /******** 個別記事ページ(single.php) ********/
 /* 本文 */
 p {
-    font-size: 0.95em;
+    font-size: 0.97em;
+	line-height: 1.75;
 }
 .grid-container-article > p {
     text-align: justify;
@@ -266,8 +265,6 @@ p {
     font-weight: 500;
     width: 100%;
     font-size: min(calc(1.1rem + .6vw), 1.5em);
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
 }
 
 /* 個別記事カテゴリ・タグ */
