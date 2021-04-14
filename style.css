@@ -42,10 +42,10 @@ img {
 /* リンクスタイル */
 a {
     text-decoration: none;
-    color: #0d6efd;
+    color: #0066c0;
 }
 a:visited{
-    color: #0d6efd;
+    color: #0066c0;
 }
 a:hover {
     opacity: 0.5;
