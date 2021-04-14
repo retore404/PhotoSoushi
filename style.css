@@ -9,11 +9,6 @@ Text Domain: photosoushi
 */
 
 /******** 共通 ********/
-/* 背景色の定義 */
-html {
-	background-color: white;
-}
-
 /* フォントの定義（全体） */
 body {
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,メイリオ,Meiryo,sans-serif;

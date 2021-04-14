@@ -9,6 +9,11 @@
  */
 
 /*********** ダークテーマ用スタイル定義 ***********/
+/* 背景色の定義（反転前定義用ダミー） */
+html {
+	background-color: #ededed;
+}
+
 html {
     filter: invert(1) hue-rotate(180deg);
 }
