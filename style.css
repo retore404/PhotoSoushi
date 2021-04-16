@@ -9,11 +9,6 @@ Text Domain: photosoushi
 */
 
 /******** 共通 ********/
-/* 背景色の定義 */
-html {
-	background-color: white;
-}
-
 /* フォントの定義（全体） */
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
@@ -42,10 +37,10 @@ img {
 /* リンクスタイル */
 a {
     text-decoration: none;
-    color: #0d6efd;
+    color: #0066c0;
 }
 a:visited{
-    color: #0d6efd;
+    color: #0066c0;
 }
 a:hover {
     opacity: 0.5;
@@ -166,7 +161,7 @@ header {
 
 /* タグ修飾（T*） */
 .t-star {
-    color: red;
+    color: #fc3a44;
 }
 
 /* 一覧ページの各記事コンテナ */

@@ -9,6 +9,11 @@
  */
 
 /*********** ダークテーマ用スタイル定義 ***********/
+/* 背景色の定義（反転前定義用ダミー） */
+html {
+	background-color: #ededed;
+}
+
 html {
     filter: invert(1) hue-rotate(180deg);
 }
@@ -16,6 +21,11 @@ html {
 /*********** 反転対象外定義 ***********/
 /* 個別記事内画像は再反転して元に戻す. */
 .grid-container-article img{
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* T*の赤字は再反転して元に戻す. */
+.t-star {
     filter: invert(1) hue-rotate(180deg);
 }
 
