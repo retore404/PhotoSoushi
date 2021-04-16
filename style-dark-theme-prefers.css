@@ -10,7 +10,7 @@
 
 /*********** ダークテーマ用スタイル定義（クライアント環境依存） ***********/
 @media (prefers-color-scheme: dark) {
-	/* 背景色の定義（ダークモード反転前ダミー */
+	/* 背景色の定義（ダークモード反転前ダミー） */
 	html {
 		background-color: #ededed;
 	}
@@ -27,7 +27,7 @@
 
 	/* T*の赤字は再反転して元に戻す. */
 	.t-star {
-    	filter: invert(1) hue-rotate(180deg);
+		filter: invert(1) hue-rotate(180deg);
 	}
 
 	/* 一覧ページサムネイル部分は再反転して元に戻す. */
