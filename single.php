@@ -47,8 +47,8 @@ get_header(); ?>
 						</section>
 						<section id="share">
 							<span>Share.</span><br>
-							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><i class="fa fa-hatena"></i></a>
+							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank"><span class="ps-sns-icon-twitter"></span></a>
+							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><span class="ps-sns-icon-hatenabookmark"></span></a>
 						</section>
 						<section id="comments">
 							<?php
