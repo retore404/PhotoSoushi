@@ -51,6 +51,7 @@ get_header(); ?>
 							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><span class="ps-sns-icon-hatenabookmark"></span></a>
 							<a href="https://social-plugins.line.me/lineit/share?url=<?php the_permalink(); ?>" ><span class="ps-sns-icon-line"></span></a>
 							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" ><span class="ps-sns-icon-facebook"></span></a>
+							<a href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>" ><span class="ps-sns-icon-pinterest"></span></a>
 						</section>
 						<section id="comments">
 							<?php
