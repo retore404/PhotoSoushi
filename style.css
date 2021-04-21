@@ -284,12 +284,6 @@ blockquote > P {
     margin-top: 0;
 }
 
-/* シェアボタン（はてぶ用） */
-.fa-hatena:before {
-   content: "B!";
-   font-family: Verdana;
-   font-weight: bold;
-}
 
 /* 画像ブロック */
 .wp-block-image {
