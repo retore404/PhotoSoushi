@@ -284,6 +284,35 @@ blockquote > P {
     margin-top: 0;
 }
 
+/* シェアアイコン（共通） */
+.share-icon {
+	margin-right: 1.5em;
+}
+
+/* シェアアイコン（Twitter） */
+.ps-sns-icon-twitter::before {
+	font-size: 22px;
+}
+
+/* シェアアイコン（はてなブックマーク） */
+.ps-sns-icon-hatenabookmark::before {
+	font-size: 22px;
+}
+
+/* シェアアイコン（LINE） */
+.ps-sns-icon-line::before {
+	font-size: 22px;
+}
+
+/* シェアアイコン（Facebook） */
+.ps-sns-icon-facebook::before {
+	font-size: 22px;
+}
+
+/* シェアアイコン（Pinterest） */
+.ps-sns-icon-pinterest::before {
+	font-size: 22px;
+}
 
 /* 画像ブロック */
 .wp-block-image {
