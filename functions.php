@@ -160,7 +160,7 @@ add_filter(
 	'tiny_mce_before_init',
 	function( $init ) {
 		$init['wpautop']                 = false;
-		$init['apply_source_formatting'] = ture;
+		$init['apply_source_formatting'] = true;
 		return $init;
 	}
 );
@@ -172,13 +172,52 @@ add_filter(
  * @return string $tag_name タグ名（アイコン置き換え後）.
  */
 function replace_tag_name( $tag_name ) {
-	// タグ名の"Lens:"をアイコンに置き換える.
-	$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
-	// タグ名の"Location:"をアイコンに置き換える.
-	$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
-	// タグ名の"T*"を赤字にする.
-	$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
+	// 設定値の読み込み（タグ置き換え設定）.
+	$options = get_option( 'photo_soushi_theme_options' );
+
+	// テーマ設定において，タグ置き換え（レンズ）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
+	if ( 'ON' === $option_lens_icon_replace ) {
+		// タグ名の"Lens:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
+	}
+
+	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_tstar_replace = isset( $options['setting_tag_replace_tstar'] ) ? $options['setting_tag_replace_tstar'] : 'ON';
+	if ( 'ON' === $option_tstar_replace ) {
+		// タグ名の"T*"を赤字にする.
+		$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
+	}
+
+	// テーマ設定において，タグ置き換え（Location）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_location_icon_replace = isset( $options['setting_tag_replace_location'] ) ? $options['setting_tag_replace_location'] : 'ON';
+	if ( 'ON' === $option_location_icon_replace ) {
+		// タグ名の"Location:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
+	}
+
 	return $tag_name;
+}
+
+
+
+/**
+ * 月別アーカイブページヘッダ部の年・月表示フォーマットオプションの取得関数.
+ *
+ * @return string $ym_format 年・月表示フォーマット
+ */
+function get_photo_soushi_ym_format() {
+	// テーマ設定の読み込み.
+	$options = get_option( 'photo_soushi_theme_options' );
+
+	// テーマ設定における年・月表示フォーマットを取得.
+	// 設定値がundefined(初回設定前)の場合，"M. Y"とみなす.
+	$ym_format = isset( $options['setting_ym_format'] ) ? $options['setting_ym_format'] : 'M. Y';
+
+	return $ym_format;
 }
 
 /**
@@ -201,5 +240,47 @@ function photo_soushi_enque_styles() {
 		'1.0.0',
 		'all'
 	);
+	// 設定画面におけるダークモード設定の読み込み.
+	// テーマ設定の読み込み.
+	$options = get_option( 'photo_soushi_theme_options' );
+	// 初回設定前は'Light'（デフォルト）とみなす.
+	$theme_color_option = isset( $options['setting_dark_theme'] ) ? $options['setting_dark_theme'] : 'Light';
+
+	// テーマ設定においてダークモードを指定しているとき，PhotoSoushi style-dark-theme.cssを読み込む.
+	if ( 'Dark' === $theme_color_option ) {
+		wp_enqueue_style(
+			'photo-soushi-dark-theme-css',
+			get_stylesheet_directory_uri() . '/style-dark-theme.css',
+			array(),
+			'1.0.0',
+			'all'
+		);
+	}
+
+	// テーマ設定においてクライアント設定依存を指定しているとき，PhotoSoushi style-dark-theme-prefers.cssを読み込む.
+	if ( 'Prefers' === $theme_color_option ) {
+		wp_enqueue_style(
+			'photo-soushi-dark-theme-css',
+			get_stylesheet_directory_uri() . '/style-dark-theme-prefers.css',
+			array(),
+			'1.0.0',
+			'all'
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );
+
+/**
+ * WebPファイルの許可
+ *
+ * @param array $mimes 許可するmimesの配列.
+ * @return array $mimes 許可するmimesの配列(カスタムで許可するmimes追加済).
+ */
+function permit_mime_types( $mimes ) {
+	$mimes['webp'] = 'image/webp';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'permit_mime_types' );
+
+// テーマオプションを読み込み.
+require_once get_stylesheet_directory() . '/theme-options.php';

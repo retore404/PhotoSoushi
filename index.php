@@ -20,7 +20,7 @@ get_header(); ?>
 						Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
 					<!--開いている一覧ページが月別ページのとき-->
 					<?php elseif ( is_date() ) : ?>
-						Posts in  <?php echo esc_html( get_post_time( 'M. Y' ) ); ?>
+						Posts in  <?php echo esc_html( get_post_time( get_photo_soushi_ym_format() ) ); ?>
 					<!--開いている一覧ページがカテゴリ・タグ別ページ・月別アーカイブでない=普通の記事一覧のとき-->
 					<?php else : ?>
 						Posts.
