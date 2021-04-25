@@ -288,6 +288,7 @@ blockquote > P {
 .share-icon {
 	margin-right: 1.5em;
 	font-size: 22px;
+	color: gray!important;
 }
 
 
