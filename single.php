@@ -47,8 +47,12 @@ get_header(); ?>
 						</section>
 						<section id="share">
 							<span>Share.</span><br>
-							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank"><span class="ps-sns-icon-twitter"></span></a>
-							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank"><span class="ps-sns-icon-hatenabookmark"></span></a>
+							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-twitter"></span></a>
+							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-hatenabookmark"></span></a>
+							<a href="https://social-plugins.line.me/lineit/share?url=<?php the_permalink(); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-line"></span></a>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-facebook"></span></a>
+							<a href="https://getpocket.com/save?url=<?php the_permalink(); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-pocket"></span></a>
+							<a href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>" target="_blank" class="share-icon"><span class="ps-sns-icon-pinterest"></span></a>
 						</section>
 						<section id="comments">
 							<?php
