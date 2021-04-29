@@ -11,7 +11,7 @@
 
 get_header(); ?>
 			<section id="content-header">
-				<h3>
+				<h2>
 					<!--開いている一覧ページがカテゴリ別ページのとき-->
 					<?php if ( is_category() ) : ?>
 						Category: <?php single_cat_title(); ?>
@@ -25,7 +25,7 @@ get_header(); ?>
 					<?php else : ?>
 						Posts.
 					<?php endif; ?>
-				</h3>
+				</h2>
 			</section>
 			<?php if ( have_posts() ) : ?>
 			<section id="grid-container-index">

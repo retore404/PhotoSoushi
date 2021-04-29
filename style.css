@@ -22,7 +22,7 @@ body {
 }
 
 /* 見出し */
-h3 {
+h2 {
     font-weight: 400;
     font-size: min(calc(1.1rem + .6vw), 1.4em);
     margin-bottom: 0em;

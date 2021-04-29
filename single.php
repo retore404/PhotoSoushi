@@ -17,7 +17,7 @@ get_header(); ?>
 					?>
 					<article class="grid-container-article">
 						<span id="single-date"><?php echo get_the_date(); ?></span>
-						<h3 id="single-title"><?php the_title(); ?></h3>
+						<h2 id="single-title"><?php the_title(); ?></h2>
 						<!--自動補正ありの本文-->
 						<?php the_content(); ?>                    
 						<section id="single-article-info">
