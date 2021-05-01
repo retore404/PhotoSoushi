@@ -349,3 +349,13 @@ blockquote > P {
     display: block;
     margin-left: 1em;
 }
+
+/******** 検索フォーム(searchform.php) ********/
+/* ラベル定義(visually hidden定義) */
+#searchform_label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+}
