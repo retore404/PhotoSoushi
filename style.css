@@ -80,6 +80,15 @@ ul {
     margin-top: 0em;
 }
 
+/* ラベル(visually hidden定義) */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
 /******** Gridレイアウト定義 ********/
 /* rootグリッド */
 #grid-container-root{
@@ -348,14 +357,4 @@ blockquote > P {
     font-size: 0.875em !important;
     display: block;
     margin-left: 1em;
-}
-
-/******** 検索フォーム(searchform.php) ********/
-/* ラベル定義(visually hidden定義) */
-#searchform_label {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-	clip: rect(1px, 1px, 1px, 1px);
 }
