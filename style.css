@@ -22,7 +22,7 @@ body {
 }
 
 /* 見出し */
-h3 {
+h2 {
     font-weight: 400;
     font-size: min(calc(1.1rem + .6vw), 1.4em);
     margin-bottom: 0em;
@@ -78,6 +78,15 @@ hr {
 /* widget内リスト */
 ul {
     margin-top: 0em;
+}
+
+/* ラベル(visually hidden定義) */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
 }
 
 /******** Gridレイアウト定義 ********/
@@ -161,7 +170,7 @@ header {
 
 /* タグ修飾（T*） */
 .t-star {
-    color: #fc3a44;
+    color: #ee0606;
 }
 
 /* 一覧ページの各記事コンテナ */
@@ -301,7 +310,7 @@ blockquote > P {
     margin: 0em;
     text-align: right;
     font-size: 75%;
-    color: gray;
+    color: #757575;
 }
 
 /* 記事情報（カテゴリ・タグ部 */

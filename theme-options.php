@@ -23,7 +23,7 @@ function add_photo_soushi_theme_menu() {
 }
 
 /**
- * テーマ用の設定値を作成します.
+ * テーマ用の設定値を作成.
  */
 function register_photo_soushi_theme_settings() {
 	register_setting(
@@ -36,6 +36,7 @@ function register_photo_soushi_theme_settings() {
 if ( is_admin() ) {
 	add_action( 'admin_menu', 'add_photo_soushi_theme_menu' );
 	add_action( 'admin_init', 'register_photo_soushi_theme_settings' );
+	add_action( 'admin_menu', 'photo_soushi_enque_styles' ); // functions.phpに定義するスタイル読み込みを管理ページにおいても適用.
 }
 
 /**
@@ -91,9 +92,12 @@ function create_photo_soushi_theme_settings_page() { ?>
 					<th scope="row">ダークモード設定</th>
 					<td>
 						<?php $option_dark_theme = isset( $options['setting_dark_theme'] ) ? esc_attr( $options['setting_dark_theme'] ) : 'Light'; ?>
-						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Light" <?php checked( $option_dark_theme, 'Light' ); ?>> ライトモード（デフォルト）　
-						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Dark" <?php checked( $option_dark_theme, 'Dark' ); ?>> ダークモード　
-						<input type="radio" name="photo_soushi_theme_options[setting_dark_theme]" value="Prefers" <?php checked( $option_dark_theme, 'Prefers' ); ?>> クライアントの設定に従う　
+						<label for="setting_dark_theme_light" class="visually-hidden">ライトモード（デフォルト）　</label>
+						<input type="radio" id="setting_dark_theme_light" name="photo_soushi_theme_options[setting_dark_theme]" value="Light" <?php checked( $option_dark_theme, 'Light' ); ?>> ライトモード（デフォルト）　
+						<label for="setting_dark_theme_dark" class="visually-hidden">ダークモード　</label>
+						<input type="radio" id="setting_dark_theme_dark" name="photo_soushi_theme_options[setting_dark_theme]" value="Dark" <?php checked( $option_dark_theme, 'Dark' ); ?>> ダークモード　
+						<label for="setting_dark_theme_prefers" class="visually-hidden">クライアントの設定に従う　</label>
+						<input type="radio" id="setting_dark_theme_prefers" name="photo_soushi_theme_options[setting_dark_theme]" value="Prefers" <?php checked( $option_dark_theme, 'Prefers' ); ?>> クライアントの設定に従う　
 					</td>
 				</tr>
 			</table>
