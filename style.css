@@ -358,3 +358,13 @@ blockquote > P {
     display: block;
     margin-left: 1em;
 }
+
+/******** 検索フォーム(searchform.php) ********/
+.search-field-wrapper{
+	display: inline-block;
+	padding: 8px;
+}
+
+.search-field {
+	max-width: 100%;
+}
