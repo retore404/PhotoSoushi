@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'ps-icons';
   src:
-    url('fonts/ps-icons.ttf?if3cgz') format('truetype'),
-    url('fonts/ps-icons.woff?if3cgz') format('woff'),
-    url('fonts/ps-icons.svg?if3cgz#ps-icons') format('svg');
+    url('fonts/ps-icons.ttf?yndzh2') format('truetype'),
+    url('fonts/ps-icons.woff?yndzh2') format('woff'),
+    url('fonts/ps-icons.svg?yndzh2#ps-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ps-icon-search:before {
+  content: "\e903";
+}
 .ps-icon-camera:before {
   content: "\e900";
 }
