@@ -44,19 +44,6 @@ function disable_image_sizes( $new_sizes ) {
 add_filter( 'intermediate_image_sizes_advanced', 'disable_image_sizes' );
 add_filter( 'big_image_size_threshold', '__return_false' );
 
-/**
- * 画像のwidth/height自動指定を除去.
- *
- * @param string $html サムネイルのhtml.
- * @return string $html サムネイルのhtml(width/heightの指定削除).
- */
-function remove_width_attribute( $html ) {
-	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
-	return $html;
-}
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応.
 
 /**
  * タイトルタグを自動生成.
