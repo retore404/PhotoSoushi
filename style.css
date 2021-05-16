@@ -208,6 +208,10 @@ header {
     bottom: 0;
     right: 0;
 }
+.post-each-thumbnail img {
+	width: 100%;
+	height: auto;
+}
 
 /* 一覧ページ各記事部投稿日 */
 .post-date {
@@ -247,6 +251,12 @@ ul.page-numbers li{
 
 
 /******** 個別記事ページ(single.php) ********/
+/* 画像サイズ指定 */
+.grid-container-article img {
+	width: 100%;
+	height: auto;
+}
+
 /* 本文 */
 p {
     font-size: 0.97em;

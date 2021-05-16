@@ -38,7 +38,8 @@ get_header(); ?>
 							<section class="post-each">
 								<div class="post-each-thumbnail-wrapper">
 									<div class="post-each-thumbnail">
-										<img src="<?php echo esc_url( catch_first_image() ); ?>" alt="<?php the_title(); ?>"  class="hover" />
+										<!--レイアウトシフト防止のためwidth/height属性を指定しブラウザにアスペクト比を通知.当面3:2前提の記載. -->
+										<img src="<?php echo esc_url( catch_first_image() ); ?>" alt="<?php the_title(); ?>"  class="hover" width="6000" height="4000" />
 									</div>
 								</div>
 								<span class="post-date"><?php echo get_the_date( 'Y-m-d' ); ?></span><br>
