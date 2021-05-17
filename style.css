@@ -89,6 +89,11 @@ ul {
 	clip: rect(1px, 1px, 1px, 1px);
 }
 
+/* Webフォントの上下揃え調整 */
+.ps-icon {
+	vertical-align: -2px;
+}
+
 /******** Gridレイアウト定義 ********/
 /* rootグリッド */
 #grid-container-root{

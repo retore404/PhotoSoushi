@@ -167,7 +167,7 @@ function replace_tag_name( $tag_name ) {
 	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
 	if ( 'ON' === $option_lens_icon_replace ) {
 		// タグ名の"Lens:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Lens:', '<span class="ps-icon-camera"></span> ', $tag_name );
+		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
 	}
 
 	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
@@ -183,7 +183,7 @@ function replace_tag_name( $tag_name ) {
 	$option_location_icon_replace = isset( $options['setting_tag_replace_location'] ) ? $options['setting_tag_replace_location'] : 'ON';
 	if ( 'ON' === $option_location_icon_replace ) {
 		// タグ名の"Location:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Location:', '<span class="ps-icon-pin"></span> ', $tag_name );
+		$tag_name = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_name );
 	}
 
 	return $tag_name;
