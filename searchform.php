@@ -13,7 +13,7 @@
 
 <form role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label for="s" class="visually-hidden">Search: </label>
-	<h3>Search.</h3>
+	<h2>Search.</h2>
 	<section class="search-field-wrapper">
 		<span class="ps-icon-search"></span>
 		<input type="text" value="" placeholder="Search." name="s" id="s" class="search-field" />
