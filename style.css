@@ -11,8 +11,8 @@ Text Domain: photosoushi
 /******** 共通 ********/
 /* フォントの定義（全体） */
 body {
-    font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
-    color: #191919;
+	font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
+	color: #191919;
 }
 
 /* overflow-wrapの指定. 表示範囲に収まらない連続した文字列を改行させる. */
@@ -23,10 +23,10 @@ body {
 
 /* 見出し */
 h2 {
-    font-weight: 400;
-    font-size: min(calc(1.1rem + .6vw), 1.4em);
-    margin-bottom: 0em;
-    margin-top: 0em;
+	font-weight: 400;
+	font-size: min(calc(1.1rem + .6vw), 1.4em);
+	margin-bottom: 0em;
+	margin-top: 0em;
 }
 
 /* 画像 */
@@ -264,7 +264,7 @@ ul.page-numbers li{
 
 /* 本文 */
 p {
-    font-size: 0.97em;
+	font-size: 0.97em;
 	line-height: 1.75;
 }
 .grid-container-article > p {
