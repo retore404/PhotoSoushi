@@ -58,9 +58,11 @@ a > section.post-each:hover {
 hr {
     border-width: 1px 0px 0px 0px;
     border-style: solid;
-    width: 100%;
+    width: 33%;
     height: 1px;
     color: #808080;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
 }
 
 /* widgetラッパー */
@@ -331,6 +333,7 @@ blockquote > P {
 /* 記事情報（カテゴリ・タグ部 */
 #single-article-info {
     border-top: solid 1px #808080;
+    margin-top: 1em;
     padding-top: 1em;
     padding-bottom: 1em;
 }
