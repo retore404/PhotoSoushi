@@ -4,15 +4,15 @@ Theme URI: https://github.com/retore404/PhotoSoushi
 Author: retore
 Author URI: https://github.com/retore404
 Description: 写真×雑記のブログでの使用に適するWordPressテーマ
-Version: 6.2
+Version: 6.3
 Text Domain: photosoushi
 */
 
 /******** 共通 ********/
 /* フォントの定義（全体） */
 body {
-    font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
-    color: #191919;
+	font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic Medium","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
+	color: #191919;
 }
 
 /* overflow-wrapの指定. 表示範囲に収まらない連続した文字列を改行させる. */
@@ -22,11 +22,11 @@ body {
 }
 
 /* 見出し */
-h3 {
-    font-weight: 400;
-    font-size: min(calc(1.1rem + .6vw), 1.4em);
-    margin-bottom: 0em;
-    margin-top: 0em;
+h2 {
+	font-weight: 400;
+	font-size: min(calc(1.1rem + .6vw), 1.4em);
+	margin-bottom: 0em;
+	margin-top: 0em;
 }
 
 /* 画像 */
@@ -78,6 +78,20 @@ hr {
 /* widget内リスト */
 ul {
     margin-top: 0em;
+}
+
+/* ラベル(visually hidden定義) */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Webフォントの上下揃え調整 */
+.ps-icon {
+	vertical-align: -2px;
 }
 
 /******** Gridレイアウト定義 ********/
@@ -161,7 +175,7 @@ header {
 
 /* タグ修飾（T*） */
 .t-star {
-    color: #fc3a44;
+    color: #ee0606;
 }
 
 /* 一覧ページの各記事コンテナ */
@@ -198,6 +212,10 @@ header {
     left: 0;
     bottom: 0;
     right: 0;
+}
+.post-each-thumbnail img {
+	width: 100%;
+	height: auto;
 }
 
 /* 一覧ページ各記事部投稿日 */
@@ -238,9 +256,15 @@ ul.page-numbers li{
 
 
 /******** 個別記事ページ(single.php) ********/
+/* 画像サイズ指定 */
+.grid-container-article img {
+	width: 100%;
+	height: auto;
+}
+
 /* 本文 */
 p {
-    font-size: 0.97em;
+	font-size: 0.97em;
 	line-height: 1.75;
 }
 .grid-container-article > p {
@@ -284,12 +308,13 @@ blockquote > P {
     margin-top: 0;
 }
 
-/* シェアボタン（はてぶ用） */
-.fa-hatena:before {
-   content: "B!";
-   font-family: Verdana;
-   font-weight: bold;
+/* シェアアイコン（共通） */
+.share-icon {
+	margin-right: 1.5em;
+	font-size: 22px;
+	color: gray!important;
 }
+
 
 /* 画像ブロック */
 .wp-block-image {
@@ -300,7 +325,7 @@ blockquote > P {
     margin: 0em;
     text-align: right;
     font-size: 75%;
-    color: gray;
+    color: #757575;
 }
 
 /* 記事情報（カテゴリ・タグ部 */
@@ -347,4 +372,14 @@ blockquote > P {
     font-size: 0.875em !important;
     display: block;
     margin-left: 1em;
+}
+
+/******** 検索フォーム(searchform.php) ********/
+.search-field-wrapper{
+	display: inline-block;
+	padding: 8px;
+}
+
+.search-field {
+	max-width: 100%;
 }

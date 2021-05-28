@@ -44,19 +44,6 @@ function disable_image_sizes( $new_sizes ) {
 add_filter( 'intermediate_image_sizes_advanced', 'disable_image_sizes' );
 add_filter( 'big_image_size_threshold', '__return_false' );
 
-/**
- * 画像のwidth/height自動指定を除去.
- *
- * @param string $html サムネイルのhtml.
- * @return string $html サムネイルのhtml(width/heightの指定削除).
- */
-function remove_width_attribute( $html ) {
-	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
-	return $html;
-}
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-add_filter( 'wp_img_tag_add_width_and_height_attr', '__return_false' ); // Gutenberg対応.
 
 /**
  * タイトルタグを自動生成.
@@ -81,8 +68,8 @@ register_sidebar(
 		'id'            => 'main_widget1',
 		'before_widget' => '<div class="widget-wrapper">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
 	)
 );
 
@@ -92,8 +79,8 @@ register_sidebar(
 		'id'            => 'footer_widget1',
 		'before_widget' => '<div class="widget">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
 	)
 );
 
@@ -103,8 +90,8 @@ register_sidebar(
 		'id'            => 'footer_widget2',
 		'before_widget' => '<div class="widget">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
 	)
 );
 
@@ -180,7 +167,7 @@ function replace_tag_name( $tag_name ) {
 	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
 	if ( 'ON' === $option_lens_icon_replace ) {
 		// タグ名の"Lens:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Lens:', '<i class="fas fa-camera"></i> ', $tag_name );
+		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
 	}
 
 	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
@@ -196,7 +183,7 @@ function replace_tag_name( $tag_name ) {
 	$option_location_icon_replace = isset( $options['setting_tag_replace_location'] ) ? $options['setting_tag_replace_location'] : 'ON';
 	if ( 'ON' === $option_location_icon_replace ) {
 		// タグ名の"Location:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Location:', '<i class="fas fa-map-marker-alt"></i> ', $tag_name );
+		$tag_name = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_name );
 	}
 
 	return $tag_name;
@@ -224,14 +211,6 @@ function get_photo_soushi_ym_format() {
  * CSSの読み込み.
  */
 function photo_soushi_enque_styles() {
-	// FontAwesomeの読み込み.
-	wp_enqueue_style(
-		'font-awesome',
-		'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
-		array(),
-		'1.0.0',
-		'all'
-	);
 	// PhotoSoushi style.cssの読み込み.
 	wp_enqueue_style(
 		'photo-soushi-css',
@@ -240,6 +219,25 @@ function photo_soushi_enque_styles() {
 		'1.0.0',
 		'all'
 	);
+
+	// アイコン(ps-icons)の読み込み.
+	wp_enqueue_style(
+		'photo-soushi-icons',
+		get_stylesheet_directory_uri() . '/webfont/ps-icons/style.css',
+		array(),
+		'1.0.0',
+		'all'
+	);
+
+	// アイコン(ps-sns-icons)の読み込み.
+	wp_enqueue_style(
+		'photo-soushi-sns-icons',
+		get_stylesheet_directory_uri() . '/webfont/ps-sns-icons/style.css',
+		array(),
+		'1.0.0',
+		'all'
+	);
+
 	// 設定画面におけるダークモード設定の読み込み.
 	// テーマ設定の読み込み.
 	$options = get_option( 'photo_soushi_theme_options' );
