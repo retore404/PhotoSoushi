@@ -34,7 +34,7 @@ get_header(); ?>
 									<?php
 									$tags_array = get_the_tags(); // 表示中の記事のタグの配列を取得.
 									if ( $tags_array ) { // タグが存在するとき.
-										$tag_str = 'Tag(s): '; // 表示用の文字列.
+										$tag_str = 'Tag(s):<br>'; // 表示用の文字列.
 										foreach ( $tags_array as $t ) {
 											$tag_str = $tag_str . '<a href="' . get_tag_link( $t->term_id ) . '">' . replace_tag_name( $t->name ) . '</a>, ';
 										}
