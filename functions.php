@@ -167,7 +167,7 @@ function replace_tag_name( $tag_name ) {
 	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
 	if ( 'ON' === $option_lens_icon_replace ) {
 		// タグ名の"Lens:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
+		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_name );
 	}
 
 	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
