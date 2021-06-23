@@ -162,6 +162,14 @@ function replace_tag_name( $tag_name ) {
 	// 設定値の読み込み（タグ置き換え設定）.
 	$options = get_option( 'photo_soushi_theme_options' );
 
+	// テーマ設定において，タグ置き換え（カメラ）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_camera_icon_replace = isset( $options['setting_tag_replace_camera'] ) ? $options['setting_tag_replace_camera'] : 'ON';
+	if ( 'ON' === $option_camera_icon_replace ) {
+		// タグ名の"Camera:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
+	}
+
 	// テーマ設定において，タグ置き換え（レンズ）が"ON"である場合，タグの置換を実施する.
 	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
 	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
