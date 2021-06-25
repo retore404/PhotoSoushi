@@ -290,3 +290,24 @@ add_filter( 'upload_mimes', 'permit_mime_types' );
 
 // テーマオプションを読み込み.
 require_once get_stylesheet_directory() . '/theme-options.php';
+
+/**
+ * ページタイトルのカスタマイズ
+ * 
+ *  @param string title ページタイトル(カスタマイズ前).
+ *  @return string title ページタイトル(カスタマイズ後).
+ */
+function wp_customize_title( $title ){
+	if (is_paged() or is_category()){
+		global $wp_query;
+		$current_page = get_query_var( 'paged' );
+		if ($current_page === 0){
+			$current_page = $current_page+1;
+		}
+		$max_pages = $wp_query->max_num_pages;
+		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
+	}
+	return $title;
+}
+// wp_customize_titleのフィルター追加
+add_filter( 'document_title_parts', 'wp_customize_title' );
