@@ -14,6 +14,8 @@ jobs:
           run: |
             composer global require wp-coding-standards/wpcs
             /home/runner/.composer/vendor/bin/phpcs --config-set installed_paths /home/runner/.composer/vendor/wp-coding-standards/wpcs
-        - name: check coding
+        - name: check PHP files
           run: /home/runner/.composer/vendor/bin/phpcs --standard=WordPress ./*.php
+        - name: check CSS files
+          run: /home/runner/.composer/vendor/bin/phpcs --standard=WordPress ./*.css
 
