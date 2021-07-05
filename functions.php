@@ -48,15 +48,23 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 /**
  * タイトルタグを自動生成.
  *
- * @param array $results タイトルタグの内容配列.
- * @return array $results タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
+ * @param array $title タイトルタグの内容配列.
+ * @return array $title タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
  */
-function custom_title_text( $results ) {
+function custom_title_text( $title ) {
 	if ( is_home() ) {
-		$results['tagline'] = '';
+		$title['tagline'] = '';
+	} else if ( is_paged() || is_category() ) {
+		global $wp_query;
+		$current_page = get_query_var( 'paged' );
+		if ( 0 === $current_page ) {
+			$current_page = ++$current_page;
+		}
+		$max_pages      = $wp_query->max_num_pages;
+		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
 	}
-	$results['page'] = '';
-	return $results;
+	$title['page'] = '';
+	return $title;
 }
 add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
@@ -290,24 +298,3 @@ add_filter( 'upload_mimes', 'permit_mime_types' );
 
 // テーマオプションを読み込み.
 require_once get_stylesheet_directory() . '/theme-options.php';
-
-/**
- * ページタイトルのカスタマイズ
- *
- *  @param string $title ページタイトル(カスタマイズ前).
- *  @return string $title ページタイトル(カスタマイズ後).
- */
-function wp_customize_title( $title ) {
-	if ( is_paged() || is_category() ) {
-		global $wp_query;
-		$current_page = get_query_var( 'paged' );
-		if ( 0 === $current_page ) {
-			$current_page = ++$current_page;
-		}
-		$max_pages      = $wp_query->max_num_pages;
-		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
-	}
-	return $title;
-}
-// wp_customize_titleのフィルター追加.
-add_filter( 'document_title_parts', 'wp_customize_title' );
