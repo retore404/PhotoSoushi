@@ -54,7 +54,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 function custom_title_text( $title ) {
 	if ( is_home() ) {
 		$title['tagline'] = '';
-	} else if ( is_paged() || is_category() ) {
+	} elseif ( is_paged() || is_category() ) {
 		global $wp_query;
 		$current_page = get_query_var( 'paged' );
 		if ( 0 === $current_page ) {
