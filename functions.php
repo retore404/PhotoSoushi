@@ -64,7 +64,7 @@ function custom_title_text( $title ) {
 	}
 	// タグラインとページ番号は表示しない（ページ番号はタイトル文字列に挿入し，個別の表記は停止）.
 	$title['tagline'] = '';
-	$title['page'] = '';
+	$title['page']    = '';
 	return $title;
 }
 add_theme_support( 'title-tag' );
