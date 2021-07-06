@@ -52,7 +52,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
  * @return array $title タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
  */
 function custom_title_text( $title ) {
-	$title['tagline'] = '';
+	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
 	if ( is_paged() || is_archive() ) {
 		global $wp_query;
 		$current_page = get_query_var( 'paged' );
@@ -62,6 +62,8 @@ function custom_title_text( $title ) {
 		$max_pages      = $wp_query->max_num_pages;
 		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
 	}
+	// タグラインとページ番号は表示しない（ページ番号はタイトル文字列に挿入し，個別の表記は停止）.
+	$title['tagline'] = '';
 	$title['page'] = '';
 	return $title;
 }
