@@ -48,15 +48,24 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 /**
  * タイトルタグを自動生成.
  *
- * @param array $results タイトルタグの内容配列.
- * @return array $results タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
+ * @param array $title タイトルタグの内容配列.
+ * @return array $title タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
  */
-function custom_title_text( $results ) {
-	if ( is_home() ) {
-		$results['tagline'] = '';
+function custom_title_text( $title ) {
+	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
+	if ( is_paged() || is_archive() ) {
+		global $wp_query;
+		$current_page = get_query_var( 'paged' );
+		if ( 0 === $current_page ) {
+			$current_page = ++$current_page;
+		}
+		$max_pages      = $wp_query->max_num_pages;
+		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
 	}
-	$results['page'] = '';
-	return $results;
+	// タグラインとページ番号は表示しない（ページ番号はタイトル文字列に挿入し，個別の表記は停止）.
+	$title['tagline'] = '';
+	$title['page']    = '';
+	return $title;
 }
 add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
