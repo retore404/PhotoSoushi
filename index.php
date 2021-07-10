@@ -12,16 +12,21 @@
 get_header(); ?>
 			<section id="content-header">
 				<h2>
-					<!--開いている一覧ページがカテゴリ別ページのとき-->
-					<?php if ( is_category() ) : ?>
-						Category: <?php single_cat_title(); ?>
-					<!--開いている一覧ページがタグ別ページのとき-->
-					<?php elseif ( is_tag() ) : ?>
-						Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
-					<!--開いている一覧ページが月別ページのとき-->
-					<?php elseif ( is_date() ) : ?>
-						Posts in  <?php echo esc_html( get_post_time( get_photo_soushi_ym_format() ) ); ?>
-					<!--開いている一覧ページがカテゴリ・タグ別ページ・月別アーカイブでない=普通の記事一覧のとき-->
+					<!--開いている一覧ページがアーカイブページのとき-->
+					<?php if ( is_archive() ) : ?>
+						<!--開いている一覧ページがカテゴリ別ページのとき-->
+						<?php if ( is_category() ) : ?>
+							Category: <?php single_cat_title(); ?>
+						<!--開いている一覧ページがタグ別ページのとき-->
+						<?php elseif ( is_tag() ) : ?>
+							Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
+						<!--開いている一覧ページが月別ページのとき-->
+						<?php elseif ( is_date() ) : ?>
+							Posts in  <?php echo esc_html( get_post_time( get_photo_soushi_ym_format() ) ); ?>
+						<?php endif; ?>
+						<!--アーカイブページの共通表示（表示中ページ数・全ページ数）.ただし，1ページ目の場合は関数が0を返すため，1に置き換える. -->
+						(<?php echo esc_html( get_query_var( 'paged' ) === 0 ? '1' : get_query_var( 'paged' ) ); ?>/<?php echo esc_html( $wp_query->max_num_pages ); ?>)
+					<!--開いている一覧ページがアーカイブページでないとき-->
 					<?php else : ?>
 						Posts.
 					<?php endif; ?>
