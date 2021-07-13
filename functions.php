@@ -17,11 +17,12 @@ function catch_first_image() {
 	$first_img = '';
 	ob_start();
 	ob_end_clean();
-	$output    = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
-	$first_img = $matches [1] [0];
-	if ( empty( $first_img ) ) { // Defines a default image.
+	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+	if ( empty( $matches [1] [0] ) ) { // 記事中のimgタグの正規表現合致がない場合.
 		$dir       = get_template_directory_uri();
 		$first_img = "$dir/images/thumbnail.svg";
+	} else { // 記事中のimgタグの正規表現合致がある場合.
+		$first_img = $matches [1] [0];
 	}
 	return $first_img;
 }
