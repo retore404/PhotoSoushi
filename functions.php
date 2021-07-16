@@ -74,8 +74,8 @@ add_filter( 'document_title_parts', 'custom_title_text', 11 );
 /**
  * タイトルタグを自動生成(All in One SEO Pack有効時).
  *
- * @param array $title タイトルタグの内容文字列（デフォルト）.
- * @return array $title タイトルタグの内容文字列（カスタマイズ）.
+ * @param string $title タイトルタグの内容文字列（デフォルト）.
+ * @return string $title タイトルタグの内容文字列（カスタマイズ）.
  */
 function custom_title_text_for_aioseo( $title ) {
 	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
