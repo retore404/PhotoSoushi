@@ -92,7 +92,23 @@ function custom_title_text_for_aioseo( $title ) {
 }
 add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
-// ウィジェット.
+/******** ウィジェット関連カスタマイズ ********/
+/**
+ * タグクラウドリンクからaria-labelを除去する.
+ *
+ * @param string $return タグクラウド文字列.
+ * @return string $return タグクラウド文字列(aria-label除去).
+ */
+function wp_tag_cloud_aria_label_removal( $return ) {
+	$return = preg_replace( '/aria-label=".*"/', '', $return );
+	return $return;
+}
+add_filter( 'wp_tag_cloud', 'wp_tag_cloud_aria_label_removal' );
+
+// PhotoSoushiTagCloudウィジェットを読み込み.
+require_once get_template_directory() . '/classes/class-photosoushitagcloud.php';
+register_widget( 'PhotoSoushiTagCloud' );
+
 register_sidebar(
 	array(
 		'name'          => __( 'MainWidget1' ),
@@ -227,8 +243,6 @@ function replace_tag_name( $tag_name ) {
 
 	return $tag_name;
 }
-
-
 
 /**
  * 月別アーカイブページヘッダ部の年・月表示フォーマットオプションの取得関数.
