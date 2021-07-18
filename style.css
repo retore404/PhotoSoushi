@@ -375,7 +375,7 @@ blockquote > P {
 }
 
 /* タグクラウド */
-.tagcloud a {
+.tag-cloud-link {
 	font-size: 0.875em !important;
 	display: block;
 	margin-left: 1em;
