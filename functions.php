@@ -92,52 +92,21 @@ function custom_title_text_for_aioseo( $title ) {
 }
 add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
- /******** ウィジェット関連カスタマイズ ********/
- /**
-  * タグクラウドリンクからaria-labelを除去する.
-  * 
-  * @param string $return タグクラウド文字列.
-  * @return string $return タグクラウド文字列(aria-label除去).
-  */
+/******** ウィジェット関連カスタマイズ ********/
+/**
+ * タグクラウドリンクからaria-labelを除去する.
+ *
+ * @param string $return タグクラウド文字列.
+ * @return string $return タグクラウド文字列(aria-label除去).
+ */
 function wp_tag_cloud_aria_label_removal( $return ) {
-	$return = preg_replace('/aria-label=".*"/', '', $return);
+	$return = preg_replace( '/aria-label=".*"/', '', $return );
 	return $return;
 }
 add_filter( 'wp_tag_cloud', 'wp_tag_cloud_aria_label_removal' );
 
- // カスタムウィジェット定義.
-class PhotoSoushiTagCloud extends WP_Widget {
-	/**
-	 * Widget設定.
-	 */
-	function __construct() {
-		parent::__construct(
-			'photo_soushi_tag_cloud', // Base ID
-			'PhotoSoushiタグクラウド', // ウィジェット名
-			array( 'description' => 'タグ名に含まれる"Camera:", "Lens:", "Location:"を置き換えて出力するタグクラウド', )
-		);
-	}
-
-	/**
-	 * Widget内容の定義.
-	 * @param array $args ウィジェットの引数.
-	 * @param array $instance DB保存値.
-	 */
-	public function widget( $args, $instance ) {
-		echo $args['before_widget']; // before_widgetの出力.
-		echo $args['before_title']; // before_titleの出力.
-		echo 'Tags'; // ウィジェットタイトル.
-		echo $args['after_title']; // after_titleの出力.
-		$tag_clouds = wp_tag_cloud(
-			array(
-				'echo' => false,
-			)
-		); // タグクラウドの出力文字列を変数に格納
-		$tag_clouds = replace_tag_name( $tag_clouds );
-		echo $tag_clouds;
-		echo $args['after_widget']; // after_widgetの出力.
-	}
-}
+// PhotoSoushiTagCloudウィジェットを読み込み.
+require_once get_template_directory() . '/classes/class-photosoushitagcloud.php';
 register_widget( 'PhotoSoushiTagCloud' );
 
 register_sidebar(
