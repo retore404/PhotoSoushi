@@ -94,20 +94,17 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
- * タグクラウドリンクからaria-labelを除去する.
+ * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
  *
  * @param string $return タグクラウド文字列.
- * @return string $return タグクラウド文字列(aria-label除去).
+ * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
  */
-function wp_tag_cloud_aria_label_removal( $return ) {
+function wp_tag_cloud_customize( $return ) {
 	$return = preg_replace( '/aria-label=".*"/', '', $return );
+	$return = replace_tag_name( $return );
 	return $return;
 }
-add_filter( 'wp_tag_cloud', 'wp_tag_cloud_aria_label_removal' );
-
-// PhotoSoushiTagCloudウィジェットを読み込み.
-require_once get_template_directory() . '/classes/class-photosoushitagcloud.php';
-register_widget( 'PhotoSoushiTagCloud' );
+add_filter( 'wp_tag_cloud', 'wp_tag_cloud_customize' );
 
 register_sidebar(
 	array(
