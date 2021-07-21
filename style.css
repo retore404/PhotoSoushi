@@ -104,6 +104,10 @@ ul {
 	vertical-align: -1px;
 }
 
+.tagcloud .ps-icon-tag{ /* タグクラウド部(タグアイコン) */
+	vertical-align: -1px;
+}
+
 /******** Gridレイアウト定義 ********/
 /* rootグリッド */
 #grid-container-root{
@@ -379,10 +383,15 @@ blockquote > P {
 }
 
 /* タグクラウド */
+.tag-cloud-link-wrapper {
+	display: block;
+	margin-bottom: 0.75em;
+	margin-left: 1em;
+}
+
 .tag-cloud-link {
 	font-size: 0.875em !important;
-	display: block;
-	margin-left: 1em;
+	margin-left: 0.5em;
 }
 
 /******** 検索フォーム(searchform.php) ********/
