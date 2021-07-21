@@ -104,6 +104,10 @@ ul {
 	vertical-align: -1px;
 }
 
+.tag-cloud-link-wrapper .ps-icon-tag { /* タグクラウド部（タグアイコン） */
+	vertical-align: -2px;
+}
+
 /******** Gridレイアウト定義 ********/
 /* rootグリッド */
 #grid-container-root{
@@ -338,7 +342,7 @@ blockquote > P {
 	color: #757575;
 }
 
-/* 記事情報（カテゴリ・タグ部 */
+/* 記事情報（カテゴリ・タグ部） */
 #single-article-info {
 	border-top: solid 1px #808080;
 	margin-top: 1em;
@@ -379,10 +383,15 @@ blockquote > P {
 }
 
 /* タグクラウド */
+.tag-cloud-link-wrapper {
+	display: block;
+	margin-bottom: 0.75em;
+	margin-left: 1em;
+}
+
 .tag-cloud-link {
 	font-size: 0.875em !important;
-	display: block;
-	margin-left: 1em;
+	margin-left: 0.5em;
 }
 
 /******** 検索フォーム(searchform.php) ********/

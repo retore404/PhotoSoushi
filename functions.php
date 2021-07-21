@@ -100,8 +100,10 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
  * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
  */
 function wp_tag_cloud_customize( $return ) {
-	$return = preg_replace( '/aria-label=".*"/', '', $return );
-	$return = replace_tag_name( $return );
+	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
+	$return = replace_tag_name( $return ); // タグ名の一部をアイコン置き換え.
+	$return = str_replace( '<a', '<span class="tag-cloud-link-wrapper"><span class="ps-icon ps-icon-tag"></span><a', $return );
+	$return = str_replace( '</a>', '</a></span>', $return );
 	return $return;
 }
 add_filter( 'wp_tag_cloud', 'wp_tag_cloud_customize' );
