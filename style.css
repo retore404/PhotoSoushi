@@ -104,8 +104,8 @@ ul {
 	vertical-align: -1px;
 }
 
-.tagcloud .ps-icon-tag{ /* タグクラウド部(タグアイコン) */
-	vertical-align: -1px;
+.tag-cloud-link-wrapper .ps-icon-tag { /* タグクラウド部（タグアイコン） */
+	vertical-align: -2px;
 }
 
 /******** Gridレイアウト定義 ********/
@@ -342,7 +342,7 @@ blockquote > P {
 	color: #757575;
 }
 
-/* 記事情報（カテゴリ・タグ部 */
+/* 記事情報（カテゴリ・タグ部） */
 #single-article-info {
 	border-top: solid 1px #808080;
 	margin-top: 1em;
