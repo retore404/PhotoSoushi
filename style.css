@@ -384,8 +384,7 @@ blockquote > P {
 
 /* タグクラウド */
 .tag-cloud-link-wrapper {
-	display: block;
-	margin-bottom: 0.75em;
+	display: inline-block;
 	margin-left: 1em;
 }
 
