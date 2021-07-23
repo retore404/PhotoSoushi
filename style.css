@@ -48,7 +48,7 @@ a:hover {
 a > section.post-each {
 	color: #191919;
 }
-a > section.post-each:hover {
+a > section.post-each:hover .post-each-thumbnail-wrapper{
 	opacity: 0.5;
 	text-decoration: none;
 	color: #191919;
