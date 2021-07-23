@@ -50,8 +50,6 @@ a > section.post-each {
 }
 a > section.post-each:hover .post-each-thumbnail-wrapper{
 	opacity: 0.5;
-	text-decoration: none;
-	color: #191919;
 }
 
 /* 区切り線 */
