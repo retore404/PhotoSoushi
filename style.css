@@ -195,10 +195,6 @@ header {
 /* 一覧ページの各記事コンテナ */
 .post-container{
 	border-bottom: solid 1px #808080;
-}
-
-/* 一覧ページ各記事（リンク用コンテナ） */
-.post-each {
 	padding-top: 0.7em;
 	padding-bottom: 0.7em;
 }
