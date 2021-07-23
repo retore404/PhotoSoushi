@@ -45,12 +45,6 @@ a:visited{
 a:hover {
 	opacity: 0.5;
 }
-a > section.post-each {
-	color: #191919;
-}
-a > section.post-each:hover .post-each-thumbnail-wrapper{
-	opacity: 0.5;
-}
 
 /* 区切り線 */
 hr {
@@ -243,6 +237,22 @@ header {
 	text-align: justify;
 	display: block;
 	font-size: 90%;
+}
+
+/* 一覧ページ各記事リンク部体裁 */
+a > section.post-each { /* フォントカラー定義 */
+	color: #191919;
+}
+a > section.post-each:hover .post-each-thumbnail-wrapper:after{ /* リンクホバー時のビネット定義 */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	box-shadow: inset 0 0 100px 30px rgba(0, 0, 0, 0.5);
+	transition: all .5s ease;
 }
 
 /* ページネーション */
