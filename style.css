@@ -4,7 +4,7 @@ Theme URI: https://github.com/retore404/PhotoSoushi
 Author: retore
 Author URI: https://github.com/retore404
 Description: 写真×雑記のブログでの使用に適するWordPressテーマ
-Version: 6.4
+Version: 6.5
 Text Domain: photosoushi
 */
 
@@ -92,8 +92,12 @@ ul {
 }
 
 /* Webフォントの上下揃え調整 */
-.ps-icon {
+#content-header .ps-icon { /* タグ別記事一覧ヘッダ部 */
 	vertical-align: -2px;
+}
+
+.single-category-tags-wrapper .ps-icon { /* 個別記事タグ情報部 */
+	vertical-align: -1px;
 }
 
 /******** Gridレイアウト定義 ********/

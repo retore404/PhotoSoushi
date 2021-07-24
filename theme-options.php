@@ -53,6 +53,11 @@ function sanitize_photo_soushi_theme_options( $options ) {
 		$new_options['setting_dark_theme'] = sanitize_text_field( $options['setting_dark_theme'] );
 	}
 
+	// タグ置き換え設定の（カメラ）サニタイズ.
+	if ( isset( $options['setting_tag_replace_camera'] ) ) {
+		$new_options['setting_tag_replace_camera'] = sanitize_text_field( $options['setting_tag_replace_camera'] );
+	}
+
 	// タグ置き換え設定の（レンズ）サニタイズ.
 	if ( isset( $options['setting_tag_replace_lens'] ) ) {
 		$new_options['setting_tag_replace_lens'] = sanitize_text_field( $options['setting_tag_replace_lens'] );
@@ -104,6 +109,14 @@ function create_photo_soushi_theme_settings_page() { ?>
 
 			<h3>タグ置き換え設定</h3>			
 			<table class="form-table">
+				<tr>
+					<th scope="row">"Camera:" のアイコン置き換え</th>
+					<td>
+						<?php $option_tag_replace_camera = isset( $options['setting_tag_replace_camera'] ) ? esc_attr( $options['setting_tag_replace_camera'] ) : 'ON'; ?>
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_camera]" value="ON" <?php checked( $option_tag_replace_camera, 'ON' ); ?>> ON
+						<input type="radio" name="photo_soushi_theme_options[setting_tag_replace_camera]" value="OFF" <?php checked( $option_tag_replace_camera, 'OFF' ); ?>> OFF
+					</td>
+				</tr>
 				<tr valign="top">
 					<th scope="row">"Lens:" のアイコン置き換え</th>
 					<td>

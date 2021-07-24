@@ -17,11 +17,12 @@ function catch_first_image() {
 	$first_img = '';
 	ob_start();
 	ob_end_clean();
-	$output    = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
-	$first_img = $matches [1] [0];
-	if ( empty( $first_img ) ) { // Defines a default image.
+	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+	if ( empty( $matches [1] [0] ) ) { // 記事中のimgタグの正規表現合致がない場合.
 		$dir       = get_template_directory_uri();
 		$first_img = "$dir/images/thumbnail.svg";
+	} else { // 記事中のimgタグの正規表現合致がある場合.
+		$first_img = $matches [1] [0];
 	}
 	return $first_img;
 }
@@ -46,20 +47,50 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 
 
 /**
- * タイトルタグを自動生成.
+ * タイトルタグを自動生成(All in One SEO Pack無効時).
  *
- * @param array $results タイトルタグの内容配列.
- * @return array $results タイトルタグの内容配列（トップページにおいてサイトディスクリプションが空・全ページにおいてページ数が空）.
+ * @param array $title タイトルタグの内容配列.
+ * @return array $title タイトルタグの内容配列（カスタマイズ）.
  */
-function custom_title_text( $results ) {
-	if ( is_home() ) {
-		$results['tagline'] = '';
+function custom_title_text( $title ) {
+	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
+	if ( is_paged() || is_archive() ) {
+		global $wp_query;
+		$current_page = get_query_var( 'paged' );
+		if ( 0 === $current_page ) {
+			$current_page = ++$current_page;
+		}
+		$max_pages      = $wp_query->max_num_pages;
+		$title['title'] = $title['title'] . '(' . $current_page . '/' . $max_pages . ')';
 	}
-	$results['page'] = '';
-	return $results;
+	// タグラインとページ番号は表示しない（ページ番号はタイトル文字列に挿入し，個別の表記は停止）.
+	$title['tagline'] = '';
+	$title['page']    = '';
+	return $title;
 }
 add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
+
+/**
+ * タイトルタグを自動生成(All in One SEO Pack有効時).
+ *
+ * @param string $title タイトルタグの内容文字列（デフォルト）.
+ * @return string $title タイトルタグの内容文字列（カスタマイズ）.
+ */
+function custom_title_text_for_aioseo( $title ) {
+	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
+	if ( is_paged() || is_archive() ) {
+		global $wp_query;
+		$current_page = get_query_var( 'paged' );
+		if ( 0 === $current_page ) {
+			$current_page = ++$current_page;
+		}
+		$max_pages = $wp_query->max_num_pages;
+		$title     = $title . '(' . $current_page . '/' . $max_pages . ')';
+	}
+	return $title;
+}
+add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
 // ウィジェット.
 register_sidebar(
@@ -162,12 +193,20 @@ function replace_tag_name( $tag_name ) {
 	// 設定値の読み込み（タグ置き換え設定）.
 	$options = get_option( 'photo_soushi_theme_options' );
 
+	// テーマ設定において，タグ置き換え（カメラ）が"ON"である場合，タグの置換を実施する.
+	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
+	$option_camera_icon_replace = isset( $options['setting_tag_replace_camera'] ) ? $options['setting_tag_replace_camera'] : 'ON';
+	if ( 'ON' === $option_camera_icon_replace ) {
+		// タグ名の"Camera:"をアイコンに置き換える.
+		$tag_name = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
+	}
+
 	// テーマ設定において，タグ置き換え（レンズ）が"ON"である場合，タグの置換を実施する.
 	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
 	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
 	if ( 'ON' === $option_lens_icon_replace ) {
 		// タグ名の"Lens:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
+		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_name );
 	}
 
 	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
