@@ -74,7 +74,6 @@ fork元である [wp_theme_super_simple](https://github.com/retore404/wp_theme_s
 ## 詳細
 
 - 対応画像フォーマット：WordPress標準でサポートする形式に加え，WebP形式をサポート．
-- ダークモード対応：○
 
 ## バージョン管理
 

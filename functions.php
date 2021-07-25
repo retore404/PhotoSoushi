@@ -101,7 +101,7 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
  */
 function wp_tag_cloud_customize( $return ) {
 	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
-	$return = replace_tag_name( $return ); // タグ名の一部をアイコン置き換え.
+	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
 	$return = str_replace( '<a', '<span class="tag-cloud-link-wrapper"><span class="ps-icon ps-icon-tag"></span><a', $return );
 	$return = str_replace( '</a>', '</a></span>', $return );
 	return $return;
@@ -199,64 +199,21 @@ add_filter(
 );
 
 
-/** タグ名の置き換え（アイコン化）.
+/** タグ名を含む文字列の置き換え.
  *
- * @param string $tag_name タグ名（アイコン置き換え前）.
- * @return string $tag_name タグ名（アイコン置き換え後）.
+ * @param string $tag_str タグ名置き換え前文字列.
+ * @return string $tag_str タグ名置き換え後文字列.
  */
-function replace_tag_name( $tag_name ) {
-	// 設定値の読み込み（タグ置き換え設定）.
-	$options = get_option( 'photo_soushi_theme_options' );
-
-	// テーマ設定において，タグ置き換え（カメラ）が"ON"である場合，タグの置換を実施する.
-	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
-	$option_camera_icon_replace = isset( $options['setting_tag_replace_camera'] ) ? $options['setting_tag_replace_camera'] : 'ON';
-	if ( 'ON' === $option_camera_icon_replace ) {
-		// タグ名の"Camera:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_name );
-	}
-
-	// テーマ設定において，タグ置き換え（レンズ）が"ON"である場合，タグの置換を実施する.
-	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
-	$option_lens_icon_replace = isset( $options['setting_tag_replace_lens'] ) ? $options['setting_tag_replace_lens'] : 'ON';
-	if ( 'ON' === $option_lens_icon_replace ) {
-		// タグ名の"Lens:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_name );
-	}
-
-	// テーマ設定において，タグ置き換え（T*）が"ON"である場合，タグの置換を実施する.
-	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
-	$option_tstar_replace = isset( $options['setting_tag_replace_tstar'] ) ? $options['setting_tag_replace_tstar'] : 'ON';
-	if ( 'ON' === $option_tstar_replace ) {
-		// タグ名の"T*"を赤字にする.
-		$tag_name = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_name );
-	}
-
-	// テーマ設定において，タグ置き換え（Location）が"ON"である場合，タグの置換を実施する.
-	// 設定値は"ON"/"OFF"/undefined(初回設定前)が存在する. undefinedの場合，"ON"とみなす.
-	$option_location_icon_replace = isset( $options['setting_tag_replace_location'] ) ? $options['setting_tag_replace_location'] : 'ON';
-	if ( 'ON' === $option_location_icon_replace ) {
-		// タグ名の"Location:"をアイコンに置き換える.
-		$tag_name = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_name );
-	}
-
-	return $tag_name;
-}
-
-/**
- * 月別アーカイブページヘッダ部の年・月表示フォーマットオプションの取得関数.
- *
- * @return string $ym_format 年・月表示フォーマット
- */
-function get_photo_soushi_ym_format() {
-	// テーマ設定の読み込み.
-	$options = get_option( 'photo_soushi_theme_options' );
-
-	// テーマ設定における年・月表示フォーマットを取得.
-	// 設定値がundefined(初回設定前)の場合，"M. Y"とみなす.
-	$ym_format = isset( $options['setting_ym_format'] ) ? $options['setting_ym_format'] : 'M. Y';
-
-	return $ym_format;
+function replace_tag_str( $tag_str ) {
+	// "Camera:"のアイコン置き換え.
+	$tag_str = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_str );
+	// "Lens:"のアイコン置き換え.
+	$tag_str = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_str );
+	// "T*"の赤字化.
+	$tag_str = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_str );
+	// "Location:"のアイコン置き換え.
+	$tag_str = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_str );
+	return $tag_str;
 }
 
 /**
@@ -289,34 +246,6 @@ function photo_soushi_enque_styles() {
 		'1.0.0',
 		'all'
 	);
-
-	// 設定画面におけるダークモード設定の読み込み.
-	// テーマ設定の読み込み.
-	$options = get_option( 'photo_soushi_theme_options' );
-	// 初回設定前は'Light'（デフォルト）とみなす.
-	$theme_color_option = isset( $options['setting_dark_theme'] ) ? $options['setting_dark_theme'] : 'Light';
-
-	// テーマ設定においてダークモードを指定しているとき，PhotoSoushi style-dark-theme.cssを読み込む.
-	if ( 'Dark' === $theme_color_option ) {
-		wp_enqueue_style(
-			'photo-soushi-dark-theme-css',
-			get_stylesheet_directory_uri() . '/style-dark-theme.css',
-			array(),
-			'1.0.0',
-			'all'
-		);
-	}
-
-	// テーマ設定においてクライアント設定依存を指定しているとき，PhotoSoushi style-dark-theme-prefers.cssを読み込む.
-	if ( 'Prefers' === $theme_color_option ) {
-		wp_enqueue_style(
-			'photo-soushi-dark-theme-css',
-			get_stylesheet_directory_uri() . '/style-dark-theme-prefers.css',
-			array(),
-			'1.0.0',
-			'all'
-		);
-	}
 }
 add_action( 'wp_enqueue_scripts', 'photo_soushi_enque_styles' );
 
@@ -331,6 +260,3 @@ function permit_mime_types( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'permit_mime_types' );
-
-// テーマオプションを読み込み.
-require_once get_stylesheet_directory() . '/theme-options.php';
