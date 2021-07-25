@@ -101,7 +101,7 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
  */
 function wp_tag_cloud_customize( $return ) {
 	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
-	$return = replace_tag_name( $return ); // タグ名の一部をアイコン置き換え.
+	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
 	$return = str_replace( '<a', '<span class="tag-cloud-link-wrapper"><span class="ps-icon ps-icon-tag"></span><a', $return );
 	$return = str_replace( '</a>', '</a></span>', $return );
 	return $return;
@@ -199,19 +199,19 @@ add_filter(
 );
 
 
-/** タグ名の置き換え（アイコン化）.
+/** タグ名を含む文字列の置き換え.
  *
  * @param string $tag_str タグ名置き換え前文字列.
  * @return string $tag_str タグ名置き換え後文字列.
  */
-function replace_tag_name( $tag_str ) {
+function replace_tag_str( $tag_str ) {
 	// "Camera:"のアイコン置き換え.
 	$tag_str = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_str );
 	// "Lens:"のアイコン置き換え.
 	$tag_str = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_str );
 	// "T*"の赤字化.
 	$tag_str = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_str );
-	// "Location:"のアイコンに置き換え.
+	// "Location:"のアイコン置き換え.
 	$tag_str = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_str );
 	return $tag_str;
 }

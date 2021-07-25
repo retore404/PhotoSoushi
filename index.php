@@ -19,7 +19,7 @@ get_header(); ?>
 							Category: <?php single_cat_title(); ?>
 						<!--開いている一覧ページがタグ別ページのとき-->
 						<?php elseif ( is_tag() ) : ?>
-							Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
+							Tag: <?php echo wp_kses_post( replace_tag_str( single_cat_title( '', false ) ) ); ?>
 						<!--開いている一覧ページが月別ページのとき-->
 						<?php elseif ( is_date() ) : ?>
 							Posts in  <?php echo esc_html( get_post_time( 'M. Y' ) ); ?>
