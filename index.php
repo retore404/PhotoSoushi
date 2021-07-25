@@ -22,7 +22,7 @@ get_header(); ?>
 							Tag: <?php echo wp_kses_post( replace_tag_name( single_cat_title( '', false ) ) ); ?>
 						<!--開いている一覧ページが月別ページのとき-->
 						<?php elseif ( is_date() ) : ?>
-							Posts in  <?php echo esc_html( get_post_time( get_photo_soushi_ym_format() ) ); ?>
+							Posts in  <?php echo esc_html( get_post_time( 'M. Y' ) ); ?>
 						<?php endif; ?>
 						<!--アーカイブページの共通表示（表示中ページ数・全ページ数）.ただし，1ページ目の場合は関数が0を返すため，1に置き換える. -->
 						(<?php echo esc_html( get_query_var( 'paged' ) === 0 ? '1' : get_query_var( 'paged' ) ); ?>/<?php echo esc_html( $wp_query->max_num_pages ); ?>)
