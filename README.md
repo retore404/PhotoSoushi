@@ -64,10 +64,6 @@ Gridレイアウトを採用することでレスポンシブ対応を実現．
 
 ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
 
-### 3. カスタマイズのベースとなるシンプルなテーマ
-
-fork元である [wp_theme_super_simple](https://github.com/retore404/wp_theme_super_simple) の設計思想を継承し，極力シンプルなデザイン・読みやすいコードを追求．
-
 ## 詳細
 
 - 対応画像フォーマット：WordPress標準でサポートする形式に加え，WebP形式をサポート．
