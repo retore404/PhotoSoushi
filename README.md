@@ -40,7 +40,7 @@
 | "Location:" | !["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png) |
 
 
-#### 1-3. 3:2/16:9画像に対応する一覧画面
+#### 1-3. 3:2/16:9/シネスコ画像に対応する一覧画面
 
 記事一覧画面のアイキャッチ画像表示部は3:2固定としつつ，背景色を黒色として画像を中央に配置する実装．16:9画像やシネスコ画像も違和感なく一覧画面のアイキャッチとして表示することができる．
 
@@ -52,17 +52,12 @@
 
 Gridレイアウトを採用することでレスポンシブ対応を実現．
 
-#### ・PCで表示した例
+| 表示デバイス | 表示例 |
+|:---|:---:|
+| PC | ![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png) |
+| タブレット | ![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png) |
+| スマホ | ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png) |
 
-![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
-
-#### ・タブレットで表示した例
-
-![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
-
-#### ・スマホで表示した例
-
-![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
 
 ## 詳細
 
