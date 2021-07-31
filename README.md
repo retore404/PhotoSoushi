@@ -59,9 +59,10 @@ Gridレイアウトを採用することでレスポンシブ対応を実現．
 | スマホ | ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png) |
 
 
-## 詳細
+### 3. UX
 
-- 対応画像フォーマット：WordPress標準でサポートする形式に加え，WebP形式をサポート．
+対応画像フォーマットとしてWordPress標準でサポートする形式に加え，WebP形式をサポートし，表示速度の向上を実現．  
+その他，パフォーマンス，アクセシビリティを意識した実装を加えている．
 
 ## バージョン管理
 
