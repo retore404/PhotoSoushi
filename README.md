@@ -33,19 +33,11 @@
 記事中の写真の撮影機材（レンズ）・撮影場所をタグとして持つことを想定し，タグ名に含まれる"Canmera:"，"Lens:"および"Location:"をアイコンに置き換える機能を持つ．  
 また，タグ名に含まれる「T*」は赤字で表示される．
 
-
-- "Camera:"の置き換え
-
-!["Camera:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_camera.png)
-
-- "Lens:"の置き換え
-
-!["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png)
-
-- "Location:"の置き換え
-
-!["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png)
-
+| 置き換え対象 | 表示例 |
+|:---|:---:|
+| "Camera:" | !["Camera:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_camera.png) |
+| "Lens:"/T* | !["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png) |
+| "Location:" | !["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png) |
 
 
 #### 1-3. 3:2/16:9画像に対応する一覧画面
