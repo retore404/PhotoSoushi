@@ -34,7 +34,7 @@
 また，タグ名に含まれる「T*」は赤字で表示される．
 
 
-- "Lens:"の置き換え
+- "Camera:"の置き換え
 
 !["Camera:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_camera.png)
 
