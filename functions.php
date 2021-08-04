@@ -92,6 +92,27 @@ function custom_title_text_for_aioseo( $title ) {
 }
 add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
+/******** メタデータ定義 ********/
+function add_canonical_metadata() {
+	// canonical格納用変数を定義.
+	$canonical = null;
+	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，home_urlを設定.
+		$canonical = home_url();
+	} elseif ( is_category() ) { // カテゴリーアーカイブの場合は，カテゴリーアーカイブ1ページ目を設定.
+		$canonical = get_category_link( get_query_var( 'cat' ) );
+	} elseif ( is_tag() ) { // タグアーカイブの場合は，タグアーカイブ1ページ目を設定.
+		$canonical = get_tag_link( get_queried_object()->term_id );
+	} elseif ( is_search() ) {  // 検索結果一覧の場合，検索結果1ページ目を設定.
+		$canonical = get_search_link();
+	} elseif ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページのパーマリンクを設定.
+		$canonical = get_permalink();
+	} else { // 上記のどれにも該当しないとき，home_urlを設定.
+		$canonical = home_url();
+	}
+	echo wp_kses_post( '<link rel="canonical" href="' . $canonical . '">' . "\n" );
+}
+add_action( 'wp_head', 'add_canonical_metadata' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
