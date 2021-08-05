@@ -92,7 +92,25 @@ function custom_title_text_for_aioseo( $title ) {
 }
 add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
-/******** メタデータ定義 ********/
+/************** メタデータ定義 **************/
+/**
+ * Descriptionの指定.
+ */
+function add_description_metadata() {
+	// description格納用変数を定義.
+	$description = null;
+	if ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページの投稿概要を設定.
+		$description = get_the_excerpt();
+	} else { // 上記のどれにも該当しないとき，サイトのキャッチフレーズを設定.
+		$description = get_bloginfo( 'description' );
+	}
+	echo '<meta name="description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_description_metadata' );
+
+/**
+ * Canonicalの指定.
+ */
 function add_canonical_metadata() {
 	// canonical格納用変数を定義.
 	$canonical = null;
