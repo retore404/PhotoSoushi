@@ -127,8 +127,9 @@ function add_canonical_metadata() {
 	} else { // 上記のどれにも該当しないとき，home_urlを設定.
 		$canonical = home_url();
 	}
-	echo wp_kses_post( '<link rel="canonical" href="' . $canonical . '">' . "\n" );
+	echo '<link rel="canonical" href="' . esc_url( $canonical ) . '">' . "\n";
 }
+remove_action( 'wp_head', 'rel_canonical' ); // 既存のcanonical定義を削除.
 add_action( 'wp_head', 'add_canonical_metadata' );
 
 /******** ウィジェット関連カスタマイズ ********/
