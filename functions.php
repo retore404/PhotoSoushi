@@ -142,6 +142,21 @@ function add_ogp_site_name() {
 }
 add_action( 'wp_head', 'add_ogp_site_name' );
 
+/**
+ * OGPの設定(og:title)
+ */
+function add_ogp_title() {
+	// title格納用変数を定義.
+	$title = null;
+	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，サイトタイトルを設定.
+		$title = get_bloginfo( 'name' );
+	} else { // それ以外のときページタイトル.
+		$title = wp_get_document_title();
+	}
+	echo '<meta property="og:title" content="' . esc_html( $title ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_title' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
