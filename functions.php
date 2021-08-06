@@ -94,9 +94,10 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
 /************** メタデータ定義 **************/
 /**
- * Descriptionの指定.
+ * メタデータ用共通関数(description)
+ * @return string $description 固定ページもしくは個別記事ページのとき，その抜粋/それ以外の場合，サイトのキャッチフレーズを返す変数.
  */
-function add_description_metadata() {
+function get_ps_description() {
 	// description格納用変数を定義.
 	$description = null;
 	if ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページの投稿概要を設定.
@@ -104,6 +105,14 @@ function add_description_metadata() {
 	} else { // 上記のどれにも該当しないとき，サイトのキャッチフレーズを設定.
 		$description = get_bloginfo( 'description' );
 	}
+	return $description;
+}
+
+/**
+ * Descriptionの指定.
+ */
+function add_description_metadata() {
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し
 	echo '<meta name="description" content="' . esc_html( $description ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_description_metadata' );
@@ -158,6 +167,15 @@ function add_ogp_title() {
 	echo '<meta property="og:title" content="' . esc_html( $title ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_ogp_title' );
+
+/**
+ * OGPの設定(og:description)
+ */
+function add_ogp_description() {
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し
+	echo '<meta property="og:description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_description' );
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
