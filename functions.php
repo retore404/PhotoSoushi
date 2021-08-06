@@ -132,6 +132,16 @@ function add_canonical_metadata() {
 remove_action( 'wp_head', 'rel_canonical' ); // 既存のcanonical定義を削除.
 add_action( 'wp_head', 'add_canonical_metadata' );
 
+/**
+ * OGPの設定(og:site_name)
+ */
+function add_ogp_site_name() {
+	// site_name格納用変数を定義.
+	$site_name = get_bloginfo( 'name' );
+	echo '<meta property="og:site_name" content="' . esc_html( $site_name ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_site_name' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
