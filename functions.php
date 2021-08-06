@@ -118,6 +118,8 @@ function add_canonical_metadata() {
 		$canonical = home_url();
 	} elseif ( is_category() ) { // カテゴリーアーカイブの場合は，カテゴリーアーカイブ1ページ目を設定.
 		$canonical = get_category_link( get_query_var( 'cat' ) );
+	} elseif ( is_date() ) { // 月別アーカイブの場合は，月別アーカイブページ1ページ目を設定.
+		$canonical = get_month_link( get_the_time('Y'), get_the_time('M') );
 	} elseif ( is_tag() ) { // タグアーカイブの場合は，タグアーカイブ1ページ目を設定.
 		$canonical = get_tag_link( get_queried_object()->term_id );
 	} elseif ( is_search() ) {  // 検索結果一覧の場合，検索結果1ページ目を設定.
