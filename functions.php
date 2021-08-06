@@ -95,6 +95,7 @@ add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 /************** メタデータ定義 **************/
 /**
  * メタデータ用共通関数(description)
+ *
  * @return string $description 固定ページもしくは個別記事ページのとき，その抜粋/それ以外の場合，サイトのキャッチフレーズを返す変数.
  */
 function get_ps_description() {
@@ -112,7 +113,7 @@ function get_ps_description() {
  * Descriptionの指定.
  */
 function add_description_metadata() {
-	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
 	echo '<meta name="description" content="' . esc_html( $description ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_description_metadata' );
@@ -128,7 +129,7 @@ function add_canonical_metadata() {
 	} elseif ( is_category() ) { // カテゴリーアーカイブの場合は，カテゴリーアーカイブ1ページ目を設定.
 		$canonical = get_category_link( get_query_var( 'cat' ) );
 	} elseif ( is_date() ) { // 月別アーカイブの場合は，月別アーカイブページ1ページ目を設定.
-		$canonical = get_month_link( get_the_time('Y'), get_the_time('M') );
+		$canonical = get_month_link( get_the_time( 'Y' ), get_the_time( 'M' ) );
 	} elseif ( is_tag() ) { // タグアーカイブの場合は，タグアーカイブ1ページ目を設定.
 		$canonical = get_tag_link( get_queried_object()->term_id );
 	} elseif ( is_search() ) {  // 検索結果一覧の場合，検索結果1ページ目を設定.
@@ -172,7 +173,7 @@ add_action( 'wp_head', 'add_ogp_title' );
  * OGPの設定(og:description)
  */
 function add_ogp_description() {
-	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
 	echo '<meta property="og:description" content="' . esc_html( $description ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_ogp_description' );
