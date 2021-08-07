@@ -184,9 +184,9 @@ add_action( 'wp_head', 'add_ogp_description' );
 function add_ogp_url() {
 	$url = null; // ページのURLを格納する変数.
 	if ( is_home() || is_archive() || is_search() ) {
-		$url = get_pagenum_link( get_query_var('paged') ); //一覧系ページの場合.
+		$url = get_pagenum_link( get_query_var( 'paged' ) ); // 一覧系ページの場合.
 	} else {
-		$url = get_pagenum_link( get_query_var('page') ); //それ以外の場合.
+		$url = get_pagenum_link( get_query_var( 'page' ) ); // それ以外の場合.
 	}
 	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
 }
