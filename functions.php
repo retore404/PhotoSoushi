@@ -178,6 +178,20 @@ function add_ogp_description() {
 }
 add_action( 'wp_head', 'add_ogp_description' );
 
+/**
+ * OGPの設定(og:url)
+ */
+function add_ogp_url() {
+	$url = null; // ページのURLを格納する変数.
+	if ( is_home() || is_archive() || is_search() ) {
+		$url = get_pagenum_link( get_query_var('paged') ); //一覧系ページの場合.
+	} else {
+		$url = get_pagenum_link( get_query_var('page') ); //それ以外の場合.
+	}
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_url' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
