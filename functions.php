@@ -114,6 +114,22 @@ function get_ps_description() {
 }
 
 /**
+ * メタデータ用共通関数(title)
+ * 
+ * @return string $title HomeページもしくはFrontページの場合は，サイトタイトル. それ以外の場合，表示中ページのtitle-tag.
+ */
+function get_ps_title() {
+	// title格納用変数を定義.
+	$title = null;
+	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，サイトタイトルを設定.
+		$title = get_bloginfo( 'name' );
+	} else { // それ以外のときページタイトル.
+		$title = wp_get_document_title();
+	}
+	return $title;
+}
+
+/**
  * Descriptionの指定.
  */
 function add_description_metadata() {
@@ -162,13 +178,7 @@ add_action( 'wp_head', 'add_ogp_site_name' );
  * OGPの設定(og:title)
  */
 function add_ogp_title() {
-	// title格納用変数を定義.
-	$title = null;
-	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，サイトタイトルを設定.
-		$title = get_bloginfo( 'name' );
-	} else { // それ以外のときページタイトル.
-		$title = wp_get_document_title();
-	}
+	$title = get_ps_title();
 	echo '<meta property="og:title" content="' . esc_html( $title ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_ogp_title' );
@@ -245,6 +255,15 @@ function add_twitter_common_metadata() {
 	echo '<meta name="twitter:domain" content="' . esc_url( $domain ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_twitter_common_metadata' );
+
+/**
+ * メタデータの設定(twitter:title)
+ */
+function add_twitter_title_metadata() {
+	$title = get_ps_title();
+	echo '<meta name="twitter:title" content="' . $title . '">' . "\n";
+}
+add_action( 'wp_head', 'add_twitter_title_metadata' );
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
