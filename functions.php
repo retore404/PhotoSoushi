@@ -210,15 +210,19 @@ function add_ogp_image() {
 
 	// width/heightの設定.
 	$attachment_image_src = wp_get_attachment_image_src( attachment_url_to_postid( $url ), 'full' ); // og:imageのURLに紐づく添付画像ファイル情報を取得.
+	// URLに紐づく添付画像ファイル情報がない場合は，デフォルトアイキャッチ画像を使用していると判断するため，デフォルト値としてアイキャッチ画像サイズを設定.
+	$width  = 1200; // デフォルトアイキャッチpng画像の幅.
+	$height = 800; // デフォルトアイキャッチpng画像の高さ.
 	if ( $attachment_image_src ) { // URLに紐づく添付画像ファイル情報がない場合，falseが返ってきている．情報を取得できた場合のみ，ifブロック内の処理を実施.
-		$width  = $attachment_image_src[1]; // 添付画像の幅.
-		$height = $attachment_image_src[2]; // 添付画像の高さ.
-	} else { // URLに紐づく添付画像ファイル情報がない場合は，デフォルトアイキャッチ画像を使用していると判断し以下の処理を実施.
-		$width  = 1200; // デフォルトアイキャッチpng画像の幅.
-		$height = 800; // デフォルトアイキャッチpng画像の高さ.
+		$width  = (int) $attachment_image_src[1]; // 添付画像の幅.
+		$height = (int) $attachment_image_src[2]; // 添付画像の高さ.
 	}
-	echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
-	echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
+	// WebP画像が取得されているとき，width/heightが0になっている.
+	// そのため，widthまたはheightが0のとき，og:image:width/og:image:heightは出力しない.
+	if ( $width > 0 && $height > 0 ) {
+		echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
+		echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
+	}
 }
 add_action( 'wp_head', 'add_ogp_image' );
 
