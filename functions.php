@@ -107,6 +107,8 @@ function get_ps_description() {
 	$description = null;
 	if ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページの投稿概要を設定.
 		$description = get_the_excerpt();
+		// 例外処理：投稿抜粋が空のとき，サイトのキャッチフレーズに置き換える.
+		$description = '' === $description ? get_bloginfo( 'description' ) : $description;
 	} else { // 上記のどれにも該当しないとき，サイトのキャッチフレーズを設定.
 		$description = get_bloginfo( 'description' );
 	}
