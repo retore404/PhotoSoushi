@@ -10,7 +10,8 @@
  */
 
 get_header(); ?>
-			<section id="content-header">
+			<section id="content-header">	
+<pre><?php var_dump( get_option( 'active_plugins' ) ); ?></pre>
 				<h2>
 					<!--開いている一覧ページがアーカイブページのとき-->
 					<?php if ( is_archive() ) : ?>
