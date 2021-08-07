@@ -210,10 +210,13 @@ function add_ogp_image() {
 	echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
 	echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
 }
+/**
+ * OGP設定(og:image)をheadタグ内に読み込む.
+ */
 function apply_ogp_image_setting(){
-	add_action( 'wp_head', 'add_ogp_image' );
+	add_action( 'ps_img_metadata_action_hook', 'add_ogp_image' );
 }
-add_action( 'wp_footer', 'apply_ogp_image_setting');
+add_action( 'wp_footer', 'apply_ogp_image_setting' );
 
 /**
  * メタデータの設定(article)

@@ -16,6 +16,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php wp_head(); ?>
+		<?php do_action( 'ps_img_metadata_action_hook' ); ?>
 	</head>
 	<body>
 		<section id="grid-container-root">
