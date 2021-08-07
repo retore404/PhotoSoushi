@@ -265,6 +265,15 @@ function add_twitter_title_metadata() {
 }
 add_action( 'wp_head', 'add_twitter_title_metadata' );
 
+/**
+ * メタデータの設定(twitter:description)
+ */
+function add_twitter_description_metadata() {
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
+	echo '<meta name="twitter:description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_twitter_description_metadata' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
