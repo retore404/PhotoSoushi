@@ -245,7 +245,7 @@ function add_article_metadata() {
 add_action( 'wp_head', 'add_article_metadata' );
 
 /**
- * メタデータの設定(twitter:全ページ共通)
+ * メタデータの設定(twitter)
  */
 function add_twitter_common_metadata() {
 	// twitter:card設定.
@@ -253,26 +253,15 @@ function add_twitter_common_metadata() {
 	// twitter:domain設定.
 	$domain = substr( get_home_url( null, '', 'https' ), 8 ); // home_urlをhttps指定した上で取得して「https://」より後をドメインとして抜粋.
 	echo '<meta name="twitter:domain" content="' . esc_html( $domain ) . '">' . "\n";
-}
-add_action( 'wp_head', 'add_twitter_common_metadata' );
-
-/**
- * メタデータの設定(twitter:title)
- */
-function add_twitter_title_metadata() {
-	$title = get_ps_title();
+	// twitter:title設定.
+	$title = get_ps_title(); // メタデータ用共通関数(title)を呼び出し.
 	echo '<meta name="twitter:title" content="' . esc_html( $title ) . '">' . "\n";
-}
-add_action( 'wp_head', 'add_twitter_title_metadata' );
-
-/**
- * メタデータの設定(twitter:description)
- */
-function add_twitter_description_metadata() {
+	// twitter:description設定.
 	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
 	echo '<meta name="twitter:description" content="' . esc_html( $description ) . '">' . "\n";
 }
-add_action( 'wp_head', 'add_twitter_description_metadata' );
+add_action( 'wp_head', 'add_twitter_common_metadata' );
+
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
