@@ -209,14 +209,16 @@ function add_ogp_image() {
 	}
 	echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
 	echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
+	
+	if ( have_posts() ) :
+		while ( have_posts() ) : the_post();
+			echo '<meta property="exp" content="' . catch_first_image() . '">' . "\n";
+		endwhile;
+	else :
+		echo '<meta property="exp" content="false">' . "\n";
+	endif;
 }
-/**
- * OGP設定(og:image)をheadタグ内に読み込む.
- */
-function apply_img_metadata() {
-	add_action( 'ps_img_metadata_action_hook', 'add_ogp_image' );
-}
-add_action( 'wp_head', 'apply_img_metadata' );
+add_action( 'wp_head', 'add_ogp_image' );
 
 /**
  * メタデータの設定(article)

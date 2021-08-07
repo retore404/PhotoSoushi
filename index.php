@@ -54,14 +54,6 @@ get_header(); ?>
 						</a>
 					</section>
 				<?php endwhile; ?>
-				<?php
-				// URLの設定.
-				$url = catch_first_image( 'png' ); // 画像のURLを格納.
-				echo '<meta property="og:image" content="' . esc_url( $url ) . '">' . "\n";
-				if ( substr( $url, 0, 5 ) === 'https' ) { // 取得した画像のURLがhttpsから始まるとき，secure_urlとしても指定.
-					echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
-				}		
-				?>
 			</section>
 			<?php endif; ?>
 			<!--ページネーション-->
