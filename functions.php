@@ -51,7 +51,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 
 
 /**
- * タイトルタグを自動生成(All in One SEO Pack無効時).
+ * タイトルタグを自動生成.
  *
  * @param array $title タイトルタグの内容配列.
  * @return array $title タイトルタグの内容配列（カスタマイズ）.
@@ -74,27 +74,6 @@ function custom_title_text( $title ) {
 }
 add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
-
-/**
- * タイトルタグを自動生成(All in One SEO Pack有効時).
- *
- * @param string $title タイトルタグの内容文字列（デフォルト）.
- * @return string $title タイトルタグの内容文字列（カスタマイズ）.
- */
-function custom_title_text_for_aioseo( $title ) {
-	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
-	if ( is_paged() || is_archive() ) {
-		global $wp_query;
-		$current_page = get_query_var( 'paged' );
-		if ( 0 === $current_page ) {
-			$current_page = ++$current_page;
-		}
-		$max_pages = $wp_query->max_num_pages;
-		$title     = $title . '(' . $current_page . '/' . $max_pages . ')';
-	}
-	return $title;
-}
-add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
 
 /************** メタデータ定義 **************/
 /**
