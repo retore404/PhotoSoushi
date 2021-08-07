@@ -234,6 +234,18 @@ function add_article_metadata() {
 }
 add_action( 'wp_head', 'add_article_metadata' );
 
+/**
+ * メタデータの設定(twitter:全ページ共通)
+ */
+function add_twitter_common_metadata() {
+	// twitter:card設定.
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+	// twitter:domain設定.
+	$domain = substr( get_home_url( null, '', 'https' ), 8 ); // home_urlをhttps指定した上で取得して「https://」より後をドメインとして抜粋.
+	echo '<meta name="twitter:domain" content="' . esc_url( $domain ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_twitter_common_metadata' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
