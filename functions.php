@@ -115,7 +115,7 @@ function get_ps_description() {
 
 /**
  * メタデータ用共通関数(title)
- * 
+ *
  * @return string $title HomeページもしくはFrontページの場合は，サイトタイトル. それ以外の場合，表示中ページのtitle-tag.
  */
 function get_ps_title() {
@@ -261,7 +261,7 @@ add_action( 'wp_head', 'add_twitter_common_metadata' );
  */
 function add_twitter_title_metadata() {
 	$title = get_ps_title();
-	echo '<meta name="twitter:title" content="' . $title . '">' . "\n";
+	echo '<meta name="twitter:title" content="' . esc_html( $title ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_twitter_title_metadata' );
 
