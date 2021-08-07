@@ -16,7 +16,7 @@
  * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
  */
 function catch_first_image( $type = 'svg' ) {
-	global $post, $posts;
+	global $post;
 	$first_img = '';
 	$extension = '.' . $type;
 	ob_start();
