@@ -10,17 +10,21 @@
  */
 
 /**
- * 記事中1枚目の画像をアイキャッチ化する.
+ * 記事中1枚目の画像URLを返す.
+ *
+ * @param string $type 1枚目の画像がヒットしない場合に返すデフォルトアイキャッチ画像の形式("svg"もしくは"png"を指定. 指定がない場合，svg).
+ * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
  */
-function catch_first_image() {
-	global $post, $posts;
+function catch_first_image( $type = 'svg' ) {
+	global $post;
 	$first_img = '';
+	$extension = '.' . $type;
 	ob_start();
 	ob_end_clean();
 	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 	if ( empty( $matches [1] [0] ) ) { // 記事中のimgタグの正規表現合致がない場合.
 		$dir       = get_template_directory_uri();
-		$first_img = "$dir/images/thumbnail.svg";
+		$first_img = "$dir/images/thumbnail" . $extension;
 	} else { // 記事中のimgタグの正規表現合致がある場合.
 		$first_img = $matches [1] [0];
 	}
@@ -47,7 +51,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 
 
 /**
- * タイトルタグを自動生成(All in One SEO Pack無効時).
+ * タイトルタグを自動生成.
  *
  * @param array $title タイトルタグの内容配列.
  * @return array $title タイトルタグの内容配列（カスタマイズ）.
@@ -71,26 +75,188 @@ function custom_title_text( $title ) {
 add_theme_support( 'title-tag' );
 add_filter( 'document_title_parts', 'custom_title_text', 11 );
 
+/************** メタデータ定義 **************/
 /**
- * タイトルタグを自動生成(All in One SEO Pack有効時).
+ * メタデータ用共通関数(description)
  *
- * @param string $title タイトルタグの内容文字列（デフォルト）.
- * @return string $title タイトルタグの内容文字列（カスタマイズ）.
+ * @return string $description 固定ページもしくは個別記事ページのとき，その抜粋/それ以外の場合，サイトのキャッチフレーズを返す変数.
  */
-function custom_title_text_for_aioseo( $title ) {
-	// ページネーションまたはアーカイブページのとき，タイトルにページ番号と全ページ数を含める.
-	if ( is_paged() || is_archive() ) {
-		global $wp_query;
-		$current_page = get_query_var( 'paged' );
-		if ( 0 === $current_page ) {
-			$current_page = ++$current_page;
-		}
-		$max_pages = $wp_query->max_num_pages;
-		$title     = $title . '(' . $current_page . '/' . $max_pages . ')';
+function get_ps_description() {
+	// description格納用変数を定義.
+	$description = null;
+	if ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページの投稿概要を設定.
+		$description = get_the_excerpt();
+		// 例外処理：投稿抜粋が空のとき，サイトのキャッチフレーズに置き換える.
+		$description = '' === $description ? get_bloginfo( 'description' ) : $description;
+	} else { // 上記のどれにも該当しないとき，サイトのキャッチフレーズを設定.
+		$description = get_bloginfo( 'description' );
+	}
+	return $description;
+}
+
+/**
+ * メタデータ用共通関数(title)
+ *
+ * @return string $title HomeページもしくはFrontページの場合は，サイトタイトル. それ以外の場合，表示中ページのtitle-tag.
+ */
+function get_ps_title() {
+	// title格納用変数を定義.
+	$title = null;
+	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，サイトタイトルを設定.
+		$title = get_bloginfo( 'name' );
+	} else { // それ以外のときページタイトル.
+		$title = wp_get_document_title();
 	}
 	return $title;
 }
-add_filter( 'aioseo_title', 'custom_title_text_for_aioseo' );
+
+/**
+ * Descriptionの指定.
+ */
+function add_description_metadata() {
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
+	echo '<meta name="description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_description_metadata' );
+
+/**
+ * Canonicalの指定.
+ */
+function add_canonical_metadata() {
+	// canonical格納用変数を定義.
+	$canonical = null;
+	if ( is_home() || is_front_page() ) { // HomeページもしくはFrontページの場合は，home_urlを設定.
+		$canonical = home_url();
+	} elseif ( is_category() ) { // カテゴリーアーカイブの場合は，カテゴリーアーカイブ1ページ目を設定.
+		$canonical = get_category_link( get_query_var( 'cat' ) );
+	} elseif ( is_date() ) { // 月別アーカイブの場合は，月別アーカイブページ1ページ目を設定.
+		$canonical = get_month_link( get_the_time( 'Y' ), get_the_time( 'M' ) );
+	} elseif ( is_tag() ) { // タグアーカイブの場合は，タグアーカイブ1ページ目を設定.
+		$canonical = get_tag_link( get_queried_object()->term_id );
+	} elseif ( is_search() ) {  // 検索結果一覧の場合，検索結果1ページ目を設定.
+		$canonical = get_search_link();
+	} elseif ( is_page() || is_single() ) { // ページもしくは個別記事の場合，そのページのパーマリンクを設定.
+		$canonical = get_permalink();
+	} else { // 上記のどれにも該当しないとき，home_urlを設定.
+		$canonical = home_url();
+	}
+	echo '<link rel="canonical" href="' . esc_url( $canonical ) . '">' . "\n";
+}
+remove_action( 'wp_head', 'rel_canonical' ); // 既存のcanonical定義を削除.
+add_action( 'wp_head', 'add_canonical_metadata' );
+
+/**
+ * OGPの設定(og:site_name)
+ */
+function add_ogp_site_name() {
+	// site_name格納用変数を定義.
+	$site_name = get_bloginfo( 'name' );
+	echo '<meta property="og:site_name" content="' . esc_html( $site_name ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_site_name' );
+
+/**
+ * OGPの設定(og:title)
+ */
+function add_ogp_title() {
+	$title = get_ps_title();
+	echo '<meta property="og:title" content="' . esc_html( $title ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_title' );
+
+/**
+ * OGPの設定(og:description)
+ */
+function add_ogp_description() {
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
+	echo '<meta property="og:description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_description' );
+
+/**
+ * OGPの設定(og:url)
+ */
+function add_ogp_url() {
+	$url = null; // ページのURLを格納する変数.
+	if ( is_home() || is_archive() || is_search() ) {
+		$url = get_pagenum_link( get_query_var( 'paged' ) ); // 一覧系ページの場合.
+	} else {
+		$url = get_pagenum_link( get_query_var( 'page' ) ); // それ以外の場合.
+	}
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_ogp_url' );
+
+/**
+ * OGPの設定(og:image)
+ */
+function add_ogp_image() {
+	// URLの設定.
+	$url = null;
+	// 表示中ページから導出できる投稿をループして，urlがnullである場合に画像URLをurlにセットする.
+	// $urlには1記事目の最初の画像，1記事目で画像がヒットしない場合はデフォルトサムネイル(png)がセットされる.
+	if ( have_posts() ) {
+		while ( have_posts() ) :
+			the_post();
+			if ( is_null( $url ) ) {
+				$url = catch_first_image( 'png' ); // 画像のURLを格納.
+			}
+		endwhile;
+	}
+	echo '<meta property="og:image" content="' . esc_url( $url ) . '">' . "\n";
+	if ( substr( $url, 0, 5 ) === 'https' ) { // 取得した画像のURLがhttpsから始まるとき，secure_urlとしても指定.
+		echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
+	}
+
+	// width/heightの設定.
+	$attachment_image_src = wp_get_attachment_image_src( attachment_url_to_postid( $url ), 'full' ); // og:imageのURLに紐づく添付画像ファイル情報を取得.
+	// URLに紐づく添付画像ファイル情報がない場合は，デフォルトアイキャッチ画像を使用していると判断するため，デフォルト値としてアイキャッチ画像サイズを設定.
+	$width  = 1200; // デフォルトアイキャッチpng画像の幅.
+	$height = 800; // デフォルトアイキャッチpng画像の高さ.
+	if ( $attachment_image_src ) { // URLに紐づく添付画像ファイル情報がない場合，falseが返ってきている．情報を取得できた場合のみ，ifブロック内の処理を実施.
+		$width  = (int) $attachment_image_src[1]; // 添付画像の幅.
+		$height = (int) $attachment_image_src[2]; // 添付画像の高さ.
+	}
+	// WebP画像が取得されているとき，width/heightが0になっている.
+	// そのため，widthまたはheightが0のとき，og:image:width/og:image:heightは出力しない.
+	if ( $width > 0 && $height > 0 ) {
+		echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
+		echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'add_ogp_image' );
+
+/**
+ * メタデータの設定(article)
+ */
+function add_article_metadata() {
+	if ( is_page() || is_single() ) { // 固定ページもしくは個別記事ページでのみ設定.
+		$published_time = get_the_time( 'c' );
+		$modified_time  = get_the_modified_date( 'c' );
+		echo '<meta property="article:published_time" content="' . esc_html( $published_time ) . '">' . "\n";
+		echo '<meta property="article:modified_time" content="' . esc_html( $modified_time ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'add_article_metadata' );
+
+/**
+ * メタデータの設定(twitter)
+ */
+function add_twitter_common_metadata() {
+	// twitter:card設定.
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+	// twitter:domain設定.
+	$domain = substr( get_home_url( null, '', 'https' ), 8 ); // home_urlをhttps指定した上で取得して「https://」より後をドメインとして抜粋.
+	echo '<meta name="twitter:domain" content="' . esc_html( $domain ) . '">' . "\n";
+	// twitter:title設定.
+	$title = get_ps_title(); // メタデータ用共通関数(title)を呼び出し.
+	echo '<meta name="twitter:title" content="' . esc_html( $title ) . '">' . "\n";
+	// twitter:description設定.
+	$description = get_ps_description(); // メタデータ用共通関数(description)を呼び出し.
+	echo '<meta name="twitter:description" content="' . esc_html( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'add_twitter_common_metadata' );
+
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
