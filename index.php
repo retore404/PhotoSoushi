@@ -53,7 +53,7 @@ get_header(); ?>
 							</section>
 						</a>
 					</section>
-				
+				<?php endwhile; ?>
 				<?php
 				// URLの設定.
 				$url = catch_first_image( 'png' ); // 画像のURLを格納.
@@ -62,7 +62,6 @@ get_header(); ?>
 					echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
 				}		
 				?>
-				<?php endwhile; ?>
 			</section>
 			<?php endif; ?>
 			<!--ページネーション-->
