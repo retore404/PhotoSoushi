@@ -230,7 +230,6 @@ function add_ogp_article() {
 		$modified_time  = get_the_modified_date( 'c' );
 		echo '<meta property="article:published_time" content="' . esc_html( $published_time ) . '">' . "\n";
 		echo '<meta property="article:modified_time" content="' . esc_html( $modified_time ) . '">' . "\n";
-
 	}
 }
 add_action( 'wp_head', 'add_ogp_article' );
