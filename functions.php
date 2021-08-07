@@ -10,17 +10,21 @@
  */
 
 /**
- * 記事中1枚目の画像をアイキャッチ化する.
+ * 記事中1枚目の画像URLを返す.
+ *
+ * @param string $type 1枚目の画像がヒットしない場合に返すデフォルトアイキャッチ画像の形式("svg"もしくは"png"を指定. 指定がない場合，svg).
+ * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
  */
-function catch_first_image() {
+function catch_first_image( $type = 'svg' ) {
 	global $post, $posts;
 	$first_img = '';
+	$extension = '.' . $type;
 	ob_start();
 	ob_end_clean();
 	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 	if ( empty( $matches [1] [0] ) ) { // 記事中のimgタグの正規表現合致がない場合.
 		$dir       = get_template_directory_uri();
-		$first_img = "$dir/images/thumbnail.svg";
+		$first_img = "$dir/images/thumbnail" . $extension;
 	} else { // 記事中のimgタグの正規表現合致がある場合.
 		$first_img = $matches [1] [0];
 	}
@@ -191,6 +195,18 @@ function add_ogp_url() {
 	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_ogp_url' );
+
+/**
+ * OGPの設定(og:image)
+ */
+function add_ogp_image() {
+	$url = catch_first_image( 'png' ); // 画像のURLを格納.
+	echo '<meta property="og:image" content="' . esc_url( $url ) . '">' . "\n";
+	if ( substr( $url, 0, 4 ) === 'https' ) { // 取得した画像のURLがhttpsから始まるとき，secure_urlとしても指定.
+		echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'add_ogp_image' );
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
