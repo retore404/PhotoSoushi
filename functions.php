@@ -192,7 +192,17 @@ add_action( 'wp_head', 'add_ogp_url' );
  */
 function add_ogp_image() {
 	// URLの設定.
-	$url = catch_first_image( 'png' ); // 画像のURLを格納.
+	$url = null;
+	// 表示中ページから導出できる投稿をループして，urlがnullである場合に画像URLをurlにセットする.
+	// $urlには1記事目の最初の画像，1記事目で画像がヒットしない場合はデフォルトサムネイル(png)がセットされる.
+	if ( have_posts() ) {
+		while ( have_posts() ) :
+			the_post();
+			if ( is_null( $url ) ) {
+				$url = catch_first_image( 'png' ); // 画像のURLを格納.
+			}
+		endwhile;
+	}
 	echo '<meta property="og:image" content="' . esc_url( $url ) . '">' . "\n";
 	if ( substr( $url, 0, 5 ) === 'https' ) { // 取得した画像のURLがhttpsから始まるとき，secure_urlとしても指定.
 		echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
@@ -209,14 +219,6 @@ function add_ogp_image() {
 	}
 	echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
 	echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
-	
-	if ( have_posts() ) :
-		while ( have_posts() ) : the_post();
-			echo '<meta property="exp" content="' . catch_first_image() . '">' . "\n";
-		endwhile;
-	else :
-		echo '<meta property="exp" content="false">' . "\n";
-	endif;
 }
 add_action( 'wp_head', 'add_ogp_image' );
 
