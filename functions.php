@@ -224,7 +224,7 @@ add_action( 'wp_head', 'add_ogp_image' );
 /**
  * メタデータの設定(article)
  */
-function add_ogp_article() {
+function add_article_metadata() {
 	if ( is_page() || is_single() ) { // 固定ページもしくは個別記事ページでのみ設定.
 		$published_time = get_the_time( 'c' );
 		$modified_time  = get_the_modified_date( 'c' );
@@ -232,7 +232,7 @@ function add_ogp_article() {
 		echo '<meta property="article:modified_time" content="' . esc_html( $modified_time ) . '">' . "\n";
 	}
 }
-add_action( 'wp_head', 'add_ogp_article' );
+add_action( 'wp_head', 'add_article_metadata' );
 
 /******** ウィジェット関連カスタマイズ ********/
 /**
