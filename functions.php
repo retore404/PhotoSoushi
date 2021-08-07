@@ -213,7 +213,7 @@ function add_ogp_image() {
 function apply_ogp_image_setting(){
 	add_action( 'wp_head', 'add_ogp_image' );
 }
-add_action( 'the_post', 'apply_ogp_image_setting');
+add_action( 'wp_footer', 'apply_ogp_image_setting');
 
 /**
  * メタデータの設定(article)
