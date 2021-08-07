@@ -221,6 +221,20 @@ function add_ogp_image() {
 }
 add_action( 'wp_head', 'add_ogp_image' );
 
+/**
+ * メタデータの設定(article)
+ */
+function add_ogp_article() {
+	if ( is_page() || is_single() ) { // 固定ページもしくは個別記事ページでのみ設定.
+		$published_time = get_the_time( 'c' );
+		$modified_time  = get_the_modified_date( 'c' );
+		echo '<meta property="article:published_time" content="' . esc_html( $published_time ) . '">' . "\n";
+		echo '<meta property="article:modified_time" content="' . esc_html( $modified_time ) . '">' . "\n";
+
+	}
+}
+add_action( 'wp_head', 'add_ogp_article' );
+
 /******** ウィジェット関連カスタマイズ ********/
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
