@@ -200,11 +200,24 @@ add_action( 'wp_head', 'add_ogp_url' );
  * OGPの設定(og:image)
  */
 function add_ogp_image() {
+	// URLの設定.
 	$url = catch_first_image( 'png' ); // 画像のURLを格納.
 	echo '<meta property="og:image" content="' . esc_url( $url ) . '">' . "\n";
 	if ( substr( $url, 0, 4 ) === 'https' ) { // 取得した画像のURLがhttpsから始まるとき，secure_urlとしても指定.
 		echo '<meta property="og:image:secure_url" content="' . esc_url( $url ) . '">' . "\n";
 	}
+
+	// width/heightの設定.
+	$attachment_image_src = wp_get_attachment_image_src( attachment_url_to_postid( $url ), 'full' ); // og:imageのURLに紐づく添付画像ファイル情報を取得.
+	if ( $attachment_image_src ) { // URLに紐づく添付画像ファイル情報がない場合，falseが返ってきている．情報を取得できた場合のみ，ifブロック内の処理を実施.
+		$width  = $attachment_image_src[1]; // 添付画像の幅.
+		$height = $attachment_image_src[2]; // 添付画像の高さ.
+	} else { // URLに紐づく添付画像ファイル情報がない場合は，デフォルトアイキャッチ画像を使用していると判断し以下の処理を実施.
+		$width  = 1200; // デフォルトアイキャッチpng画像の幅.
+		$height = 800; // デフォルトアイキャッチpng画像の高さ.
+	}
+	echo '<meta property="og:image:width" content="' . esc_html( $width ) . '">' . "\n";
+	echo '<meta property="og:image:height" content="' . esc_html( $height ) . '">' . "\n";
 }
 add_action( 'wp_head', 'add_ogp_image' );
 
