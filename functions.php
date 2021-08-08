@@ -111,6 +111,16 @@ function get_ps_title() {
 }
 
 /**
+ * 不要metadataの削除
+ */
+remove_action( 'wp_head', 'wp_generator' ); // generatorを削除.
+remove_action( 'wp_head', 'wp_shortlink_wp_head' ); // 短縮URLを削除.
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); // 絵文字対応削除.
+remove_action( 'wp_print_styles', 'print_emoji_styles' ); // 絵文字対応削除.
+remove_action( 'wp_head', 'rsd_link' ); // 外部投稿用URL削除.
+remove_action( 'wp_head', 'wlwmanifest_link' ); // 外部投稿用URL削除.
+
+/**
  * Descriptionの指定.
  */
 function add_description_metadata() {
