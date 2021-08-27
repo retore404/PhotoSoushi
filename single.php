@@ -36,7 +36,7 @@ get_header(); ?>
 									if ( $tags_array ) { // タグが存在するとき.
 										$tag_str = 'Tag(s):<br>'; // 表示用の文字列.
 										foreach ( $tags_array as $t ) {
-											$tag_str = $tag_str . '<a href="' . get_tag_link( $t->term_id ) . '">' . replace_tag_name( $t->name ) . '</a>, ';
+											$tag_str = $tag_str . '<a href="' . get_tag_link( $t->term_id ) . '">' . replace_tag_str( $t->name ) . '</a>, ';
 										}
 										$tag_str = rtrim( $tag_str, ', ' ); // 末尾の不要な「, 」を削除.
 										echo wp_kses_post( $tag_str ); // 出力.

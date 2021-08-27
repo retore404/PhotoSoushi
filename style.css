@@ -4,7 +4,7 @@ Theme URI: https://github.com/retore404/PhotoSoushi
 Author: retore
 Author URI: https://github.com/retore404
 Description: 写真×雑記のブログでの使用に適するWordPressテーマ
-Version: 6.5
+Version: 6.6
 Text Domain: photosoushi
 */
 
@@ -42,16 +42,8 @@ a {
 a:visited{
 	color: #0066c0;
 }
-a:hover {
+a:hover:not(.wp-block-image a){
 	opacity: 0.5;
-}
-a > section.post-each {
-	color: #191919;
-}
-a > section.post-each:hover {
-	opacity: 0.5;
-	text-decoration: none;
-	color: #191919;
 }
 
 /* 区切り線 */
@@ -98,6 +90,14 @@ ul {
 
 .single-category-tags-wrapper .ps-icon { /* 個別記事タグ情報部 */
 	vertical-align: -1px;
+}
+
+.tag-cloud-link .ps-icon { /* タグクラウド部 */
+	vertical-align: -1px;
+}
+
+.tag-cloud-link-wrapper .ps-icon-tag { /* タグクラウド部（タグアイコン） */
+	vertical-align: -2px;
 }
 
 /******** Gridレイアウト定義 ********/
@@ -187,10 +187,6 @@ header {
 /* 一覧ページの各記事コンテナ */
 .post-container{
 	border-bottom: solid 1px #808080;
-}
-
-/* 一覧ページ各記事（リンク用コンテナ） */
-.post-each {
 	padding-top: 0.7em;
 	padding-bottom: 0.7em;
 }
@@ -241,6 +237,22 @@ header {
 	text-align: justify;
 	display: block;
 	font-size: 90%;
+}
+
+/* 一覧ページ各記事リンク部体裁 */
+a > section.post-each { /* フォントカラー定義 */
+	color: #191919;
+}
+a > section.post-each:hover .post-each-thumbnail-wrapper:after{ /* リンクホバー時のビネット定義 */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	box-shadow: inset 0 0 100px 30px rgba(0, 0, 0, 0.5);
+	transition: all .5s ease;
 }
 
 /* ページネーション */
@@ -334,7 +346,7 @@ blockquote > P {
 	color: #757575;
 }
 
-/* 記事情報（カテゴリ・タグ部 */
+/* 記事情報（カテゴリ・タグ部） */
 #single-article-info {
 	border-top: solid 1px #808080;
 	margin-top: 1em;
@@ -375,10 +387,14 @@ blockquote > P {
 }
 
 /* タグクラウド */
-.tagcloud a {
-	font-size: 0.875em !important;
-	display: block;
+.tag-cloud-link-wrapper {
+	display: inline-block;
 	margin-left: 1em;
+}
+
+.tag-cloud-link {
+	font-size: 0.875em !important;
+	margin-left: 0.5em;
 }
 
 /******** 検索フォーム(searchform.php) ********/

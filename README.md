@@ -22,28 +22,23 @@
 
 ![写真・文章をどちらも見やすく配置するレイアウト](https://github.com/retore404/PhotoSoushi/blob/images/single_pc_bleed.png)
 
-「写真は大きく表示したいが，写真に合わせて記事の表示部分の横幅が長くなると文章が読みにくい」という課題を解決するため，フルブリードレイアウトの考え方を取り入れたレイアウトを採用．
-
-写真はグリッド内の横幅を目一杯使う一方，文章部は1行あたりの文字数が増えすぎないレイアウト．
-
+「写真は大きく表示したいが，写真に合わせて記事の表示部分の横幅が長くなると文章が読みにくい」という課題意識から，フルブリードレイアウトの考え方を採用．  
+写真はグリッド内の横幅を目一杯使う一方，文章部は1行あたりの文字数が増えすぎないレイアウトとしている．  
 写真と文章部で横幅を変えることで「写真は大きく」「文章は読みやすい」を両立．
 
 #### 1-2. カメラ関連のタグ名の置き換え機能
 
-記事中の写真の撮影機材（レンズ）・撮影場所をタグとして持つことを想定し，タグ名の"Lens:"および"Location:"をアイコンに置き換える機能を持つ．置き換え機能のON/OFFはテーマ設定から選択可能．
-
-- "Lens:"の置き換え
-
-!["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png)
-
-- "Location:"の置き換え
-
-!["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png)
-
-
+記事中の写真の撮影機材（レンズ）・撮影場所をタグとして持つことを想定し，タグ名に含まれる"Canmera:"，"Lens:"および"Location:"をアイコンに置き換える機能を持つ．  
 また，タグ名に含まれる「T*」は赤字で表示される．
 
-#### 1-3. 3:2/16:9画像に対応する一覧画面
+| 置き換え対象 | 表示例 |
+|:---|:---:|
+| "Camera:" | !["Camera:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_camera.png) |
+| "Lens:"/T* | !["Lens:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_lens.png) |
+| "Location:" | !["Location:"の置き換え](https://github.com/retore404/PhotoSoushi/blob/images/tag_location.png) |
+
+
+#### 1-3. 3:2/16:9/シネスコ画像に対応する一覧画面
 
 記事一覧画面のアイキャッチ画像表示部は3:2固定としつつ，背景色を黒色として画像を中央に配置する実装．16:9画像やシネスコ画像も違和感なく一覧画面のアイキャッチとして表示することができる．
 
@@ -55,26 +50,17 @@
 
 Gridレイアウトを採用することでレスポンシブ対応を実現．
 
-#### ・PCで表示した例
+| 表示デバイス | 表示例 |
+|:---|:---:|
+| PC | ![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png) |
+| タブレット | ![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png) |
+| スマホ | ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png) |
 
-![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png)
 
-#### ・タブレットで表示した例
+### 3. UX
 
-![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png)
-
-#### ・スマホで表示した例
-
-![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png)
-
-### 3. カスタマイズのベースとなるシンプルなテーマ
-
-fork元である [wp_theme_super_simple](https://github.com/retore404/wp_theme_super_simple) の設計思想を継承し，極力シンプルなデザイン・読みやすいコードを追求．
-
-## 詳細
-
-- 対応画像フォーマット：WordPress標準でサポートする形式に加え，WebP形式をサポート．
-- ダークモード対応：○
+対応画像フォーマットとしてWordPress標準でサポートする形式に加え，WebP形式をサポートし，表示速度の向上を実現．  
+その他，パフォーマンス，アクセシビリティを意識した実装を加えている．
 
 ## バージョン管理
 
