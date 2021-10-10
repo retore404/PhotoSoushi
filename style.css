@@ -146,7 +146,7 @@ ul {
 .grid-container-article > * {
 	grid-column: 2 / 3;
 }
-.grid-container-article > .wp-block-image {
+.grid-container-article > .wp-block-image,.wp-block-gallery {
 	width: 100%;
 	grid-column: 1 / 4;
 }
