@@ -193,29 +193,15 @@ header {
 
 /* 一覧ページ各記事部サムネイルwrapper */
 .post-each-thumbnail-wrapper{
-	position: relative;
-	width: 100%;
-}
-
-/* 一覧ページ各記事部サムネイルwrapper（比率固定用） */
-.post-each-thumbnail-wrapper:before{
-	content:"";
-	display: block;
-	padding-top: 67%; /* 高さを幅の67%に固定 */
-}
-
-/* 一覧ページ各記事部サムネイル */
-.post-each-thumbnail {
-	display:flex;
+	position: relative; /* 各記事リンクホバーエフェクトの実装のためrelative */
+	width: 100%; /* wrapperの幅は親要素に依存させる */
+	aspect-ratio: 3/2; /* wrapperのアスペクト比は使用する画像の性質を考慮し3:2で定義 */
+	background-color: black; /* 3:2よりワイドな画像(16:9など)を使用する場合に備え，wrapperは背景色を定義 */
+	display: flex; /* 後続のalign-itemsで画像を上下中央に配置するため */
 	align-items: center;
-	background-color: black;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
 }
-.post-each-thumbnail img {
+
+.post-each-thumbnail-wrapper img {
 	width: 100%;
 	height: auto;
 }
