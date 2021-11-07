@@ -121,6 +121,15 @@ remove_action( 'wp_head', 'rsd_link' ); // 外部投稿用URL削除.
 remove_action( 'wp_head', 'wlwmanifest_link' ); // 外部投稿用URL削除.
 
 /**
+ * Mediaelement系CSS/JSの削除.
+ */
+function custom_deregister_mediaemlements() {
+	wp_deregister_style( 'wp-mediaelement' );
+	wp_deregister_script( 'mediaelement' );
+}
+add_action( 'wp_enqueue_scripts', 'custom_deregister_mediaemlements' );
+
+/**
  * Descriptionの指定.
  */
 function add_description_metadata() {
