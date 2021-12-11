@@ -370,6 +370,7 @@ blockquote > P {
 a.tag-cloud-link {
 	display: flex;
 	flex-flow: row nowrap;
+	justify-content: center;
 	align-items: center;
 	margin-left: 1em;
 	min-width: 48px;
