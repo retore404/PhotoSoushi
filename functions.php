@@ -390,13 +390,13 @@ add_filter(
  */
 function replace_tag_str( $tag_str ) {
 	// "Camera:"のアイコン置き換え.
-	$tag_str = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Camera:(.*)/', '<span class="ps-icon ps-icon-camera"> $1</span> ', $tag_str );
 	// "Lens:"のアイコン置き換え.
-	$tag_str = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Lens:(.*)/', '<span class="ps-icon ps-icon-lens"> $1</span> ', $tag_str );
 	// "T*"の赤字化.
 	$tag_str = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_str );
 	// "Location:"のアイコン置き換え.
-	$tag_str = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Location:(.*)/', '<span class="ps-icon ps-icon-pin"> $1</span> ', $tag_str );
 	return $tag_str;
 }
 

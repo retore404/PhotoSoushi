@@ -380,7 +380,7 @@ blockquote > P {
 
 a.tag-cloud-link {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	align-items: center;
 	margin-left: 1em;
 	min-width: 48px;
@@ -393,6 +393,10 @@ a.tag-cloud-link {
 	font-size: 0.875em !important;
 	margin-left: 0.5em;
 	color: #191919;
+}
+
+.tag-cloud-link .ps-icon { /*アイコン置き換え済タグ名の自動折返し停止*/
+	word-break: break-all;
 }
 
 .tag-cloud-link .ps-icon-tag { /*タグクラウドリンク内のタグアイコン調整*/
