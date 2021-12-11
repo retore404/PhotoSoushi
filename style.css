@@ -373,14 +373,30 @@ blockquote > P {
 }
 
 /* タグクラウド */
-.tag-cloud-link-wrapper {
-	display: inline-block;
-	margin-left: 1em;
+.tagcloud {
+	display: flex;
+	flex-flow: row wrap;
 }
 
-.tag-cloud-link {
+a.tag-cloud-link {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	margin-left: 1em;
+	min-width: 48px;
+	min-height: 48px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px 5px 5px 5px;
+	border:gray 1px solid;
 	font-size: 0.875em !important;
 	margin-left: 0.5em;
+	color: #191919;
+}
+
+.tag-cloud-link .ps-icon-tag { /*タグクラウドリンク内のタグアイコン調整*/
+	margin-right: 0.75em;
 }
 
 /******** 検索フォーム(searchform.php) ********/

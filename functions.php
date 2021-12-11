@@ -287,8 +287,7 @@ add_action( 'wp_head', 'add_twitter_common_metadata' );
 function wp_tag_cloud_customize( $return ) {
 	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
 	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
-	$return = str_replace( '<a', '<span class="tag-cloud-link-wrapper"><span class="ps-icon ps-icon-tag"></span><a', $return );
-	$return = str_replace( '</a>', '</a></span>', $return );
+	$return = preg_replace( '/<a (.*?)>/', '<a $1><span class="ps-icon ps-icon-tag"></span>', $return );
 	return $return;
 }
 add_filter( 'wp_tag_cloud', 'wp_tag_cloud_customize' );
