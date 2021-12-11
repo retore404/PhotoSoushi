@@ -84,20 +84,9 @@ ul {
 }
 
 /* Webフォントの上下揃え調整 */
-#content-header .ps-icon { /* タグ別記事一覧ヘッダ部 */
-	vertical-align: -2px;
-}
-
-.single-category-tags-wrapper .ps-icon { /* 個別記事タグ情報部 */
-	vertical-align: -1px;
-}
-
-.tag-cloud-link .ps-icon { /* タグクラウド部 */
-	vertical-align: -1px;
-}
-
-.tag-cloud-link-wrapper .ps-icon-tag { /* タグクラウド部（タグアイコン） */
-	vertical-align: -2px;
+span.ps-icon::before {
+	display: inline-block;
+	vertical-align: -1.3px;
 }
 
 /******** Gridレイアウト定義 ********/
