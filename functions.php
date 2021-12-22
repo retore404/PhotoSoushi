@@ -278,19 +278,21 @@ add_action( 'wp_head', 'add_twitter_common_metadata' );
 
 
 /******** ウィジェット関連カスタマイズ ********/
+
 /**
  * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
  *
  * @param string $return タグクラウド文字列.
  * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
  */
-function wp_tag_cloud_customize( $return ) {
+function wp_tag_name_replace( $return ) {
 	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
+	$return = preg_replace( '/ style="font-size: .*pt;/', '', $return ); // font-sizeのスタイル指定を削除.
 	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
 	$return = preg_replace( '/<a (.*?)>/', '<a $1><span class="ps-icon ps-icon-tag"></span>', $return );
 	return $return;
 }
-add_filter( 'wp_tag_cloud', 'wp_tag_cloud_customize' );
+add_filter( 'wp_tag_cloud', 'wp_tag_name_replace' );
 
 register_sidebar(
 	array(
