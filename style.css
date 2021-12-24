@@ -120,7 +120,6 @@ span.ps-icon::before {
 		display: grid;
 		width: 100%;
 		grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
-		grid-gap: 2em;
 	}
 }
 
@@ -400,15 +399,11 @@ a.tag-cloud-link {
 
 /* カテゴリウィジェット */
 .widget ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+	display: flex;
+	flex-flow: row wrap;
 }
 .widget ul li{
-    min-height: 44px;
-    text-align: center;
-    padding: 10px;
+	width: 100%;
 }
 
 /******** 検索フォーム(searchform.php) ********/
