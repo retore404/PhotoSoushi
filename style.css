@@ -397,15 +397,6 @@ a.tag-cloud-link {
 	margin-right: 0.75em;
 }
 
-/* カテゴリウィジェット */
-.widget ul {
-	display: flex;
-	flex-flow: row wrap;
-}
-.widget ul li{
-	width: 100%;
-}
-
 /******** 検索フォーム(searchform.php) ********/
 .search-field-wrapper{
 	display: inline-block;
