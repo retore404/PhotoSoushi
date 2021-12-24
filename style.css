@@ -400,15 +400,15 @@ a.tag-cloud-link {
 
 /* カテゴリウィジェット */
 .widget ul {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 .widget ul li{
-	min-height: 44px;
-	text-align: center;
-	padding: 10px;
+    min-height: 44px;
+    text-align: center;
+    padding: 10px;
 }
 
 /******** 検索フォーム(searchform.php) ********/
