@@ -328,29 +328,42 @@ register_sidebar(
 );
 
 /** ページネーション. */
-function the_pagination() {
+function ps_pagination() {
 	global $wp_query;
 	$bignum = 999999999;
+	// 1ページしかない一覧系ページの場合，ページネーションの出力は行わない.
 	if ( $wp_query->max_num_pages <= 1 ) {
 		return;
 	}
-	echo '<nav class="pagination">';
-	echo wp_kses_post(
-		paginate_links(
-			array(
-				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-				'format'    => '',
-				'current'   => max( 1, get_query_var( 'paged' ) ),
-				'total'     => $wp_query->max_num_pages,
-				'prev_text' => '«',
-				'next_text' => '»',
-				'type'      => 'list',
-				'end_size'  => 3,
-				'mid_size'  => 3,
-			)
-		)
-	);
-	echo '</nav>';
+
+	// ページネーションリンク構成用のベースURL文字列.
+	$base_url = str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) );
+	// 表示中の一覧系ページの1ページ目のリンク.
+	$first_page_url = str_replace( '%#%', '1', esc_url( $base_url ) );
+	// 表示中の一覧系ページの前のページのリンク.
+	$prev_page_url = str_replace( '%#%', get_query_var( 'paged' ) - 1, esc_url( $base_url ) );
+	// 表示中の一覧系ページの次のページのリンク(1ページ目を表示中の場合，現在ページが0ページ目と判断されうるため補正).
+	$next_page_url = str_replace( '%#%', max( 1, get_query_var( 'paged' ) ) + 1, esc_url( $base_url ) );
+	// 表示中の一覧系ページの最後のページのリンク.
+	$last_page_url = str_replace( '%#%', $wp_query->max_num_pages, esc_url( $base_url ) );
+
+	// 1ページ目のリンク・前のページのリンク(表示中のページが1ページ目の場合は表示枠のみのdivを出力).
+	if ( get_query_var( 'paged' ) >= 2 ) {
+		echo '<a href=' . esc_url( $first_page_url ) . ' class="pagination_item pagination_item_border">«</a>';
+		echo '<a href=' . esc_url( $prev_page_url ) . ' class="pagination_item pagination_item_border">‹</a>';
+	} else {
+		echo '<div class="pagination_item">«</div>';
+		echo '<div class="pagination_item">‹</div>';
+	}
+
+	// 次のページ・最終ページのリンク(表示中のページが最終ページの場合は表示枠のみのdivを出力).
+	if ( get_query_var( 'paged' ) < $wp_query->max_num_pages ) {
+		echo '<a href=' . esc_url( $next_page_url ) . ' class="pagination_item pagination_item_border">›</a>';
+		echo '<a href=' . esc_url( $last_page_url ) . ' class="pagination_item pagination_item_border">»</a>';
+	} else {
+		echo '<div class="pagination_item">›</div>';
+		echo '<div class="pagination_item">»</div>';
+	}
 }
 
 /** コメントフォームの順序変更.
