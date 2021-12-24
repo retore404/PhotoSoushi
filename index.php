@@ -55,10 +55,10 @@ get_header(); ?>
 			</section>
 			<?php endif; ?>
 			<!--ページネーション-->
-			<section id="pagination">
+			<section id="pagination_wrapper">
 				<?php
-				if ( function_exists( 'the_pagination' ) ) {
-					the_pagination();}
+				if ( function_exists( 'ps_pagination' ) ) {
+					ps_pagination();}
 				?>
 			</section>
 			<!--メイン領域下のウィジェットスペース-->

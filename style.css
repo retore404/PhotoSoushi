@@ -231,27 +231,24 @@ a > section.post-each:hover .post-each-thumbnail-wrapper:after{ /* リンクホ�
 }
 
 /* ページネーション */
-nav ul li{
-	padding: 0.3em;
+#pagination_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2em;
+	gap: 30px 30px;
 }
-nav ul {
-	padding: 0;
-}
-ul.page-numbers{
-	margin-top: 1em;
-	text-align: center;
-}
-ul.page-numbers li{
-	display: inline;
-}
-a.page-numbers, span.page-numbers {
-	display: inline-block;
+
+.pagination_item {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
 	min-width: 44px;
-	height: 44px;
-	line-height: 44px;
-	vertical-align: middle;
+	min-height: 44px;
 	border-radius: 5px 5px 5px 5px;
-	border:#808080 1px solid;
+	border: #808080 1px solid;
+	font-size: 135%;
 }
 
 
