@@ -358,8 +358,8 @@ function ps_pagination() {
 
 	// 1ページ目のリンク・前のページのリンク(表示中のページが1ページ目の場合は表示枠のみのdivを出力).
 	if ( get_query_var( 'paged' ) >= 2 ) {
-		echo '<a href=' . esc_url( $first_page_url ) . ' class="pagination_item pagination_item_border">«</a>';
-		echo '<a href=' . esc_url( $prev_page_url ) . ' class="pagination_item pagination_item_border">‹</a>';
+		echo '<a href=' . esc_url( $first_page_url ) . ' class="pagination_item">«</a>';
+		echo '<a href=' . esc_url( $prev_page_url ) . ' class="pagination_item">‹</a>';
 	} else {
 		echo '<div class="pagination_item">«</div>';
 		echo '<div class="pagination_item">‹</div>';
@@ -367,8 +367,8 @@ function ps_pagination() {
 
 	// 次のページ・最終ページのリンク(表示中のページが最終ページの場合は表示枠のみのdivを出力).
 	if ( get_query_var( 'paged' ) < $wp_query->max_num_pages ) {
-		echo '<a href=' . esc_url( $next_page_url ) . ' class="pagination_item pagination_item_border">›</a>';
-		echo '<a href=' . esc_url( $last_page_url ) . ' class="pagination_item pagination_item_border">»</a>';
+		echo '<a href=' . esc_url( $next_page_url ) . ' class="pagination_item">›</a>';
+		echo '<a href=' . esc_url( $last_page_url ) . ' class="pagination_item">»</a>';
 	} else {
 		echo '<div class="pagination_item">›</div>';
 		echo '<div class="pagination_item">»</div>';
