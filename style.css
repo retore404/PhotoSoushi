@@ -397,6 +397,29 @@ a.tag-cloud-link {
 	margin-right: 0.75em;
 }
 
+/* カテゴリウィジェット. */
+.cat-item {
+	display: flex;
+	margin-left: -40px;
+}
+
+.cat-item a {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	min-width: 48px;
+	min-height: 48px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px 5px 5px 5px;
+	border:#808080 1px solid;
+	font-size: 0.875em;
+	margin-left: 0.5em;
+	color: #191919;
+}
+
 /******** 検索フォーム(searchform.php) ********/
 .search-field-wrapper{
 	display: inline-block;
