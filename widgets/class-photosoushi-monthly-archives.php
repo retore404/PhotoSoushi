@@ -16,7 +16,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 	/**
 	 * Widgetの登録
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'photosoushi_monthly_archives',
 			'PhotoSoushi 年・月別アーカイブ',
