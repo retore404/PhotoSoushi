@@ -88,7 +88,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 			if ( count( $yearly_post_list ) > 0 ) {
 				// 年単位div開始タグと年別ヘッダの出力.
 				echo '<div class="ps_archive_widget_year_wrapper">';
-				echo '<span class="ps_archive_widget_year_header">' . $process_year . '</span>';
+				echo '<span class="ps_archive_widget_year_header">' . esc_html( $process_year ) . '</span>';
 
 				// 全月を降順ループ処理.
 				foreach ( $month_array as $month => $abb ) {
@@ -102,9 +102,9 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 					);
 					// 処理中の月の投稿件数が有件の場合，リンクを出力.
 					if ( count( $monthly_post_list ) > 0 ) {
-						echo '<a class="ps_archive_widget_month_link" href="' . esc_url( get_month_link( $process_year, $month ) ) . '"><span class="ps-icon ps-icon-calendar"></span>' . $abb . '</a>';
+						echo '<a class="ps_archive_widget_month_link" href="' . esc_url( get_month_link( $process_year, $month ) ) . '"><span class="ps-icon ps-icon-calendar"></span>' . esc_html( $abb ) . '</a>';
 					} else { // 処理中の月の投稿がない場合，枠のみ出力.
-						echo '<div class="ps_archive_widget_month_link"><span class="ps-icon ps-icon-calendar"></span>' . $abb . '</div>';
+						echo '<div class="ps_archive_widget_month_link"><span class="ps-icon ps-icon-calendar"></span>' . esc_html( $abb ) . '</div>';
 					}
 				}
 				// 年単位div終了タグの出力.
