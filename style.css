@@ -397,6 +397,54 @@ a.tag-cloud-link {
 	margin-right: 0.75em;
 }
 
+/* 年・月別カスタムウィジェット */
+.ps_archive_widget_year_wrapper {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.ps_archive_widget_year_header{
+	width: 100%;
+}
+
+a.ps_archive_widget_month_link{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	margin-left: 1em;
+	width: 10%;
+	min-width: 48px;
+	min-height: 48px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px 5px 5px 5px;
+	border:#808080 1px solid;
+	font-size: 0.875em;
+	margin-left: 0.5em;
+	color: #191919;
+}
+
+div.ps_archive_widget_month_link{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	margin-left: 1em;
+	width: 10%;
+	min-width: 48px;
+	min-height: 48px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px 5px 5px 5px;
+	border:#808080 1px solid;
+	font-size: 0.875em;
+	margin-left: 0.5em;
+	color: #808080;
+}
+
 /* カテゴリウィジェット. */
 .cat-item {
 	display: flex;
