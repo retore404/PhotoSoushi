@@ -26,6 +26,9 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 
 	/**
 	 * ウィジェット出力
+	 *
+	 * @param array $args 'before_title', 'after_title', 'before_widget', 'after_widget'を持つ引数.
+	 * @param array $instance widgetの設定内容.
 	 */
 	public function widget( $args, $instance ) {
 		echo '<h2>Archives.</h2>';
@@ -43,7 +46,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 		);
 		$oldest_post_year = intval( substr( $oldest_post[0]->post_date, 0, 4 ) ); // 最古の記事の公開日の先頭4文字から年を抜粋.
 
-		// 最新の記事を取得
+		// 最新の記事を取得.
 		$newest_post      = $wpdb->get_results(
 			"
 			SELECT *
@@ -74,7 +77,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 		// 最新年～最古年のループ処理.
 		$process_year = $newest_post_year; // ループ処理で処理する年の設定.初期値として最新年を設定する.
 		while ( $process_year >= $oldest_post_year ) {
-			// 処理年の投稿件数をカウントし，有件の場合のみ処理中の年のアーカイブリンクを出力
+			// 処理年の投稿件数をカウントし，有件の場合のみ処理中の年のアーカイブリンクを出力.
 			$yearly_post_list = get_posts(
 				array(
 					'post_per_page' => -1,
