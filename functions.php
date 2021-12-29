@@ -13,7 +13,7 @@
  * 記事中1枚目の画像URLを返す.
  *
  * @param string $type 1枚目の画像がヒットしない場合に返すデフォルトアイキャッチ画像の形式("svg"もしくは"png"を指定. 指定がない場合，svg).
- * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
+ * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL)
  */
 function catch_first_image( $type = 'svg' ) {
 	global $post;
