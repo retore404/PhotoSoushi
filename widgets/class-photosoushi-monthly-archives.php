@@ -111,7 +111,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 				echo '</div>';
 			}
 			// 処理対象の年をカウントダウン.
-			$process_year = $process_year - 1;
+			--$process_year;
 		}
 	}
 }
