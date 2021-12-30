@@ -306,9 +306,19 @@ blockquote > P {
 }
 
 /* シェアアイコン（共通） */
+section#share {
+	display: flex;
+	flex-flow: row wrap;
+}
+
 a.share-icon {
-	margin-right: 1.5em;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
 	font-size: 22px;
+	min-width: 44px;
+	min-height: 44px;
 	color: gray;
 }
 
