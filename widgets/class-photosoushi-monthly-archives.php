@@ -88,9 +88,9 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 					);
 					// 処理中の月の投稿件数が有件の場合，リンクを出力.
 					if ( count( $monthly_post_list ) > 0 ) {
-						echo '<a class="ps_archive_widget_month_link" href="' . esc_url( get_month_link( $process_year, $month ) ) . '"><span class="ps-icon ps-icon-calendar"></span>' . esc_html( $abb ) . '</a>';
+						echo '<a class="ps_archive_widget_month_link" href="' . esc_url( get_month_link( $process_year, $month ) ) . '">' . esc_html( $abb ) . '</a>';
 					} else { // 処理中の月の投稿がない場合，枠のみ出力.
-						echo '<div class="ps_archive_widget_month_link"><span class="ps-icon ps-icon-calendar"></span>' . esc_html( $abb ) . '</div>';
+						echo '<div class="ps_archive_widget_month_link">' . esc_html( $abb ) . '</div>';
 					}
 				}
 				// 年単位div終了タグの出力.
