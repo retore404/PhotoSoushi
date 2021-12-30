@@ -65,7 +65,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 			// 処理年の投稿件数をカウントし，有件の場合のみ処理中の年のアーカイブリンクを出力.
 			$yearly_post_list = get_posts(
 				array(
-					'post_per_page' => -1,
+					'posts_per_page' => -1,
 					'year'          => $process_year,
 				)
 			);
@@ -79,7 +79,7 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 				// 処理中の月の投稿を取得.
 				$monthly_post_list = get_posts(
 					array(
-						'post_per_page' => -1,
+						'posts_per_page' => -1,
 						'year'          => $process_year,
 						'monthnum'      => $month,
 					)
