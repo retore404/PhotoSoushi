@@ -435,9 +435,14 @@ div.ps_archive_widget_month_link{
 }
 
 /* カテゴリウィジェット. */
+.widget ul {
+	display: flex;
+	flex-flow: row wrap;
+	padding: 0;
+}
+
 .cat-item {
 	display: flex;
-	margin-left: -40px;
 }
 
 .cat-item a {
