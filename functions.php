@@ -13,7 +13,7 @@
  * 記事中1枚目の画像URLを返す.
  *
  * @param string $type 1枚目の画像がヒットしない場合に返すデフォルトアイキャッチ画像の形式("svg"もしくは"png"を指定. 指定がない場合，svg).
- * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
+ * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL)
  */
 function catch_first_image( $type = 'svg' ) {
 	global $post;
@@ -277,23 +277,10 @@ function add_twitter_common_metadata() {
 add_action( 'wp_head', 'add_twitter_common_metadata' );
 
 
-/******** ウィジェット関連カスタマイズ ********/
-
+/******** ウィジェット関連カスタマイズ */
 /**
- * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
- *
- * @param string $return タグクラウド文字列.
- * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
+ * ウィジェット表示領域定義.
  */
-function wp_tag_name_replace( $return ) {
-	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
-	$return = preg_replace( '/ style="font-size: .*pt;/', '', $return ); // font-sizeのスタイル指定を削除.
-	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
-	$return = preg_replace( '/<a (.*?)>/', '<a $1><span class="ps-icon ps-icon-tag"></span>', $return );
-	return $return;
-}
-add_filter( 'wp_tag_cloud', 'wp_tag_name_replace' );
-
 register_sidebar(
 	array(
 		'name'          => __( 'MainWidget1' ),
@@ -327,7 +314,50 @@ register_sidebar(
 	)
 );
 
-/** ページネーション. */
+/**
+ * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
+ *
+ * @param string $return タグクラウド文字列.
+ * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
+ */
+function wp_tag_name_replace( $return ) {
+	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
+	$return = preg_replace( '/ style="font-size: .*pt;/', '', $return ); // font-sizeのスタイル指定を削除.
+	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
+	$return = preg_replace( '/<a (.*?)>/', '<a $1><span class="ps-icon ps-icon-tag"></span>', $return );
+	return $return;
+}
+add_filter( 'wp_tag_cloud', 'wp_tag_name_replace' );
+
+/**
+ * カテゴリウィジェットカスタマイズ(リンクテキストをspanタグ内に格納).
+ *
+ * @param string $output カテゴリウィジェット出力文字列.
+ * @param array  $args カテゴリウィジェットカスタマイズ配列.
+ * @return string $replaced_html カテゴリウィジェット出力文字列(カスタマイズ済).
+ */
+function ps_category_widget( $output, $args ) {
+	// リンクテキストを置き換え.
+	// $1：href="リンク先" 部分.
+	// $2：リンクテキスト.
+	// $3：（投稿数を表示オプションつきの場合）投稿数部分.
+	if ( '0' === $args['show_count'] ) { // 投稿数表示オプションOFFのとき.
+		$replaced_html = preg_replace( '/<a (.*)>(.*)<\/a>/', '<a $1><span class="widget_category_link_text ps-icon ps-icon-category"> $2</span></a>', $output );
+	} else { // 投稿数表示オプションONのとき.
+		$replaced_html = preg_replace( '/<a (.*)>(.*)<\/a> \(([0-9,]*)\)/', '<a $1><span class="widget_category_link_text ps-icon ps-icon-category"> $2 ($3)</span></a>', $output );
+	}
+	return $replaced_html;
+}
+add_filter( 'wp_list_categories', 'ps_category_widget', 10, 2 );
+
+/**
+ * カスタムウィジェット「PhotoSoushi_Monthly_Archives」の読み込み.
+ */
+require_once get_stylesheet_directory() . '/widgets/class-photosoushi-monthly-archives.php';
+register_widget( 'PhotoSoushi_Monthly_Archives' );
+
+
+/******** ページネーションカスタマイズ ********/
 function ps_pagination() {
 	global $wp_query;
 	$bignum = 999999999;
