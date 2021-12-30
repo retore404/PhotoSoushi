@@ -32,31 +32,16 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		echo '<h2>Archives.</h2>';
-
-		global $wpdb;
-		// 最古の記事を取得.
-		$oldest_post      = $wpdb->get_results(
-			"
-			SELECT *
-			FROM $wpdb->posts
-			WHERE post_status = 'publish'
-			AND post_type = 'post'
-			ORDER BY post_date ASC LIMIT 1
-		"
+		// 全記事を取得.
+		$all_posts        = get_posts(
+			array(
+				'posts_per_page' => -1,
+				'order_by'       => 'date',
+				'sort_by'        => 'DESC',
+			)
 		);
-		$oldest_post_year = intval( substr( $oldest_post[0]->post_date, 0, 4 ) ); // 最古の記事の公開日の先頭4文字から年を抜粋.
-
-		// 最新の記事を取得.
-		$newest_post      = $wpdb->get_results(
-			"
-			SELECT *
-			FROM $wpdb->posts
-			WHERE post_status = 'publish'
-			AND post_type = 'post'
-			ORDER BY post_date DESC LIMIT 1
-		"
-		);
-		$newest_post_year = intval( substr( $newest_post[0]->post_date, 0, 4 ) ); // 最古の記事の公開日の先頭4文字から年を抜粋.
+		$oldest_post_year = intval( substr( $all_posts[ array_key_last( $all_posts ) ]->post_date, 0, 4 ) ); // 最古の記事の公開日の先頭4文字から年を抜粋.
+		$newest_post_year = intval( substr( $all_posts[0]->post_date, 0, 4 ) ); // 最新の記事の公開日の先頭4文字から年を抜粋.
 
 		// 後続のループ及び表示用の月・月表示名配列定義.
 		$month_array = array(
