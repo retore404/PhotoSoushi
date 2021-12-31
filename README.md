@@ -67,17 +67,14 @@ Gridレイアウトを採用することで単一コードでレスポンシブ�
 ウィジェットのリンク部はスマホでも操作しやすいサイズとし，デフォルトウィジェットで対応困難な月別アーカイブウィジェットは, 
 年別・月別にアーカイブリンクを表示できるカスタムウィジェットを実装した．
 
-#### カスタム年・月別アーカイブウィジェット
 
-![カスタム年別・月別アーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_archives.png)
-
-#### スマホ表示時も操作しやすいページネーション・タグクラウド・カテゴリアーカイブウィジェット
-
-|  | 表示例 |
+| 年・月別アーカイブ(カスタムウィジェット) | ページネーション |
 | ------------- | ------------- |
-| ページネーション | ![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png) |
-| タグクラウド | ![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png) |
-| タグクラウド | ![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png) |
+| ![カスタム年別・月別アーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_archives.png) | ![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png) |
+
+| タグクラウド | カテゴリアーカイブウィジェット |
+| ------------- | ------------- |
+| ![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png) | ![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png) |
 
 ## バージョン管理
 
