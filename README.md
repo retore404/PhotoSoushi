@@ -67,7 +67,17 @@ Gridレイアウトを採用することで単一コードでレスポンシブ�
 ウィジェットのリンク部はスマホでも操作しやすいサイズとし，デフォルトウィジェットで対応困難な月別アーカイブウィジェットは, 
 年別・月別にアーカイブリンクを表示できるカスタムウィジェットを実装した．
 
+#### カスタム年・月別アーカイブウィジェット
+
 ![カスタム年別・月別アーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_archives.png)
+
+#### スマホ表示時も操作しやすいページネーション・タグクラウド・カテゴリアーカイブウィジェット
+
+![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png)
+
+![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png)
+
+![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png)
 
 ## バージョン管理
 
