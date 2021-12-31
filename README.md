@@ -73,11 +73,11 @@ Gridレイアウトを採用することで単一コードでレスポンシブ�
 
 #### スマホ表示時も操作しやすいページネーション・タグクラウド・カテゴリアーカイブウィジェット
 
-![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png)
-
-![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png)
-
-![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png)
+|  | 表示例 |
+| ------------- | ------------- |
+| ページネーション | ![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png) |
+| タグクラウド | ![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png) |
+| タグクラウド | ![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png) |
 
 ## バージョン管理
 
