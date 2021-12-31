@@ -13,7 +13,7 @@
  * 記事中1枚目の画像URLを返す.
  *
  * @param string $type 1枚目の画像がヒットしない場合に返すデフォルトアイキャッチ画像の形式("svg"もしくは"png"を指定. 指定がない場合，svg).
- * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL).
+ * @return string $first_img 表示中ページの1枚目画像URL(画像がない場合，デフォルトアイキャッチ画像URL)
  */
 function catch_first_image( $type = 'svg' ) {
 	global $post;
@@ -277,22 +277,10 @@ function add_twitter_common_metadata() {
 add_action( 'wp_head', 'add_twitter_common_metadata' );
 
 
-/******** ウィジェット関連カスタマイズ ********/
+/******** ウィジェット関連カスタマイズ */
 /**
- * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
- *
- * @param string $return タグクラウド文字列.
- * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
+ * ウィジェット表示領域定義.
  */
-function wp_tag_cloud_customize( $return ) {
-	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
-	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
-	$return = str_replace( '<a', '<span class="tag-cloud-link-wrapper"><span class="ps-icon ps-icon-tag"></span><a', $return );
-	$return = str_replace( '</a>', '</a></span>', $return );
-	return $return;
-}
-add_filter( 'wp_tag_cloud', 'wp_tag_cloud_customize' );
-
 register_sidebar(
 	array(
 		'name'          => __( 'MainWidget1' ),
@@ -326,30 +314,95 @@ register_sidebar(
 	)
 );
 
-/** ページネーション. */
-function the_pagination() {
+/**
+ * タグクラウドリンクからaria-labelを除去し，特定文字列をアイコンに置き換える.
+ *
+ * @param string $return タグクラウド文字列.
+ * @return string $return タグクラウド文字列(aria-label除去・特定文字列のアイコン置き換え).
+ */
+function wp_tag_name_replace( $return ) {
+	$return = preg_replace( '/aria-label=".*"/', '', $return ); // 置き換えの邪魔になるaria-labelを削除.
+	$return = preg_replace( '/ style="font-size: .*pt;/', '', $return ); // font-sizeのスタイル指定を削除.
+	$return = replace_tag_str( $return ); // タグ名の一部をアイコン置き換え.
+	$return = preg_replace( '/<a (.*?)>/', '<a $1><span class="ps-icon ps-icon-tag"></span>', $return );
+	return $return;
+}
+add_filter( 'wp_tag_cloud', 'wp_tag_name_replace' );
+
+/**
+ * カテゴリウィジェットカスタマイズ(リンクテキストをspanタグ内に格納).
+ *
+ * @param string $output カテゴリウィジェット出力文字列.
+ * @param array  $args カテゴリウィジェットカスタマイズ配列.
+ * @return string $replaced_html カテゴリウィジェット出力文字列(カスタマイズ済).
+ */
+function ps_category_widget( $output, $args ) {
+	// リンクテキストを置き換え.
+	// $1：href="リンク先" 部分.
+	// $2：リンクテキスト.
+	// $3：（投稿数を表示オプションつきの場合）投稿数部分.
+	if ( '0' === $args['show_count'] ) { // 投稿数表示オプションOFFのとき.
+		$replaced_html = preg_replace( '/<a (.*)>(.*)<\/a>/', '<a $1><span class="widget_category_link_text ps-icon ps-icon-category"> $2</span></a>', $output );
+	} else { // 投稿数表示オプションONのとき.
+		$replaced_html = preg_replace( '/<a (.*)>(.*)<\/a> \(([0-9,]*)\)/', '<a $1><span class="widget_category_link_text ps-icon ps-icon-category"> $2 ($3)</span></a>', $output );
+	}
+	return $replaced_html;
+}
+add_filter( 'wp_list_categories', 'ps_category_widget', 10, 2 );
+
+/**
+ * カスタムウィジェット「PhotoSoushi_Monthly_Archives」の読み込み.
+ */
+require_once get_stylesheet_directory() . '/widgets/class-photosoushi-monthly-archives.php';
+register_widget( 'PhotoSoushi_Monthly_Archives' );
+
+
+/******** ページネーションカスタマイズ ********/
+function ps_pagination() {
 	global $wp_query;
 	$bignum = 999999999;
+	// 1ページしかない一覧系ページの場合，ページネーションの出力は行わない.
 	if ( $wp_query->max_num_pages <= 1 ) {
 		return;
 	}
-	echo '<nav class="pagination">';
-	echo wp_kses_post(
-		paginate_links(
-			array(
-				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-				'format'    => '',
-				'current'   => max( 1, get_query_var( 'paged' ) ),
-				'total'     => $wp_query->max_num_pages,
-				'prev_text' => '«',
-				'next_text' => '»',
-				'type'      => 'list',
-				'end_size'  => 3,
-				'mid_size'  => 3,
-			)
-		)
-	);
-	echo '</nav>';
+
+	// ページネーションリンク構成用のベースURL文字列.
+	$base_url = str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) );
+	// 表示中の一覧系ページの1ページ目のリンク.
+	// ページ数指定部を正規表現で除去.
+	if ( is_category() || is_tag() || is_date() ) { // ホーム画面以外からのページネーションの場合.
+		$first_page_url = preg_replace( '/\&(.*)=%#%/', '', esc_url( $base_url ) );
+	} else {
+		$first_page_url = preg_replace( '/\?(.*)=%#%/', '', esc_url( $base_url ) ); // ホーム画面からのページネーションの場合.
+	}
+	// 表示中の一覧系ページの前のページのリンク.
+	if ( get_query_var( 'paged' ) === 2 ) { // 表示中のページが2ページ目の場合，前のページのURL=最初のページのURL.
+		$prev_page_url = $first_page_url;
+	} else { // 表示中のページが2ページ目以外の場合，現在のページ数-1ページ目のURLを取得.
+		$prev_page_url = str_replace( '%#%', get_query_var( 'paged' ) - 1, esc_url( $base_url ) );
+	}
+	// 表示中の一覧系ページの次のページのリンク(1ページ目を表示中の場合，現在ページが0ページ目と判断されうるため補正).
+	$next_page_url = str_replace( '%#%', max( 1, get_query_var( 'paged' ) ) + 1, esc_url( $base_url ) );
+	// 表示中の一覧系ページの最後のページのリンク.
+	$last_page_url = str_replace( '%#%', $wp_query->max_num_pages, esc_url( $base_url ) );
+
+	// 1ページ目のリンク・前のページのリンク(表示中のページが1ページ目の場合は表示枠のみのdivを出力).
+	if ( get_query_var( 'paged' ) >= 2 ) {
+		echo '<a href=' . esc_url( $first_page_url ) . ' class="pagination_item">«</a>';
+		echo '<a href=' . esc_url( $prev_page_url ) . ' class="pagination_item">‹</a>';
+	} else {
+		echo '<div class="pagination_item">«</div>';
+		echo '<div class="pagination_item">‹</div>';
+	}
+
+	// 次のページ・最終ページのリンク(表示中のページが最終ページの場合は表示枠のみのdivを出力).
+	if ( get_query_var( 'paged' ) < $wp_query->max_num_pages ) {
+		echo '<a href=' . esc_url( $next_page_url ) . ' class="pagination_item">›</a>';
+		echo '<a href=' . esc_url( $last_page_url ) . ' class="pagination_item">»</a>';
+	} else {
+		echo '<div class="pagination_item">›</div>';
+		echo '<div class="pagination_item">»</div>';
+	}
 }
 
 /** コメントフォームの順序変更.
@@ -391,13 +444,13 @@ add_filter(
  */
 function replace_tag_str( $tag_str ) {
 	// "Camera:"のアイコン置き換え.
-	$tag_str = str_replace( 'Camera:', '<span class="ps-icon ps-icon-camera"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Camera:(.*)/', '<span class="ps-icon ps-icon-camera"> $1</span> ', $tag_str );
 	// "Lens:"のアイコン置き換え.
-	$tag_str = str_replace( 'Lens:', '<span class="ps-icon ps-icon-lens"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Lens:(.*)/', '<span class="ps-icon ps-icon-lens"> $1</span> ', $tag_str );
 	// "T*"の赤字化.
 	$tag_str = str_replace( 'T*', '<span class="t-star">T*</span>', $tag_str );
 	// "Location:"のアイコン置き換え.
-	$tag_str = str_replace( 'Location:', '<span class="ps-icon ps-icon-pin"></span> ', $tag_str );
+	$tag_str = preg_replace( '/Location:(.*)/', '<span class="ps-icon ps-icon-pin"> $1</span> ', $tag_str );
 	return $tag_str;
 }
 

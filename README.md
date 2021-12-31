@@ -48,19 +48,33 @@
 
 ### 2. Gridレイアウトを用いたレスポンシブ対応
 
-Gridレイアウトを採用することでレスポンシブ対応を実現．
+Gridレイアウトを採用することで単一コードでレスポンシブ対応を実現．
 
-| 表示デバイス | 表示例 |
-|:---|:---:|
-| PC | ![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png) |
-| タブレット | ![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png) |
-| スマホ | ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png) |
+| PC | Tablet | Smartphone |
+|:---:|:---:|:---:|
+| ![PCで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_pc_responsive.png) | ![タブレットで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_tab_responsive.png) | ![スマホで表示した例](https://github.com/retore404/PhotoSoushi/blob/images/index_sp_responsive.png) |
 
 
 ### 3. UX
 
-対応画像フォーマットとしてWordPress標準でサポートする形式に加え，WebP形式をサポートし，表示速度の向上を実現．  
-その他，パフォーマンス，アクセシビリティを意識した実装を加えている．
+### 3-1. パフォーマンス
+
+対応画像フォーマットとしてWordPress標準でサポートする形式に加え，WebP形式をサポートし，表示速度の向上を実現． 
+
+### 3-2. アクセシビリティ
+
+単一コードでのレスポンシブ実装のため，スマホ表示時にも使用しやすいデザインとした． 
+ウィジェットのリンク部はスマホでも操作しやすいサイズとし，デフォルトウィジェットで対応困難な月別アーカイブウィジェットは, 
+年別・月別にアーカイブリンクを表示できるカスタムウィジェットを実装した．
+
+
+| 年・月別アーカイブ(カスタムウィジェット) | ページネーション |
+| ------------- | ------------- |
+| ![カスタム年別・月別アーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_archives.png) | ![ページネーション](https://github.com/retore404/PhotoSoushi/blob/images/pagination_links.png) |
+
+| タグクラウド | カテゴリアーカイブウィジェット |
+| ------------- | ------------- |
+| ![タグクラウド](https://github.com/retore404/PhotoSoushi/blob/images/widget_tag_cloud.png) | ![カテゴリアーカイブウィジェット](https://github.com/retore404/PhotoSoushi/blob/images/widget_categories.png) |
 
 ## バージョン管理
 
