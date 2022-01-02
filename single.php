@@ -46,7 +46,7 @@ get_header(); ?>
 							<?php endif; ?>
 						</section>
 						<section id="share">
-							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ); ?>" target="_blank" rel="noopener" class="share-icon" aria-label="share on twitter"><span class="ps-sns-icon-twitter"></span></a>
+							<a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php echo rawurlencode( wp_strip_all_tags( get_the_title() . ' | ' . get_bloginfo( 'name' ) . "\n" ) ); ?>" target="_blank" rel="noopener" class="share-icon" aria-label="share on twitter"><span class="ps-sns-icon-twitter"></span></a>
 							<a href="http://b.hatena.ne.jp/entry/<?php the_permalink(); ?>" target="_blank" rel="noopener" class="share-icon" aria-label="bookmark on hatena"><span class="ps-sns-icon-hatenabookmark"></span></a>
 							<a href="https://social-plugins.line.me/lineit/share?url=<?php the_permalink(); ?>" target="_blank" rel="noopener" class="share-icon" aria-label="share on LINE"><span class="ps-sns-icon-line"></span></a>
 							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank" rel="noopener" class="share-icon" aria-label="share on Facebook"><span class="ps-sns-icon-facebook"></span></a>
