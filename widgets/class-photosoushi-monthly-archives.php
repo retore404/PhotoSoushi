@@ -62,7 +62,8 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 			);
 
 			// 最新年～最古年のループ処理.
-			$process_year = $newest_post_year; // ループ処理で処理する年の設定.初期値として最新年を設定する.
+			$process_year   = $newest_post_year; // ループ処理で処理する年の設定.初期値として最新年を設定する.
+			$displayed_flag = false;
 			while ( $process_year >= $oldest_post_year ) {
 				// 処理年の投稿件数をカウントし，有件の場合のみ処理中の年のアーカイブリンクを出力.
 				$yearly_post_list = get_posts(
@@ -89,7 +90,8 @@ class PhotoSoushi_Monthly_Archives extends WP_Widget {
 					// 処理中の月の投稿件数が有件の場合，リンクを出力.
 					if ( count( $monthly_post_list ) > 0 ) {
 						echo '<a class="ps_archive_widget_month_link" href="' . esc_url( get_month_link( $process_year, $month ) ) . '">' . esc_html( $abb ) . '</a>';
-					} else { // 処理中の月の投稿がない場合，枠のみ出力.
+						$displayed_flag = true; // 有件の月があり，ウィジェットに表示をした時点でflagをtrueにする（未来年月の制御表示用）.
+					} elseif ( $displayed_flag ) { // 処理中の月の投稿がない場合，既に別の月でリンクを表示済の場合のみ，枠のみ出力.
 						echo '<div class="ps_archive_widget_month_link">' . esc_html( $abb ) . '</div>';
 					}
 				}
