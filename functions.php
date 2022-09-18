@@ -9,6 +9,10 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * 記事中1枚目の画像URLを返す.
  *
